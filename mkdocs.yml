@@ -1,0 +1,100 @@
+site_name: Pentest Active Directory — Référence Exam
+site_description: Guide complet de pentest AD pour l'épreuve certificative
+site_author: FirasJemaa
+site_url: https://firasjemaa.github.io/pentest-ad/
+
+repo_name: FirasJemaa/pentest-ad
+repo_url: https://github.com/FirasJemaa/pentest-ad
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: fr
+  palette:
+    - scheme: slate
+      primary: red
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Mode clair
+    - scheme: default
+      primary: red
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Mode sombre
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.instant
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/shield-lock
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/FirasJemaa
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+plugins:
+  - search:
+      lang: fr
+
+nav:
+  - Accueil: README.md
+  - Fondamentaux:
+    - Active Directory: fondamentaux/active-directory.md
+    - Protocole NTLM: fondamentaux/ntlm.md
+    - Protocole Kerberos: fondamentaux/kerberos.md
+  - Phases d'attaque:
+    - "Phase 0 — Setup Kali": phases/00-setup-kali.md
+    - "Phase 1 — Reconnaissance": phases/01-reconnaissance.md
+    - "Phase 2 — Accès Initial": phases/02-acces-initial.md
+    - "Phase 3 — Énumération": phases/03-enumeration.md
+    - "Phase 4 — Escalade": phases/04-escalade.md
+    - "Phase 5 — Mouvement Latéral": phases/05-mouvement-lateral.md
+    - "Phase 6 — Compromission Totale": phases/06-compromission.md
+  - Outils:
+    - Impacket: outils/impacket.md
+    - NetExec (nxc): outils/netexec.md
+    - BloodHound: outils/bloodhound.md
+    - Responder & mitm6: outils/responder-mitm6.md
+  - Cheatsheets:
+    - Commandes par phase: cheatsheets/commandes.md
+    - Hashcat: cheatsheets/hashcat.md
+    - Ports AD: cheatsheets/ports.md
+    - Outils: cheatsheets/outils.md
+  - Méthodologie Exam:
+    - Déroulé complet: methodologie/methodology-exam.md
+    - Scénarios types: methodologie/scenarios.md
