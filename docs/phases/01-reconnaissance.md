@@ -1,4 +1,4 @@
-# Phase 1 — Reconnaissance
+# Phase 1 : Reconnaissance
 
 ## C'est quoi l'objectif ?
 
@@ -16,7 +16,7 @@ Il y a deux niveaux de reconnaissance.
 
 ---
 
-## 1.1 — Reconnaissance Passive
+## 1.1 : Reconnaissance Passive
 
 Tu **n'envoies rien** sur le réseau cible. Tu collectes des infos depuis l'extérieur.
 
@@ -26,7 +26,7 @@ Dans un contexte AD interne (tu es déjà dans le réseau, comme avec l'accès S
 - Regarder les broadcasts qui circulent naturellement
 
 ```bash
-# Responder en mode analyse (écoute passive — ne répond pas)
+# Responder en mode analyse (écoute passive : ne répond pas)
 sudo responder -I $IFACE -A
 ```
 
@@ -34,7 +34,7 @@ Si tu vois des requêtes LLMNR/NBT-NS apparaître → vecteur Responder actif di
 
 ---
 
-## 1.2 — Reconnaissance Active avec Nmap
+## 1.2 : Reconnaissance Active avec Nmap
 
 Tu **envoies des paquets** pour sonder le réseau.
 
@@ -66,7 +66,7 @@ Quand tu scannes un réseau d'entreprise, certains ports te disent immédiatemen
 
 ---
 
-## 1.3 — Commandes essentielles
+## 1.3 : Commandes essentielles
 
 ### Découverte des hôtes vivants
 
@@ -127,7 +127,7 @@ dig axfr $DOMAIN_FQDN @$DC_IP
 
 ---
 
-## 1.4 — Interpréter les résultats
+## 1.4 : Interpréter les résultats
 
 Une fois le scan terminé, tu as une carte du réseau :
 
@@ -166,6 +166,6 @@ Tu sais maintenant **où taper**. La prochaine étape : obtenir un premier accè
 - [ ] `DC_IP` et `DOMAIN_FQDN` notés dans `notes.txt`
 - [ ] `/etc/hosts` et `/etc/resolv.conf` configurés
 - [ ] Scan SMB `--gen-relay-list` lancé → `~/certif/targets_relay.txt`
-- [ ] Responder passif lancé — trafic LLMNR observé ?
+- [ ] Responder passif lancé : trafic LLMNR observé ?
 - [ ] Variables `DC_IP`, `DC_FQDN`, `DOMAIN`, `RANGE` mises à jour
-- [ ] Suite → [Phase 2 — Accès Initial](02-acces-initial.md)
+- [ ] Suite → [Phase 2 : Accès Initial](02-acces-initial.md)

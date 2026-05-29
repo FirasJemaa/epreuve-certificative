@@ -1,4 +1,4 @@
-# Cheatsheet — Ports Active Directory
+# Cheatsheet : Ports Active Directory
 
 ---
 
@@ -44,7 +44,7 @@
 
 | Port | Service | Technique |
 |------|---------|-----------|
-| **80** | HTTP certsrv | ESC8 — relay NTLM vers ADCS |
+| **80** | HTTP certsrv | ESC8 : relay NTLM vers ADCS |
 | **443** | HTTPS certsrv | Enrollment HTTPS |
 | **135** | RPC DCOM | Enrollment via RPC |
 

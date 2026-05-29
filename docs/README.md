@@ -1,4 +1,4 @@
-# Pentest Active Directory — Référence Exam
+# Pentest Active Directory : Référence Exam
 
 Ce GitBook est ta référence complète pour l'épreuve certificative de pentest Active Directory.
 
@@ -12,7 +12,7 @@ Ce GitBook est ta référence complète pour l'épreuve certificative de pentest
 
 | Situation | Aller à |
 |-----------|---------|
-| Démarrage, je viens de me connecter en SSH | [Phase 0 — Setup Kali](phases/00-setup-kali.md) |
+| Démarrage, je viens de me connecter en SSH | [Phase 0 : Setup Kali](phases/00-setup-kali.md) |
 | Je veux le déroulé complet étape par étape | [Méthodologie Exam](methodologie/methodology-exam.md) |
 | Je suis bloqué, je cherche un scénario précis | [Scénarios types](methodologie/scenarios.md) |
 | Je veux une commande précise vite | [Cheatsheet commandes](cheatsheets/commandes.md) |
@@ -39,9 +39,9 @@ Ce GitBook est ta référence complète pour l'épreuve certificative de pentest
 
 ## Règles d'or pour l'exam
 
-1. **Créer son dossier de travail en premier** — tout logguer
-2. **Lancer BloodHound dès le premier compte** — c'est la carte du territoire
+1. **Créer son dossier de travail en premier** : tout logguer
+2. **Lancer BloodHound dès le premier compte** : c'est la carte du territoire
 3. **Lire le graphe BloodHound avant de choisir une technique**
-4. **Épreuve à tiroir** — chaque flag peut cacher des credentials pour la suite
+4. **Épreuve à tiroir** : chaque flag peut cacher des credentials pour la suite
 5. **Toujours tester les credentials trouvés sur toutes les machines** avec `nxc smb`
-6. **Vérifier SYSVOL et NETLOGON** — mines à flags
+6. **Vérifier SYSVOL et NETLOGON** : mines à flags

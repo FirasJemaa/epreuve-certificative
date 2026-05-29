@@ -1,4 +1,4 @@
-# Active Directory — Fondamentaux
+# Active Directory : Fondamentaux
 
 ## L'analogie de l'immeuble de bureaux
 
@@ -42,7 +42,7 @@ L'AD contient des objets de plusieurs types :
 | **Group** | Un groupe d'utilisateurs (ex: "Domain Admins") | Élévation de privilèges |
 | **GPO** | Une politique appliquée à des machines/users | Vecteur de persistance |
 | **OU** | Un dossier pour organiser les objets | Structure de l'AD |
-| **SPN** | Service Principal Name — lie un service à un compte | Cible Kerberoasting |
+| **SPN** | Service Principal Name : lie un service à un compte | Cible Kerberoasting |
 
 ---
 
@@ -149,4 +149,4 @@ Le DC maintient une base de données `NTDS.dit` avec :
 - Les **hashes NTLM** de tous les utilisateurs
 - Les **clés Kerberos** (incluant `KRBTGT`)
 
-La réplication entre DC utilise le protocole **DRSUAPI** — c'est ce que l'attaque **DCSync** exploite.
+La réplication entre DC utilise le protocole **DRSUAPI** : c'est ce que l'attaque **DCSync** exploite.

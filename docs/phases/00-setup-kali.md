@@ -1,21 +1,25 @@
-# Phase 0 — Setup Kali
+# Phase 0 : Setup Kali
 
 > Tu viens de recevoir l'accès SSH. **Ne lance aucune commande d'attaque avant d'avoir fait cette phase.**
 
 ---
 
-## 0.1 — Lire le brief et noter les informations fournies
+## 0.1 : Lire le brief et noter les informations fournies
 
 Le professeur te donnera probablement :
-- Une IP réseau ou l'IP du DC
-- Peut-être un nom de domaine
-- Peut-être des credentials de départ
+
+- **DC_IP** : l'IP du contrôleur de domaine (ex: `192.168.1.10`)
+- **DOMAIN** : le nom NetBIOS du domaine (ex: `ENTREPRISE`)
+- **DOMAIN_FQDN** : le nom DNS du domaine (ex: `entreprise.local`) (parfois à déduire du nom NetBIOS)
+- Des credentials de départ (user/password) (pas toujours)
+
+**Si le prof ne te donne pas le FQDN ni la plage réseau**, pas de panique : tu les récupères en Phase 1 via `nmap` et `nslookup`. Remplis ce que tu as maintenant, le reste viendra.
 
 **Note TOUT immédiatement** dans ton fichier de travail.
 
 ---
 
-## 0.2 — Créer le dossier de travail
+## 0.2 : Créer le dossier de travail
 
 ```bash
 mkdir -p ~/certif/{scans,hashes,tickets,loot,logs,bloodhound}
@@ -47,7 +51,7 @@ EOF
 
 ---
 
-## 0.3 — Vérifier les interfaces réseau
+## 0.3 : Vérifier les interfaces réseau
 
 ```bash
 # Voir les interfaces et leurs IPs
@@ -60,34 +64,54 @@ ip route
 ip a show eth0   # ou eth1, ens33, etc.
 ```
 
-**Ce qu'on cherche :**
-- Quelle interface est sur le réseau cible (ex: `192.168.X.X/24`)
-- Son IP d'attaquant à noter dans les variables
+**Ce qu'on lit dans les résultats :**
+
+```
+# ip a show eth0 → exemple de sortie
+2: eth0: ...
+    inet 192.168.1.99/24  ← ton ATTACKER_IP = 192.168.1.99
+                    /24   ← le /24 donne RANGE = 192.168.1.0/24
+```
+
+```
+# ip route → exemple de sortie
+192.168.1.0/24 dev eth0  ← confirme RANGE et IFACE
+```
+
+- **IFACE** = le nom de l'interface (`eth0`, `eth1`, `ens33`...)
+- **RANGE** = la plage réseau (`192.168.1.0/24`)
+- **ATTACKER_IP** = ton IP sur cette interface (`192.168.1.99`)
 
 ---
 
-## 0.4 — Définir les variables d'environnement
+## 0.4 : Définir les variables d'environnement
 
-Copier-coller ce bloc et remplir les valeurs :
+Les variables sont remplies en **trois temps** selon ce que tu as ou découvres.
 
 ```bash
-# ═══ VARIABLES DE TRAVAIL ═══
-export IFACE="eth0"                          # Interface réseau sur le réseau cible
-export RANGE="192.168.X.0/24"               # Plage réseau cible
-export DC_IP="192.168.X.10"                 # IP du contrôleur de domaine
-export DC_FQDN="dc01.entreprise.local"      # FQDN du DC
+# ═══ ÉTAPE 1 : ce que le prof t'a donné (remplir maintenant) ═══
+export DC_IP="192.168.X.10"                 # IP du DC (fourni par le prof)
 export DOMAIN="ENTREPRISE"                  # Nom NetBIOS du domaine
-export DOMAIN_FQDN="entreprise.local"       # Nom DNS du domaine
-export DOMAIN_SID="S-1-5-21-XXX-YYY-ZZZ"   # SID (à remplir après secretsdump)
-export ATTACKER_IP="192.168.X.99"           # Mon IP d'attaquant
+export DOMAIN_FQDN="entreprise.local"       # Nom DNS (parfois fourni, sinon Phase 1)
+export USER=""                              # Compte de départ si fourni
+export PWD=""                               # Mot de passe si fourni
 
-# Credentials (à remplir dès qu'on en a)
-export USER="alice"
-export PWD="Password2024"
+# ═══ ÉTAPE 2 : après la section 0.3 (ip a + ip route) ═══
+export IFACE="eth0"                          # Interface vers le réseau cible (ip a)
+export RANGE="192.168.X.0/24"               # Plage réseau (ip route)
+export ATTACKER_IP="192.168.X.99"           # Ton IP sur ce réseau (ip a show $IFACE)
+
+# ═══ ÉTAPE 3 : après Phase 1 (reconnaissance nmap/nslookup) ═══
+export DC_FQDN="dc01.entreprise.local"      # nslookup $DC_IP → te donne le FQDN
+
+# ═══ ÉTAPE 4 : après Phase 2 (premiers credentials obtenus) ═══
 export HASH="aad3b435b51404eeaad3b435b51404ee:AABBCCDDEEFF0011"
-export NT_HASH="${HASH##*:}"                # Juste la partie NT
+export NT_HASH="${HASH##*:}"
 
-# Raccourci pratique
+# ═══ ÉTAPE 5 : après Phase 6 (DCSync) ═══
+export DOMAIN_SID="S-1-5-21-XXX-YYY-ZZZ"   # Apparaît dans l'output de secretsdump
+
+# Raccourci pratique (réexécuter dès que USER/PWD sont remplis)
 alias nxcsmb="nxc smb $DC_IP -u $USER -p $PWD -d $DOMAIN"
 ```
 
@@ -95,7 +119,7 @@ alias nxcsmb="nxc smb $DC_IP -u $USER -p $PWD -d $DOMAIN"
 
 ---
 
-## 0.5 — Vérifier les outils disponibles
+## 0.5 : Vérifier les outils disponibles
 
 ```bash
 # Vérification rapide des outils essentiels
@@ -119,7 +143,7 @@ find / -name "ntlmrelayx.py" 2>/dev/null | head -3
 
 ---
 
-## 0.6 — Configurer /etc/hosts (si FQDN fourni)
+## 0.6 : Configurer /etc/hosts (si FQDN fourni)
 
 ```bash
 # Ajouter le DC dans /etc/hosts pour la résolution Kerberos
@@ -132,7 +156,7 @@ nslookup $DC_FQDN
 
 ---
 
-## 0.7 — Configurer le DNS Kali (si nécessaire)
+## 0.7 : Configurer le DNS Kali (si nécessaire)
 
 ```bash
 # Pointer le DNS vers le DC pour résoudre les noms AD
@@ -145,7 +169,7 @@ nslookup $DC_FQDN
 
 ---
 
-## 0.8 — Structure du dossier de travail
+## 0.8 : Structure du dossier de travail
 
 ```
 ~/certif/

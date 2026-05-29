@@ -1,4 +1,4 @@
-# BloodHound — Référence complète
+# BloodHound : Référence complète
 
 > BloodHound cartographie toutes les relations dans un AD et trouve les **chemins d'escalade vers Domain Admin**. C'est l'outil le plus important de l'énumération AD.
 
@@ -20,7 +20,7 @@ bloodhound &
 
 ---
 
-## Collecte — bloodhound-python
+## Collecte : bloodhound-python
 
 ```bash
 # Collecte complète (recommandé)
@@ -144,7 +144,7 @@ Clic droit sur un nœud → "Mark User as Owned"
 
 ---
 
-## Lire les arêtes (edges) — Actions possibles
+## Lire les arêtes (edges) : Actions possibles
 
 | Arête BloodHound | Action possible |
 |-----------------|----------------|
@@ -160,7 +160,7 @@ Clic droit sur un nœud → "Mark User as Owned"
 | `DCSync` | Répliquer les hashes du DC |
 | `Owns` | Propriétaire → WriteDACL implicite |
 | `AllowedToDelegate` | Délégation Kerberos vers ce service |
-| `AllowedToAct` | RBCD — peut se faire déléguer vers cette machine |
+| `AllowedToAct` | RBCD : peut se faire déléguer vers cette machine |
 | `HasSession` | Utilisateur a une session active sur cette machine |
 | `AdminTo` | Admin local sur cette machine |
 | `MemberOf` | Membre de ce groupe |

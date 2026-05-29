@@ -1,4 +1,4 @@
-# NetExec (nxc) — Référence complète
+# NetExec (nxc) : Référence complète
 
 > Successeur de CrackMapExec (cme). L'outil couteau-suisse du pentest AD. Parle SMB, LDAP, WinRM, RDP, MSSQL, SSH...
 
@@ -18,7 +18,7 @@ HASH="aad3b435b51404eeaad3b435b51404ee:AABBCCDDEEFF001122"
 
 ---
 
-## SMB — Usage principal
+## SMB : Usage principal
 
 ### Découverte et validation
 
