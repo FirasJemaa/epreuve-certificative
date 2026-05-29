@@ -2,6 +2,9 @@
 
 Tu es Domain Admin, ou tu as le droit **DCSync**. C'est la fin de partie.
 
+!!! tip "Référence Impacket"
+    Cette phase repose entièrement sur Impacket : `secretsdump.py` (DCSync), `ticketer.py` (Golden Ticket), `psexec.py` / `wmiexec.py` (accès Administrator). Référence complète : [Impacket](../outils/impacket.md)
+
 ---
 
 ## 6.1 : DCSync

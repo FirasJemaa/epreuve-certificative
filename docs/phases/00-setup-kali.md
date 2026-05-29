@@ -127,7 +127,6 @@ which nxc netexec crackmapexec 2>/dev/null
 which responder 2>/dev/null
 which mitm6 2>/dev/null
 which bloodhound-python 2>/dev/null
-which impacket-secretsdump impacket-psexec 2>/dev/null
 which hashcat john 2>/dev/null
 which evil-winrm 2>/dev/null
 which kerbrute 2>/dev/null
@@ -135,11 +134,46 @@ which kerbrute 2>/dev/null
 # Localiser les wordlists
 ls /usr/share/wordlists/rockyou.txt 2>/dev/null || locate rockyou.txt
 ls /usr/share/seclists/Usernames/ 2>/dev/null
-
-# Vérifier Impacket (scripts python)
-find / -name "GetUserSPNs.py" 2>/dev/null | head -3
-find / -name "ntlmrelayx.py" 2>/dev/null | head -3
 ```
+
+### Vérifier Impacket (outil central)
+
+Impacket est **la suite d'outils la plus importante** du pentest AD. Elle couvre tout : exécution à distance, dump de credentials, Kerberoasting, Golden Ticket, relay NTLM, RBCD.
+
+```bash
+# Vérifier l'installation
+pip3 show impacket
+
+# Localiser les scripts (chemin où sont les .py)
+pip3 show impacket | grep Location
+# → ex: Location: /usr/lib/python3/dist-packages
+# → les scripts sont dans : /usr/share/doc/python3-impacket/examples/
+#   ou directement dans PATH si installé via pip --user ou apt
+
+# Vérifier que les scripts clés sont accessibles
+which secretsdump.py psexec.py wmiexec.py ntlmrelayx.py 2>/dev/null \
+    || find / -name "secretsdump.py" 2>/dev/null | head -3
+
+# Si les scripts ne sont pas dans PATH, les ajouter (selon le chemin trouvé)
+export PATH="$PATH:/usr/share/doc/python3-impacket/examples"
+```
+
+**Les scripts Impacket utilisés dans ce guide :**
+
+| Script | Phase | Usage |
+|--------|-------|-------|
+| `ntlmrelayx.py` | Accès initial | Relay NTLM |
+| `GetNPUsers.py` | Accès initial | AS-REP Roasting sans credentials |
+| `GetUserSPNs.py` | Escalade | Kerberoasting |
+| `secretsdump.py` | Compromission | DCSync, dump SAM/LSA |
+| `psexec.py` | Mouvement latéral | Shell SYSTEM via SMB |
+| `wmiexec.py` | Mouvement latéral | Shell via WMI (discret) |
+| `getTGT.py` | Kerberos | Obtenir un TGT |
+| `getST.py` | RBCD | Délégation contrainte |
+| `ticketer.py` | Compromission | Golden / Silver Ticket |
+| `lookupsid.py` | Pré-compromission | Récupérer le SID du domaine |
+
+> Référence complète : [Impacket](../outils/impacket.md)
 
 ---
 

