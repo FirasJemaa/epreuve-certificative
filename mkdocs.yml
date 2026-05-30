@@ -98,3 +98,9 @@ nav:
   - Méthodologie Exam:
     - Déroulé complet: methodologie/methodology-exam.md
     - Scénarios types: methodologie/scenarios.md
+  - Wi-Fi:
+    - Fondamentaux: wifi/01-fondamentaux.md
+    - Reconnaissance: wifi/02-reconnaissance.md
+    - "Accès Initial": wifi/03-acces-initial.md
+    - Exploitation: wifi/04-exploitation.md
+    - "Méthodologie Exam Wi-Fi": wifi/05-methodologie-exam-wifi.md
