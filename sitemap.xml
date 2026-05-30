@@ -88,4 +88,24 @@
          <loc>https://firasjemaa.github.io/pentest-ad/phases/06-compromission/</loc>
          <lastmod>2026-05-30</lastmod>
     </url>
+    <url>
+         <loc>https://firasjemaa.github.io/pentest-ad/wifi/01-fondamentaux/</loc>
+         <lastmod>2026-05-30</lastmod>
+    </url>
+    <url>
+         <loc>https://firasjemaa.github.io/pentest-ad/wifi/02-reconnaissance/</loc>
+         <lastmod>2026-05-30</lastmod>
+    </url>
+    <url>
+         <loc>https://firasjemaa.github.io/pentest-ad/wifi/03-acces-initial/</loc>
+         <lastmod>2026-05-30</lastmod>
+    </url>
+    <url>
+         <loc>https://firasjemaa.github.io/pentest-ad/wifi/04-exploitation/</loc>
+         <lastmod>2026-05-30</lastmod>
+    </url>
+    <url>
+         <loc>https://firasjemaa.github.io/pentest-ad/wifi/05-methodologie-exam-wifi/</loc>
+         <lastmod>2026-05-30</lastmod>
+    </url>
 </urlset>

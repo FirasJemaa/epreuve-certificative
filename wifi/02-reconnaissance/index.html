@@ -12,29 +12,31 @@
         <meta name="author" content="FirasJemaa">
       
       
-        <link rel="canonical" href="https://firasjemaa.github.io/pentest-ad/">
+        <link rel="canonical" href="https://firasjemaa.github.io/pentest-ad/wifi/02-reconnaissance/">
       
       
+        <link rel="prev" href="../01-fondamentaux/">
       
-        <link rel="next" href="fondamentaux/active-directory/">
+      
+        <link rel="next" href="../03-acces-initial/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Pentest Active Directory — Référence Exam</title>
+        <title>Reconnaissance - Pentest Active Directory — Référence Exam</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,7 +55,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pentest-active-directory-reference-exam" class="md-skip">
+        <a href="#reconnaissance-wi-fi" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +96,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="." title="Pentest Active Directory — Référence Exam" class="md-header__button md-logo" aria-label="Pentest Active Directory — Référence Exam" data-md-component="logo">
+    <a href="../.." title="Pentest Active Directory — Référence Exam" class="md-header__button md-logo" aria-label="Pentest Active Directory — Référence Exam" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2H9.2c-.6 0-1.2-.6-1.2-1.3v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7m0 1.2c-.8 0-1.5.5-1.5 1.3V11h3V9.5c0-.8-.7-1.3-1.5-1.3"/></svg>
@@ -114,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Accueil
+              Reconnaissance
             
           </span>
         </div>
@@ -219,11 +221,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -244,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="fondamentaux/active-directory/" class="md-tabs__link">
+        <a href="../../fondamentaux/active-directory/" class="md-tabs__link">
           
   
   
@@ -264,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="phases/00-setup-kali/" class="md-tabs__link">
+        <a href="../../phases/00-setup-kali/" class="md-tabs__link">
           
   
   
@@ -284,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="outils/impacket/" class="md-tabs__link">
+        <a href="../../outils/impacket/" class="md-tabs__link">
           
   
   
@@ -304,7 +304,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="cheatsheets/commandes/" class="md-tabs__link">
+        <a href="../../cheatsheets/commandes/" class="md-tabs__link">
           
   
   
@@ -324,7 +324,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="methodologie/methodology-exam/" class="md-tabs__link">
+        <a href="../../methodologie/methodology-exam/" class="md-tabs__link">
           
   
   
@@ -340,11 +340,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="wifi/01-fondamentaux/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-fondamentaux/" class="md-tabs__link">
           
   
   
@@ -386,7 +388,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Pentest Active Directory — Référence Exam" class="md-nav__button md-logo" aria-label="Pentest Active Directory — Référence Exam" data-md-component="logo">
+    <a href="../.." title="Pentest Active Directory — Référence Exam" class="md-nav__button md-logo" aria-label="Pentest Active Directory — Référence Exam" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2H9.2c-.6 0-1.2-.6-1.2-1.3v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7m0 1.2c-.8 0-1.5.5-1.5 1.3V11h3V9.5c0-.8-.7-1.3-1.5-1.3"/></svg>
@@ -413,37 +415,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accueil
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -459,70 +434,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#contexte-de-lepreuve" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contexte de l'épreuve
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comment-utiliser-ce-gitbook-pendant-lexam" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comment utiliser ce GitBook pendant l'exam
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chaine-dattaque-resumee" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Chaîne d'attaque résumée
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regles-dor-pour-lexam" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Règles d'or pour l'exam
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -588,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="fondamentaux/active-directory/" class="md-nav__link">
+      <a href="../../fondamentaux/active-directory/" class="md-nav__link">
         
   
   
@@ -616,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="fondamentaux/ntlm/" class="md-nav__link">
+      <a href="../../fondamentaux/ntlm/" class="md-nav__link">
         
   
   
@@ -644,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="fondamentaux/kerberos/" class="md-nav__link">
+      <a href="../../fondamentaux/kerberos/" class="md-nav__link">
         
   
   
@@ -733,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phases/00-setup-kali/" class="md-nav__link">
+      <a href="../../phases/00-setup-kali/" class="md-nav__link">
         
   
   
@@ -761,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phases/01-reconnaissance/" class="md-nav__link">
+      <a href="../../phases/01-reconnaissance/" class="md-nav__link">
         
   
   
@@ -789,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phases/02-acces-initial/" class="md-nav__link">
+      <a href="../../phases/02-acces-initial/" class="md-nav__link">
         
   
   
@@ -817,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phases/03-enumeration/" class="md-nav__link">
+      <a href="../../phases/03-enumeration/" class="md-nav__link">
         
   
   
@@ -845,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phases/04-escalade/" class="md-nav__link">
+      <a href="../../phases/04-escalade/" class="md-nav__link">
         
   
   
@@ -873,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phases/05-mouvement-lateral/" class="md-nav__link">
+      <a href="../../phases/05-mouvement-lateral/" class="md-nav__link">
         
   
   
@@ -901,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="phases/06-compromission/" class="md-nav__link">
+      <a href="../../phases/06-compromission/" class="md-nav__link">
         
   
   
@@ -990,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="outils/impacket/" class="md-nav__link">
+      <a href="../../outils/impacket/" class="md-nav__link">
         
   
   
@@ -1018,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="outils/netexec/" class="md-nav__link">
+      <a href="../../outils/netexec/" class="md-nav__link">
         
   
   
@@ -1046,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="outils/bloodhound/" class="md-nav__link">
+      <a href="../../outils/bloodhound/" class="md-nav__link">
         
   
   
@@ -1074,7 +985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="outils/responder-mitm6/" class="md-nav__link">
+      <a href="../../outils/responder-mitm6/" class="md-nav__link">
         
   
   
@@ -1163,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cheatsheets/commandes/" class="md-nav__link">
+      <a href="../../cheatsheets/commandes/" class="md-nav__link">
         
   
   
@@ -1191,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cheatsheets/hashcat/" class="md-nav__link">
+      <a href="../../cheatsheets/hashcat/" class="md-nav__link">
         
   
   
@@ -1219,7 +1130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cheatsheets/ports/" class="md-nav__link">
+      <a href="../../cheatsheets/ports/" class="md-nav__link">
         
   
   
@@ -1247,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cheatsheets/outils/" class="md-nav__link">
+      <a href="../../cheatsheets/outils/" class="md-nav__link">
         
   
   
@@ -1336,7 +1247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="methodologie/methodology-exam/" class="md-nav__link">
+      <a href="../../methodologie/methodology-exam/" class="md-nav__link">
         
   
   
@@ -1364,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="methodologie/scenarios/" class="md-nav__link">
+      <a href="../../methodologie/scenarios/" class="md-nav__link">
         
   
   
@@ -1396,28 +1307,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -1435,7 +1349,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1453,7 +1367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="wifi/01-fondamentaux/" class="md-nav__link">
+      <a href="../01-fondamentaux/" class="md-nav__link">
         
   
   
@@ -1478,10 +1392,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="wifi/02-reconnaissance/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconnaissance
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1497,6 +1438,176 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis-le-mode-moniteur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis : le mode moniteur
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prérequis : le mode moniteur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activer-le-mode-moniteur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activer le mode moniteur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scan-passif-avec-airodump-ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scan passif avec airodump-ng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scan passif avec airodump-ng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tableau-du-haut-les-points-dacces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau du haut : les points d'accès
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tableau-du-bas-les-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau du bas : les clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cibler-un-ap-precis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cibler un AP précis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-les-clients-dun-reseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier les clients d'un réseau
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lire-les-probes-probe-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire les probes (Probe Requests)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reveler-un-ssid-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Révéler un SSID caché
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Révéler un SSID caché">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attente-passive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attente passive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bruteforce-actif-avec-mdk4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bruteforce actif avec mdk4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-reconnaissance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist Reconnaissance
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1509,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="wifi/03-acces-initial/" class="md-nav__link">
+      <a href="../03-acces-initial/" class="md-nav__link">
         
   
   
@@ -1537,7 +1648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="wifi/04-exploitation/" class="md-nav__link">
+      <a href="../04-exploitation/" class="md-nav__link">
         
   
   
@@ -1565,7 +1676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="wifi/05-methodologie-exam-wifi/" class="md-nav__link">
+      <a href="../05-methodologie-exam-wifi/" class="md-nav__link">
         
   
   
@@ -1613,73 +1724,211 @@
   
 
 
-<h1 id="pentest-active-directory-reference-exam">Pentest Active Directory : Référence Exam<a class="headerlink" href="#pentest-active-directory-reference-exam" title="Permanent link">&para;</a></h1>
-<p>Ce GitBook est ta référence complète pour l'épreuve certificative de pentest Active Directory.</p>
-<h2 id="contexte-de-lepreuve">Contexte de l'épreuve<a class="headerlink" href="#contexte-de-lepreuve" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Connexion <strong>SSH</strong> fournie vers une machine <strong>Kali Linux</strong> déjà positionnée dans le réseau cible</li>
-<li>Objectif : trouver le maximum de <strong>flags / accès</strong> en autonomie</li>
-<li>Environnement cible : réseau Windows avec <strong>Active Directory</strong></li>
-</ul>
-<h2 id="comment-utiliser-ce-gitbook-pendant-lexam">Comment utiliser ce GitBook pendant l'exam<a class="headerlink" href="#comment-utiliser-ce-gitbook-pendant-lexam" title="Permanent link">&para;</a></h2>
+<h1 id="reconnaissance-wi-fi">Reconnaissance Wi-Fi<a class="headerlink" href="#reconnaissance-wi-fi" title="Permanent link">&para;</a></h1>
+<h2 id="prerequis-le-mode-moniteur">Prérequis : le mode moniteur<a class="headerlink" href="#prerequis-le-mode-moniteur" title="Permanent link">&para;</a></h2>
+<p>Par défaut, une carte Wi-Fi ne voit que le réseau auquel elle est connectée. Le <strong>mode moniteur</strong> enlève cette restriction : tu vois toutes les trames dans l'air, sur tous les canaux, peu importe qu'elles te soient destinées ou non.</p>
+<p>C'est la condition obligatoire pour toute reconnaissance ou attaque Wi-Fi.</p>
+<h3 id="activer-le-mode-moniteur">Activer le mode moniteur<a class="headerlink" href="#activer-le-mode-moniteur" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Vérifier les interfaces disponibles</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>airmon-ng
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Tuer les processus qui pourraient interférer</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>airmon-ng<span class="w"> </span>check<span class="w"> </span><span class="nb">kill</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Activer le mode moniteur sur l&#39;interface (adapter le nom)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>airmon-ng<span class="w"> </span>start<span class="w"> </span>wlan0
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Crée wlan0mon</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Vérifier</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>sudo<span class="w"> </span>iwconfig
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">NetworkManager</p>
+<p><code>airmon-ng check kill</code> stoppe NetworkManager et wpa_supplicant. Ta connexion réseau normale sera coupée pendant la session de test. C'est voulu.</p>
+</div>
+<hr />
+<h2 id="scan-passif-avec-airodump-ng">Scan passif avec airodump-ng<a class="headerlink" href="#scan-passif-avec-airodump-ng" title="Permanent link">&para;</a></h2>
+<p><code>airodump-ng</code> écoute passivement et affiche en temps réel tous les réseaux et clients détectés.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Scan global toutes bandes</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>airodump-ng<span class="w"> </span>wlan0mon
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Scan toutes bandes (2.4 GHz + 5 GHz) avec WPS et fabricant</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>airodump-ng<span class="w"> </span>wlan0mon<span class="w"> </span>--manufacturer<span class="w"> </span>--wps<span class="w"> </span>--band<span class="w"> </span>abg
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Enregistrer la capture dans des fichiers</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>sudo<span class="w"> </span>airodump-ng<span class="w"> </span>wlan0mon<span class="w"> </span>-w<span class="w"> </span>~/wifi/scan<span class="w"> </span>--band<span class="w"> </span>abg
+</span></code></pre></div>
+<h3 id="tableau-du-haut-les-points-dacces">Tableau du haut : les points d'accès<a class="headerlink" href="#tableau-du-haut-les-points-dacces" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Situation</th>
-<th>Aller à</th>
+<th>Colonne</th>
+<th>Signification</th>
+<th>Remarques</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Démarrage, je viens de me connecter en SSH</td>
-<td><a href="phases/00-setup-kali/">Phase 0 : Setup Kali</a></td>
+<td><strong>BSSID</strong></td>
+<td>Adresse MAC de l'AP</td>
+<td>Unique par borne</td>
 </tr>
 <tr>
-<td>Je veux le déroulé complet étape par étape</td>
-<td><a href="methodologie/methodology-exam/">Méthodologie Exam</a></td>
+<td><strong>PWR</strong></td>
+<td>Puissance signal reçu (dBm)</td>
+<td>Proche de 0 = fort (-30 excellent, -80 faible)</td>
 </tr>
 <tr>
-<td>Je suis bloqué, je cherche un scénario précis</td>
-<td><a href="methodologie/scenarios/">Scénarios types</a></td>
+<td><strong>Beacons</strong></td>
+<td>Trames "beacon" capturées</td>
+<td>L'AP envoie "je suis là" en permanence</td>
 </tr>
 <tr>
-<td>Je veux une commande précise vite</td>
-<td><a href="cheatsheets/commandes/">Cheatsheet commandes</a></td>
+<td><strong>#Data</strong></td>
+<td>Paquets de données capturés</td>
+<td>Si ça monte vite : réseau actif</td>
 </tr>
 <tr>
-<td>Je dois choisir un mode hashcat</td>
-<td><a href="cheatsheets/hashcat/">Cheatsheet hashcat</a></td>
+<td><strong>#/s</strong></td>
+<td>Paquets par seconde</td>
+<td>Utile pour mesurer l'effet d'une attaque</td>
 </tr>
 <tr>
-<td>Je ne comprends pas un concept</td>
-<td><a href="fondamentaux/active-directory/">Fondamentaux</a></td>
+<td><strong>CH</strong></td>
+<td>Canal utilisé</td>
+<td>Indispensable pour capturer handshake ou IV</td>
+</tr>
+<tr>
+<td><strong>MB</strong></td>
+<td>Débit max annoncé</td>
+<td>Donne le standard (b/g/n/ac)</td>
+</tr>
+<tr>
+<td><strong>ENC</strong></td>
+<td>Type de chiffrement</td>
+<td>OPN, WEP, WPA2, WPA3</td>
+</tr>
+<tr>
+<td><strong>CIPHER</strong></td>
+<td>Algorithme de chiffrement</td>
+<td>TKIP (vieux), CCMP (WPA2), GCMP (WPA3)</td>
+</tr>
+<tr>
+<td><strong>AUTH</strong></td>
+<td>Méthode d'auth</td>
+<td>PSK (perso), MGT/802.1X (enterprise)</td>
+</tr>
+<tr>
+<td><strong>ESSID</strong></td>
+<td>Nom du réseau</td>
+<td>Si caché : <code>&lt;length:7&gt;</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="chaine-dattaque-resumee">Chaîne d'attaque résumée<a class="headerlink" href="#chaine-dattaque-resumee" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Phase 0] Setup Kali → variables, outils, dossier de travail
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[Phase 1] Reconnaissance → Nmap, nslookup, identifier le DC
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>[Phase 2] Accès Initial → Responder, Relay NTLM, MITMv6, Password Spraying
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↓
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>[Phase 3] Énumération → nxc, BloodHound, ldapdomaindump, SMB shares
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ↓
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>[Phase 4] Escalade → Kerberoasting, AS-REP Roasting, ACL Abuse, ADCS
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    ↓
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>[Phase 5] Mouvement Latéral → PtH, PtT, OPtH, psexec/wmiexec/evil-winrm
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    ↓
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>[Phase 6] Compromission → DCSync, Golden Ticket, persistance
+<h3 id="tableau-du-bas-les-clients">Tableau du bas : les clients<a class="headerlink" href="#tableau-du-bas-les-clients" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Signification</th>
+<th>Remarques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>STATION</strong></td>
+<td>Adresse MAC du client</td>
+<td>Unique par appareil</td>
+</tr>
+<tr>
+<td><strong>PWR</strong></td>
+<td>Puissance signal du client</td>
+<td>Même logique que AP</td>
+</tr>
+<tr>
+<td><strong>Rate</strong></td>
+<td>Débit TX/RX</td>
+<td>Ex : <code>1e-54</code> = 1 Mbps TX / 54 Mbps RX</td>
+</tr>
+<tr>
+<td><strong>Lost</strong></td>
+<td>Paquets perdus</td>
+<td>Si élevé : signal instable</td>
+</tr>
+<tr>
+<td><strong>Frames</strong></td>
+<td>Trames capturées du client</td>
+<td>Activité du device</td>
+</tr>
+<tr>
+<td><strong>Probed ESSIDs</strong></td>
+<td>Réseaux cherchés par le client</td>
+<td>Très utile : révèle ses réseaux mémorisés</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cibler-un-ap-precis">Cibler un AP précis<a class="headerlink" href="#cibler-un-ap-precis" title="Permanent link">&para;</a></h2>
+<p>Une fois l'AP identifié, tu filtres sur son BSSID et son canal pour ne capturer que son trafic.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Trouver le BSSID et le canal de l&#39;AP cible dans le scan global, puis :</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>airodump-ng<span class="w"> </span>--bssid<span class="w"> </span>F0:9F:C2:1A:CA:25<span class="w"> </span>-c<span class="w"> </span><span class="m">11</span><span class="w"> </span>wlan0mon
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Avec enregistrement (utile pour capturer un handshake)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>airodump-ng<span class="w"> </span>--bssid<span class="w"> </span>F0:9F:C2:1A:CA:25<span class="w"> </span>-c<span class="w"> </span><span class="m">11</span><span class="w"> </span>-w<span class="w"> </span>~/wifi/capture<span class="w"> </span>wlan0mon
 </span></code></pre></div>
-<h2 id="regles-dor-pour-lexam">Règles d'or pour l'exam<a class="headerlink" href="#regles-dor-pour-lexam" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Créer son dossier de travail en premier</strong> : tout logguer</li>
-<li><strong>Lancer BloodHound dès le premier compte</strong> : c'est la carte du territoire</li>
-<li><strong>Lire le graphe BloodHound avant de choisir une technique</strong></li>
-<li><strong>Épreuve à tiroir</strong> : chaque flag peut cacher des credentials pour la suite</li>
-<li><strong>Toujours tester les credentials trouvés sur toutes les machines</strong> avec <code>nxc smb</code></li>
-<li><strong>Vérifier SYSVOL et NETLOGON</strong> : mines à flags</li>
-</ol>
+<div class="admonition tip">
+<p class="admonition-title">Fixer le canal</p>
+<p>En mode moniteur, la carte saute automatiquement de canal (channel hopping), pratique pour un scan global. Pour attaquer un AP précis, il faut se fixer sur son canal avec <code>-c</code> dans airodump-ng, ou manuellement :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>iwconfig<span class="w"> </span>wlan0mon<span class="w"> </span>channel<span class="w"> </span><span class="m">11</span>
+</span></code></pre></div></p>
+</div>
+<hr />
+<h2 id="identifier-les-clients-dun-reseau">Identifier les clients d'un réseau<a class="headerlink" href="#identifier-les-clients-dun-reseau" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Filtrer sur le BSSID de l&#39;AP pour voir ses clients dans le tableau du bas</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>airodump-ng<span class="w"> </span>--bssid<span class="w"> </span>F0:9F:C2:1A:CA:25<span class="w"> </span>-c<span class="w"> </span><span class="m">11</span><span class="w"> </span>wlan0mon
+</span></code></pre></div>
+<p>Les clients associés apparaissent dans le tableau du bas avec leur adresse MAC (<strong>STATION</strong>).</p>
+<hr />
+<h2 id="lire-les-probes-probe-requests">Lire les probes (Probe Requests)<a class="headerlink" href="#lire-les-probes-probe-requests" title="Permanent link">&para;</a></h2>
+<p>Les appareils mémorisent les réseaux Wi-Fi déjà connus et envoient régulièrement des <strong>Probe Requests</strong> pour les retrouver. Ces trames sont visibles dans la colonne <strong>Probed ESSIDs</strong> du tableau des clients.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Un client non associé qui cherche son réseau préféré :</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="o">(</span>not<span class="w"> </span>associated<span class="o">)</span><span class="w">   </span><span class="m">78</span>:C1:A7:BF:72:46<span class="w">  </span>-49<span class="w">    </span><span class="m">0</span>-1<span class="w">   </span><span class="m">18</span><span class="w">   </span><span class="m">492</span><span class="w">   </span>wifi-offices,Jason
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">#                                                              ^^^^^^^^^^^^</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">#                                                  réseaux mémorisés visibles</span>
+</span></code></pre></div>
+<p>Informations exploitables :
+- Noms de réseaux mémorisés par la cible
+- SSID des réseaux d'entreprise ou personnels
+- Point de départ pour un Evil Twin (le client se connectera automatiquement si tu crées un AP avec ce nom)</p>
+<hr />
+<h2 id="reveler-un-ssid-cache">Révéler un SSID caché<a class="headerlink" href="#reveler-un-ssid-cache" title="Permanent link">&para;</a></h2>
+<p>Un AP avec SSID caché n'inclut pas son nom dans ses beacons. Airodump-ng l'affiche comme <code>&lt;length:7&gt;</code> (7 = nombre de caractères du SSID).</p>
+<p>Deux techniques pour le révéler :</p>
+<h3 id="attente-passive">Attente passive<a class="headerlink" href="#attente-passive" title="Permanent link">&para;</a></h3>
+<p>Si un client légitime se connecte, la poignée de main inclut le SSID en clair. Airodump-ng l'affiche automatiquement.</p>
+<h3 id="bruteforce-actif-avec-mdk4">Bruteforce actif avec mdk4<a class="headerlink" href="#bruteforce-actif-avec-mdk4" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Construire une wordlist au format attendu (ex : préfixe wifi-)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cat<span class="w"> </span>~/Downloads/rockyou.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print &quot;wifi-&quot; $1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>~/wifi-rockyou.txt
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Envoyer des Probe Requests avec chaque SSID possible</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>sudo<span class="w"> </span>mdk4<span class="w"> </span>wlan0mon<span class="w"> </span>p<span class="w"> </span>-t<span class="w"> </span>F0:9F:C2:6A:88:26<span class="w"> </span>-f<span class="w"> </span>~/wifi-rockyou.txt
+</span></code></pre></div>
+<p><code>mdk4 p</code> envoie des Probe Requests : l'AP répond quand il reconnaît son vrai nom. La réponse révèle le SSID dans airodump-ng.</p>
+<div class="admonition tip">
+<p class="admonition-title">Forcer la reconnexion d'un client</p>
+<p>Si un client est déjà associé, tu peux aussi le déauthentifier (voir section Accès Initial) pour forcer sa reconnexion et capturer le SSID lors du réassociation.</p>
+</div>
+<hr />
+<h2 id="checklist-reconnaissance">Checklist Reconnaissance<a class="headerlink" href="#checklist-reconnaissance" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Mode moniteur activé (<code>airmon-ng check kill</code> + <code>airmon-ng start wlan0</code>)</li>
+<li>[ ] Scan global lancé (<code>airodump-ng wlan0mon --band abg</code>)</li>
+<li>[ ] Pour chaque AP identifié : BSSID, canal, chiffrement (ENC), auth (AUTH) notés</li>
+<li>[ ] Clients listés et leurs probes lus</li>
+<li>[ ] SSID cachés identifiés (colonne ESSID = <code>&lt;length:N&gt;</code>)</li>
+<li>[ ] Si SSID caché : bruteforce mdk4 ou attente d'une reconnexion client</li>
+<li>[ ] Capture enregistrée (<code>-w</code>) pour analyse ultérieure</li>
+</ul>
 
 
 
@@ -1751,10 +2000,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
