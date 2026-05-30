@@ -1227,7 +1227,7 @@
   <a href="#phase-0-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 0 — Setup
+        Phase 0 : Setup
       
     </span>
   </a>
@@ -1238,7 +1238,7 @@
   <a href="#phase-1-reconnaissance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 1 — Reconnaissance
+        Phase 1 : Reconnaissance
       
     </span>
   </a>
@@ -1249,7 +1249,7 @@
   <a href="#phase-2-acces-initial" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 2 — Accès Initial
+        Phase 2 : Accès Initial
       
     </span>
   </a>
@@ -1260,7 +1260,7 @@
   <a href="#phase-3-enumeration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 3 — Énumération
+        Phase 3 : Énumération
       
     </span>
   </a>
@@ -1271,7 +1271,7 @@
   <a href="#phase-4-escalade" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 4 — Escalade
+        Phase 4 : Escalade
       
     </span>
   </a>
@@ -1282,7 +1282,7 @@
   <a href="#phase-5-mouvement-lateral" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 5 — Mouvement latéral
+        Phase 5 : Mouvement latéral
       
     </span>
   </a>
@@ -1293,7 +1293,7 @@
   <a href="#phase-6-compromission" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Phase 6 — Compromission
+        Phase 6 : Compromission
       
     </span>
   </a>
@@ -1309,7 +1309,7 @@
   <a href="#rappel-formats-dauthentification-impacketnxc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rappel — Formats d'authentification Impacket/nxc
+        Rappel : Formats d'authentification Impacket/nxc
       
     </span>
   </a>
@@ -1469,7 +1469,7 @@
   
 
 
-<h1 id="cheatsheet-outils-par-usage-et-phase">Cheatsheet — Outils par usage et phase<a class="headerlink" href="#cheatsheet-outils-par-usage-et-phase" title="Permanent link">&para;</a></h1>
+<h1 id="cheatsheet-outils-par-usage-et-phase">Cheatsheet : Outils par usage et phase<a class="headerlink" href="#cheatsheet-outils-par-usage-et-phase" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="tableau-de-reference-complet">Tableau de référence complet<a class="headerlink" href="#tableau-de-reference-complet" title="Permanent link">&para;</a></h2>
 <table>
@@ -1534,7 +1534,7 @@
 <td><strong>BloodHound</strong></td>
 <td>Graphe chemins vers DA</td>
 <td>Énumération</td>
-<td>GUI — importer le .zip</td>
+<td>GUI : importer le .zip</td>
 </tr>
 <tr>
 <td><strong>nxc / netexec</strong></td>
@@ -1586,7 +1586,7 @@
 </tr>
 <tr>
 <td><strong>certipy</strong></td>
-<td>ADCS — audit et exploitation</td>
+<td>ADCS : audit et exploitation</td>
 <td>Escalade</td>
 <td><code>certipy find -u $USER@$DOMAIN -p $PWD -dc-ip $DC_IP -vulnerable</code></td>
 </tr>
@@ -1684,19 +1684,19 @@
 </table>
 <hr />
 <h2 id="par-phase-dattaque">Par phase d'attaque<a class="headerlink" href="#par-phase-dattaque" title="Permanent link">&para;</a></h2>
-<h3 id="phase-0-setup">Phase 0 — Setup<a class="headerlink" href="#phase-0-setup" title="Permanent link">&para;</a></h3>
+<h3 id="phase-0-setup">Phase 0 : Setup<a class="headerlink" href="#phase-0-setup" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>ip a</code>, <code>ip route</code> — réseau</li>
-<li><code>/etc/hosts</code>, <code>/etc/resolv.conf</code> — DNS</li>
+<li><code>ip a</code>, <code>ip route</code> : réseau</li>
+<li><code>/etc/hosts</code>, <code>/etc/resolv.conf</code> : DNS</li>
 </ul>
-<h3 id="phase-1-reconnaissance">Phase 1 — Reconnaissance<a class="headerlink" href="#phase-1-reconnaissance" title="Permanent link">&para;</a></h3>
+<h3 id="phase-1-reconnaissance">Phase 1 : Reconnaissance<a class="headerlink" href="#phase-1-reconnaissance" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>nmap</code> → scanner le réseau</li>
 <li><code>nxc smb $RANGE</code> → découverte hôtes</li>
 <li><code>responder -A</code> → écoute passive</li>
 <li><code>dig axfr</code> → zone DNS</li>
 </ul>
-<h3 id="phase-2-acces-initial">Phase 2 — Accès Initial<a class="headerlink" href="#phase-2-acces-initial" title="Permanent link">&para;</a></h3>
+<h3 id="phase-2-acces-initial">Phase 2 : Accès Initial<a class="headerlink" href="#phase-2-acces-initial" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>responder</code> → capture NTLMv2</li>
 <li><code>ntlmrelayx</code> → relay NTLM</li>
@@ -1706,7 +1706,7 @@
 <li><code>hashcat -m 5600</code> → cracker NTLMv2</li>
 <li><code>hashcat -m 18200</code> → cracker AS-REP</li>
 </ul>
-<h3 id="phase-3-enumeration">Phase 3 — Énumération<a class="headerlink" href="#phase-3-enumeration" title="Permanent link">&para;</a></h3>
+<h3 id="phase-3-enumeration">Phase 3 : Énumération<a class="headerlink" href="#phase-3-enumeration" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>bloodhound-python</code> → collecte BloodHound</li>
 <li><code>nxc smb</code> → shares, users, groups</li>
@@ -1715,7 +1715,7 @@
 <li><code>gpp-decrypt</code> → décrypter cpassword</li>
 <li><code>certipy find</code> → ADCS vulnérable</li>
 </ul>
-<h3 id="phase-4-escalade">Phase 4 — Escalade<a class="headerlink" href="#phase-4-escalade" title="Permanent link">&para;</a></h3>
+<h3 id="phase-4-escalade">Phase 4 : Escalade<a class="headerlink" href="#phase-4-escalade" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>GetUserSPNs.py</code> + <code>hashcat -m 13100</code> → Kerberoasting</li>
 <li><code>GetNPUsers.py</code> + <code>hashcat -m 18200</code> → AS-REP Roasting</li>
@@ -1723,7 +1723,7 @@
 <li><code>certipy req/auth</code> → ADCS ESC1</li>
 <li><code>addcomputer + rbcd + getST</code> → RBCD</li>
 </ul>
-<h3 id="phase-5-mouvement-lateral">Phase 5 — Mouvement latéral<a class="headerlink" href="#phase-5-mouvement-lateral" title="Permanent link">&para;</a></h3>
+<h3 id="phase-5-mouvement-lateral">Phase 5 : Mouvement latéral<a class="headerlink" href="#phase-5-mouvement-lateral" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>nxc smb -H $HASH</code> → PtH spray</li>
 <li><code>psexec.py / wmiexec.py / evil-winrm</code> → shell</li>
@@ -1731,14 +1731,14 @@
 <li><code>secretsdump.py</code> → dump complet</li>
 <li><code>getTGT.py</code> → PtT</li>
 </ul>
-<h3 id="phase-6-compromission">Phase 6 — Compromission<a class="headerlink" href="#phase-6-compromission" title="Permanent link">&para;</a></h3>
+<h3 id="phase-6-compromission">Phase 6 : Compromission<a class="headerlink" href="#phase-6-compromission" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>secretsdump.py -just-dc-ntlm</code> → DCSync</li>
 <li><code>ticketer.py</code> → Golden Ticket</li>
 <li><code>psexec.py -k -no-pass</code> → utiliser ticket</li>
 </ul>
 <hr />
-<h2 id="rappel-formats-dauthentification-impacketnxc">Rappel — Formats d'authentification Impacket/nxc<a class="headerlink" href="#rappel-formats-dauthentification-impacketnxc" title="Permanent link">&para;</a></h2>
+<h2 id="rappel-formats-dauthentification-impacketnxc">Rappel : Formats d'authentification Impacket/nxc<a class="headerlink" href="#rappel-formats-dauthentification-impacketnxc" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Mot de passe en clair</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>-u<span class="w"> </span>alice<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Password123!&#39;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s1">&#39;DOMAIN/alice:Password123!&#39;</span>

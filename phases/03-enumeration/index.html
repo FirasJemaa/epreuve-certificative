@@ -785,12 +785,12 @@
   <a href="#31-bloodhound-priorite-absolue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 — BloodHound (priorité absolue)
+        3.1 : BloodHound (priorité absolue)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.1 — BloodHound (priorité absolue)">
+    <nav class="md-nav" aria-label="3.1 : BloodHound (priorité absolue)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -868,7 +868,7 @@
   <a href="#32-netexec-nxc-couteau-suisse" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 — NetExec (nxc) — Couteau suisse
+        3.2 : NetExec (nxc) : Couteau suisse
       
     </span>
   </a>
@@ -879,19 +879,19 @@
   <a href="#33-enumeration-ldap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 — Énumération LDAP
+        3.3 : Énumération LDAP
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.3 — Énumération LDAP">
+    <nav class="md-nav" aria-label="3.3 : Énumération LDAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ldapdomaindump-dump-ldap-complet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ldapdomaindump — Dump LDAP complet
+        ldapdomaindump : Dump LDAP complet
       
     </span>
   </a>
@@ -907,12 +907,12 @@
   <a href="#34-exploration-des-partages-smb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 — Exploration des partages SMB
+        3.4 : Exploration des partages SMB
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.4 — Exploration des partages SMB">
+    <nav class="md-nav" aria-label="3.4 : Exploration des partages SMB">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -930,7 +930,7 @@
   <a href="#sysvol-mine-a-flags-et-credentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SYSVOL — Mine à flags et credentials
+        SYSVOL : Mine à flags et credentials
       
     </span>
   </a>
@@ -957,7 +957,7 @@
   <a href="#35-enumeration-complementaire" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 — Énumération complémentaire
+        3.5 : Énumération complémentaire
       
     </span>
   </a>
@@ -1558,7 +1558,7 @@
   
 
 
-<h1 id="phase-3-enumeration">Phase 3 — Énumération<a class="headerlink" href="#phase-3-enumeration" title="Permanent link">&para;</a></h1>
+<h1 id="phase-3-enumeration">Phase 3 : Énumération<a class="headerlink" href="#phase-3-enumeration" title="Permanent link">&para;</a></h1>
 <h2 id="pourquoi-cest-crucial">Pourquoi c'est crucial<a class="headerlink" href="#pourquoi-cest-crucial" title="Permanent link">&para;</a></h2>
 <p>Avec un compte lambda, tu peux <strong>interroger l'AD</strong> pour obtenir une quantité massive d'informations :</p>
 <ul>
@@ -1576,7 +1576,7 @@
 <p>Lancer <strong>BloodHound immédiatement</strong> dès le premier compte obtenu. C'est ta carte du territoire. Sans lui, tu travailles à l'aveugle.</p>
 </div>
 <hr />
-<h2 id="31-bloodhound-priorite-absolue">3.1 — BloodHound (priorité absolue)<a class="headerlink" href="#31-bloodhound-priorite-absolue" title="Permanent link">&para;</a></h2>
+<h2 id="31-bloodhound-priorite-absolue">3.1 : BloodHound (priorité absolue)<a class="headerlink" href="#31-bloodhound-priorite-absolue" title="Permanent link">&para;</a></h2>
 <p>C'est <strong>l'outil le plus important</strong> pour l'énumération AD. Il cartographie toutes les relations de l'AD et les affiche sous forme de <strong>graphe</strong>.</p>
 <h3 id="comment-ca-marche">Comment ça marche<a class="headerlink" href="#comment-ca-marche" title="Permanent link">&para;</a></h3>
 <p>Un collecteur (<strong>bloodhound-python</strong>) interroge l'AD et collecte toutes les données. BloodHound les affiche et te permet de chercher :</p>
@@ -1649,7 +1649,7 @@
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>4. Onglet &quot;Reachable High Value Targets&quot;
 </span></code></pre></div>
 <hr />
-<h2 id="32-netexec-nxc-couteau-suisse">3.2 — NetExec (nxc) — Couteau suisse<a class="headerlink" href="#32-netexec-nxc-couteau-suisse" title="Permanent link">&para;</a></h2>
+<h2 id="32-netexec-nxc-couteau-suisse">3.2 : NetExec (nxc) : Couteau suisse<a class="headerlink" href="#32-netexec-nxc-couteau-suisse" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Vérifier ses accès sur tout le réseau (chercher (Pwn3d!))</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -1672,7 +1672,7 @@
 </span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>--pass-pol
 </span></code></pre></div>
 <hr />
-<h2 id="33-enumeration-ldap">3.3 — Énumération LDAP<a class="headerlink" href="#33-enumeration-ldap" title="Permanent link">&para;</a></h2>
+<h2 id="33-enumeration-ldap">3.3 : Énumération LDAP<a class="headerlink" href="#33-enumeration-ldap" title="Permanent link">&para;</a></h2>
 <p>L'AD est une base de données LDAP. On peut l'interroger directement.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Avec ldapsearch</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ldapsearch<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldap://<span class="nv">$DC_IP</span><span class="w"> </span><span class="se">\</span>
@@ -1683,7 +1683,7 @@
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Via NetExec</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>nxc<span class="w"> </span>ldap<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>--users
 </span></code></pre></div>
-<h3 id="ldapdomaindump-dump-ldap-complet">ldapdomaindump — Dump LDAP complet<a class="headerlink" href="#ldapdomaindump-dump-ldap-complet" title="Permanent link">&para;</a></h3>
+<h3 id="ldapdomaindump-dump-ldap-complet">ldapdomaindump : Dump LDAP complet<a class="headerlink" href="#ldapdomaindump-dump-ldap-complet" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ldapdomaindump<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DOMAIN</span><span class="s2">\\</span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="se">\</span>
@@ -1697,7 +1697,7 @@
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;pass\|pwd\|cred\|secret\|flag&quot;</span><span class="w"> </span>~/certif/loot/ldap/domain_users.json
 </span></code></pre></div>
 <hr />
-<h2 id="34-exploration-des-partages-smb">3.4 — Exploration des partages SMB<a class="headerlink" href="#34-exploration-des-partages-smb" title="Permanent link">&para;</a></h2>
+<h2 id="34-exploration-des-partages-smb">3.4 : Exploration des partages SMB<a class="headerlink" href="#34-exploration-des-partages-smb" title="Permanent link">&para;</a></h2>
 <h3 id="lister-et-explorer-les-partages">Lister et explorer les partages<a class="headerlink" href="#lister-et-explorer-les-partages" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Lister tous les partages</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>smbclient<span class="w"> </span>-L<span class="w"> </span>//<span class="nv">$DC_IP</span><span class="w"> </span>-U<span class="w"> </span><span class="nv">$DOMAIN</span>/<span class="nv">$USER</span>%<span class="nv">$PWD</span>
@@ -1710,7 +1710,7 @@
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># smb: \&gt; recurse ON  → mode récursif</span>
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># smb: \&gt; mget *      → tout télécharger</span>
 </span></code></pre></div>
-<h3 id="sysvol-mine-a-flags-et-credentials">SYSVOL — Mine à flags et credentials<a class="headerlink" href="#sysvol-mine-a-flags-et-credentials" title="Permanent link">&para;</a></h3>
+<h3 id="sysvol-mine-a-flags-et-credentials">SYSVOL : Mine à flags et credentials<a class="headerlink" href="#sysvol-mine-a-flags-et-credentials" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Télécharger SYSVOL en entier</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>smbclient<span class="w"> </span>//<span class="nv">$DC_IP</span>/SYSVOL<span class="w"> </span>-U<span class="w"> </span><span class="nv">$DOMAIN</span>/<span class="nv">$USER</span>%<span class="nv">$PWD</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>-c<span class="w"> </span><span class="s2">&quot;recurse ON; mget *&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
@@ -1733,7 +1733,7 @@
 <tbody>
 <tr>
 <td><code>Groups.xml</code></td>
-<td>cpassword GPP — mot de passe admin local</td>
+<td>cpassword GPP : mot de passe admin local</td>
 </tr>
 <tr>
 <td><code>*.ps1</code></td>
@@ -1757,24 +1757,24 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Spider complet (cherche tous les fichiers)</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>-M<span class="w"> </span>spider_plus
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># manspider — chercher des mots-clés dans les fichiers</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># manspider : chercher des mots-clés dans les fichiers</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>manspider<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-c<span class="w"> </span>passw<span class="w"> </span>password<span class="w"> </span>cred<span class="w"> </span>flag<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span>-e<span class="w"> </span>txt<span class="w"> </span>xml<span class="w"> </span>ini<span class="w"> </span>config<span class="w"> </span>ps1<span class="w"> </span>bat<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span>
 </span></code></pre></div>
 <hr />
-<h2 id="35-enumeration-complementaire">3.5 — Énumération complémentaire<a class="headerlink" href="#35-enumeration-complementaire" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ADCS — Chercher les templates vulnérables</span>
+<h2 id="35-enumeration-complementaire">3.5 : Énumération complémentaire<a class="headerlink" href="#35-enumeration-complementaire" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ADCS : Chercher les templates vulnérables</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>certipy<span class="w"> </span>find<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>@<span class="nv">$DOMAIN_FQDN</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>-dc-ip<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-vulnerable<span class="w"> </span>-stdout<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>~/certif/loot/adcs.txt
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># LAPS — Lire les mots de passe admin locaux (si droits)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># LAPS : Lire les mots de passe admin locaux (si droits)</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>nxc<span class="w"> </span>ldap<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>--module<span class="w"> </span>laps
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># gMSA — Mots de passe de comptes de service gérés</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># gMSA : Mots de passe de comptes de service gérés</span>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>nxc<span class="w"> </span>ldap<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>--gmsa
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># enum4linux-ng — Énumération complète</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># enum4linux-ng : Énumération complète</span>
 </span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>enum4linux-ng<span class="w"> </span>-a<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>~/certif/loot/enum4linux.txt
 </span></code></pre></div>
 <hr />
@@ -1788,7 +1788,7 @@
 <li>[ ] Fichiers <code>Groups.xml</code> trouvés → <code>gpp-decrypt</code> utilisé</li>
 <li>[ ] Spider lancé sur les partages inhabituels</li>
 <li>[ ] Chemins d'escalade BloodHound lus → technique choisie</li>
-<li>[ ] Suite → <a href="../04-escalade/">Phase 4 — Escalade</a></li>
+<li>[ ] Suite → <a href="../04-escalade/">Phase 4 : Escalade</a></li>
 </ul>
 
 

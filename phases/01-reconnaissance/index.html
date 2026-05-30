@@ -729,7 +729,7 @@
   <a href="#11-reconnaissance-passive" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 — Reconnaissance Passive
+        1.1 : Reconnaissance Passive
       
     </span>
   </a>
@@ -740,12 +740,12 @@
   <a href="#12-reconnaissance-active-avec-nmap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 — Reconnaissance Active avec Nmap
+        1.2 : Reconnaissance Active avec Nmap
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.2 — Reconnaissance Active avec Nmap">
+    <nav class="md-nav" aria-label="1.2 : Reconnaissance Active avec Nmap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -779,12 +779,12 @@
   <a href="#13-commandes-essentielles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3 — Commandes essentielles
+        1.3 : Commandes essentielles
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.3 — Commandes essentielles">
+    <nav class="md-nav" aria-label="1.3 : Commandes essentielles">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -851,7 +851,7 @@
   <a href="#14-interpreter-les-resultats" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.4 — Interpréter les résultats
+        1.4 : Interpréter les résultats
       
     </span>
   </a>
@@ -1508,7 +1508,7 @@
   
 
 
-<h1 id="phase-1-reconnaissance">Phase 1 — Reconnaissance<a class="headerlink" href="#phase-1-reconnaissance" title="Permanent link">&para;</a></h1>
+<h1 id="phase-1-reconnaissance">Phase 1 : Reconnaissance<a class="headerlink" href="#phase-1-reconnaissance" title="Permanent link">&para;</a></h1>
 <h2 id="cest-quoi-lobjectif">C'est quoi l'objectif ?<a class="headerlink" href="#cest-quoi-lobjectif" title="Permanent link">&para;</a></h2>
 <p>Avant de toucher quoi que ce soit, un bon attaquant <strong>observe</strong>. L'idée c'est de répondre à ces questions :</p>
 <ul>
@@ -1523,19 +1523,19 @@
 </div>
 <p>Il y a deux niveaux de reconnaissance.</p>
 <hr />
-<h2 id="11-reconnaissance-passive">1.1 — Reconnaissance Passive<a class="headerlink" href="#11-reconnaissance-passive" title="Permanent link">&para;</a></h2>
+<h2 id="11-reconnaissance-passive">1.1 : Reconnaissance Passive<a class="headerlink" href="#11-reconnaissance-passive" title="Permanent link">&para;</a></h2>
 <p>Tu <strong>n'envoies rien</strong> sur le réseau cible. Tu collectes des infos depuis l'extérieur.</p>
 <p>Dans un contexte AD interne (tu es déjà dans le réseau, comme avec l'accès SSH de l'exam), la reconnaissance passive c'est :</p>
 <ul>
 <li>Écouter le trafic réseau sans rien envoyer</li>
 <li>Regarder les broadcasts qui circulent naturellement</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Responder en mode analyse (écoute passive — ne répond pas)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Responder en mode analyse (écoute passive : ne répond pas)</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>responder<span class="w"> </span>-I<span class="w"> </span><span class="nv">$IFACE</span><span class="w"> </span>-A
 </span></code></pre></div>
 <p>Si tu vois des requêtes LLMNR/NBT-NS apparaître → vecteur Responder actif disponible en Phase 2.</p>
 <hr />
-<h2 id="12-reconnaissance-active-avec-nmap">1.2 — Reconnaissance Active avec Nmap<a class="headerlink" href="#12-reconnaissance-active-avec-nmap" title="Permanent link">&para;</a></h2>
+<h2 id="12-reconnaissance-active-avec-nmap">1.2 : Reconnaissance Active avec Nmap<a class="headerlink" href="#12-reconnaissance-active-avec-nmap" title="Permanent link">&para;</a></h2>
 <p>Tu <strong>envoies des paquets</strong> pour sonder le réseau.</p>
 <h3 id="ce-que-nmap-fait-concretement">Ce que Nmap fait concrètement<a class="headerlink" href="#ce-que-nmap-fait-concretement" title="Permanent link">&para;</a></h3>
 <p>Il envoie des paquets sur chaque IP/port et analyse les réponses pour savoir :</p>
@@ -1598,7 +1598,7 @@
 <p>Si tu vois le port 88 sur une machine → c'est ton contrôleur de domaine. <strong>C'est ta cible prioritaire.</strong></p>
 </div>
 <hr />
-<h2 id="13-commandes-essentielles">1.3 — Commandes essentielles<a class="headerlink" href="#13-commandes-essentielles" title="Permanent link">&para;</a></h2>
+<h2 id="13-commandes-essentielles">1.3 : Commandes essentielles<a class="headerlink" href="#13-commandes-essentielles" title="Permanent link">&para;</a></h2>
 <h3 id="decouverte-des-hotes-vivants">Découverte des hôtes vivants<a class="headerlink" href="#decouverte-des-hotes-vivants" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Scan ping rapide</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nmap<span class="w"> </span>-sn<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-oA<span class="w"> </span>~/certif/scans/hosts_alive
@@ -1642,7 +1642,7 @@
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>dig<span class="w"> </span>axfr<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span><span class="w"> </span>@<span class="nv">$DC_IP</span>
 </span></code></pre></div>
 <hr />
-<h2 id="14-interpreter-les-resultats">1.4 — Interpréter les résultats<a class="headerlink" href="#14-interpreter-les-resultats" title="Permanent link">&para;</a></h2>
+<h2 id="14-interpreter-les-resultats">1.4 : Interpréter les résultats<a class="headerlink" href="#14-interpreter-les-resultats" title="Permanent link">&para;</a></h2>
 <p>Une fois le scan terminé, tu as une carte du réseau :</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>192.168.X.10  →  ports 88, 389, 445, 3268  →  ★ Contrôleur de domaine
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>192.168.X.20  →  ports 445, 3389           →  Serveur Windows (RDP)
@@ -1672,9 +1672,9 @@
 <li>[ ] <code>DC_IP</code> et <code>DOMAIN_FQDN</code> notés dans <code>notes.txt</code></li>
 <li>[ ] <code>/etc/hosts</code> et <code>/etc/resolv.conf</code> configurés</li>
 <li>[ ] Scan SMB <code>--gen-relay-list</code> lancé → <code>~/certif/targets_relay.txt</code></li>
-<li>[ ] Responder passif lancé — trafic LLMNR observé ?</li>
+<li>[ ] Responder passif lancé : trafic LLMNR observé ?</li>
 <li>[ ] Variables <code>DC_IP</code>, <code>DC_FQDN</code>, <code>DOMAIN</code>, <code>RANGE</code> mises à jour</li>
-<li>[ ] Suite → <a href="../02-acces-initial/">Phase 2 — Accès Initial</a></li>
+<li>[ ] Suite → <a href="../02-acces-initial/">Phase 2 : Accès Initial</a></li>
 </ul>
 
 

