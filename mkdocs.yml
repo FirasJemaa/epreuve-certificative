@@ -1,4 +1,4 @@
-site_name: Pentest Active Directory — Référence Exam
+site_name: Pentest Active Directory : Référence Exam
 site_description: Guide complet de pentest AD pour l'épreuve certificative
 site_author: FirasJemaa
 site_url: https://firasjemaa.github.io/pentest-ad/
@@ -78,13 +78,13 @@ nav:
     - Protocole NTLM: fondamentaux/ntlm.md
     - Protocole Kerberos: fondamentaux/kerberos.md
   - Phases d'attaque:
-    - "Phase 0 — Setup Kali": phases/00-setup-kali.md
-    - "Phase 1 — Reconnaissance": phases/01-reconnaissance.md
-    - "Phase 2 — Accès Initial": phases/02-acces-initial.md
-    - "Phase 3 — Énumération": phases/03-enumeration.md
-    - "Phase 4 — Escalade": phases/04-escalade.md
-    - "Phase 5 — Mouvement Latéral": phases/05-mouvement-lateral.md
-    - "Phase 6 — Compromission Totale": phases/06-compromission.md
+    - "Phase 0 : Setup Kali": phases/00-setup-kali.md
+    - "Phase 1 : Reconnaissance": phases/01-reconnaissance.md
+    - "Phase 2 : Accès Initial": phases/02-acces-initial.md
+    - "Phase 3 : Énumération": phases/03-enumeration.md
+    - "Phase 4 : Escalade": phases/04-escalade.md
+    - "Phase 5 : Mouvement Latéral": phases/05-mouvement-lateral.md
+    - "Phase 6 : Compromission Totale": phases/06-compromission.md
   - Outils:
     - Impacket: outils/impacket.md
     - NetExec (nxc): outils/netexec.md

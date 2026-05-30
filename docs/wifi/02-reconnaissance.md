@@ -9,15 +9,16 @@ C'est la condition obligatoire pour toute reconnaissance ou attaque Wi-Fi.
 ### Activer le mode moniteur
 
 ```bash
-# Vérifier les interfaces disponibles
+# Lister les interfaces Wi-Fi disponibles et noter le nom exact
 sudo airmon-ng
 
 # Tuer les processus qui pourraient interférer
 sudo airmon-ng check kill
 
-# Activer le mode moniteur sur l'interface (adapter le nom)
-sudo airmon-ng start wlan0
-# Crée wlan0mon
+# Activer le mode moniteur sur l'interface trouvée ci-dessus
+# Exemple : wlan0, wlp3s0, wlx... → adapter selon la sortie de airmon-ng
+sudo airmon-ng start <IFACE>
+# Crée <IFACE>mon (ex: wlan0 → wlan0mon)
 
 # Vérifier
 sudo iwconfig
@@ -34,13 +35,13 @@ sudo iwconfig
 
 ```bash
 # Scan global toutes bandes
-sudo airodump-ng wlan0mon
+sudo airodump-ng <IFACE_MON>
 
 # Scan toutes bandes (2.4 GHz + 5 GHz) avec WPS et fabricant
-sudo airodump-ng wlan0mon --manufacturer --wps --band abg
+sudo airodump-ng <IFACE_MON> --manufacturer --wps --band abg
 
 # Enregistrer la capture dans des fichiers
-sudo airodump-ng wlan0mon -w ~/wifi/scan --band abg
+sudo airodump-ng <IFACE_MON> -w ~/wifi/scan --band abg
 ```
 
 ### Tableau du haut : les points d'accès
@@ -74,20 +75,23 @@ sudo airodump-ng wlan0mon -w ~/wifi/scan --band abg
 
 ## Cibler un AP précis
 
-Une fois l'AP identifié, tu filtres sur son BSSID et son canal pour ne capturer que son trafic.
+Une fois l'AP identifié, filtrer sur son BSSID et son canal pour ne capturer que son trafic.
+Le BSSID et le canal (`<BSSID>`, `<CH>`) sont lus dans le scan global ci-dessus.
 
 ```bash
-# Trouver le BSSID et le canal de l'AP cible dans le scan global, puis :
-sudo airodump-ng --bssid F0:9F:C2:1A:CA:25 -c 11 wlan0mon
+# Filtrer sur l'AP cible
+sudo airodump-ng --bssid <BSSID> -c <CH> <IFACE_MON>
 
-# Avec enregistrement (utile pour capturer un handshake)
-sudo airodump-ng --bssid F0:9F:C2:1A:CA:25 -c 11 -w ~/wifi/capture wlan0mon
+# Avec enregistrement (utile pour capturer un handshake ou analyser plus tard)
+sudo airodump-ng --bssid <BSSID> -c <CH> -w ~/wifi/capture <IFACE_MON>
 ```
 
 !!! tip "Fixer le canal"
-    En mode moniteur, la carte saute automatiquement de canal (channel hopping), pratique pour un scan global. Pour attaquer un AP précis, il faut se fixer sur son canal avec `-c` dans airodump-ng, ou manuellement :
+    En mode moniteur, la carte saute automatiquement de canal (channel hopping), pratique
+    pour un scan global. Pour attaquer un AP précis, il faut se fixer sur son canal avec
+    `-c` dans airodump-ng, ou manuellement :
     ```bash
-    iwconfig wlan0mon channel 11
+    iwconfig <IFACE_MON> channel <CH>
     ```
 
 ---
@@ -95,8 +99,8 @@ sudo airodump-ng --bssid F0:9F:C2:1A:CA:25 -c 11 -w ~/wifi/capture wlan0mon
 ## Identifier les clients d'un réseau
 
 ```bash
-# Filtrer sur le BSSID de l'AP pour voir ses clients dans le tableau du bas
-sudo airodump-ng --bssid F0:9F:C2:1A:CA:25 -c 11 wlan0mon
+# Même commande que "cibler un AP" : les clients associés apparaissent dans le tableau du bas
+sudo airodump-ng --bssid <BSSID> -c <CH> <IFACE_MON>
 ```
 
 Les clients associés apparaissent dans le tableau du bas avec leur adresse MAC (**STATION**).
@@ -107,11 +111,11 @@ Les clients associés apparaissent dans le tableau du bas avec leur adresse MAC 
 
 Les appareils mémorisent les réseaux Wi-Fi déjà connus et envoient régulièrement des **Probe Requests** pour les retrouver. Ces trames sont visibles dans la colonne **Probed ESSIDs** du tableau des clients.
 
-```bash
-# Un client non associé qui cherche son réseau préféré :
-(not associated)   78:C1:A7:BF:72:46  -49    0-1   18   492   wifi-offices,Jason
-#                                                              ^^^^^^^^^^^^
-#                                                  réseaux mémorisés visibles
+```
+# Exemple de ligne dans airodump-ng (tableau du bas) :
+(not associated)   XX:XX:XX:XX:XX:XX  -49    0-1   18   492   wifi-corp,wifi-guest
+#                                                              ^^^^^^^^^^^^^^^^^^^^^
+#                                              réseaux mémorisés par ce client (Probed ESSIDs)
 ```
 
 Informations exploitables :
@@ -133,15 +137,22 @@ Si un client légitime se connecte, la poignée de main inclut le SSID en clair.
 
 ### Bruteforce actif avec mdk4
 
-```bash
-# Construire une wordlist au format attendu (ex : préfixe wifi-)
-cat ~/Downloads/rockyou.txt | awk '{print "wifi-" $1}' > ~/wifi-rockyou.txt
+L'AP caché répond aux Probe Requests quand il reconnaît son vrai nom.
+`mdk4` en mode `p` envoie ces probes en masse depuis une wordlist.
 
-# Envoyer des Probe Requests avec chaque SSID possible
-sudo mdk4 wlan0mon p -t F0:9F:C2:6A:88:26 -f ~/wifi-rockyou.txt
+Si les SSIDs visibles suivent un format prévisible (ex: `wifi-IT`, `wifi-corp`, `wifi-guest`),
+construire la wordlist avec ce préfixe :
+
+```bash
+# Générer une wordlist avec le préfixe observé
+cat <WORDLIST> | awk '{print "<PREFIXE>-" $1}' > ~/wifi/ssid-wordlist.txt
+
+# Envoyer les probes vers l'AP caché
+# <BSSID> : adresse MAC de l'AP caché (visible dans airodump-ng même sans SSID)
+sudo mdk4 <IFACE_MON> p -t <BSSID> -f ~/wifi/ssid-wordlist.txt
 ```
 
-`mdk4 p` envoie des Probe Requests : l'AP répond quand il reconnaît son vrai nom. La réponse révèle le SSID dans airodump-ng.
+Quand l'AP reconnaît son nom, il répond. Le SSID s'affiche alors dans airodump-ng.
 
 !!! tip "Forcer la reconnexion d'un client"
     Si un client est déjà associé, tu peux aussi le déauthentifier (voir section Accès Initial) pour forcer sa reconnexion et capturer le SSID lors du réassociation.
@@ -150,8 +161,8 @@ sudo mdk4 wlan0mon p -t F0:9F:C2:6A:88:26 -f ~/wifi-rockyou.txt
 
 ## Checklist Reconnaissance
 
-- [ ] Mode moniteur activé (`airmon-ng check kill` + `airmon-ng start wlan0`)
-- [ ] Scan global lancé (`airodump-ng wlan0mon --band abg`)
+- [ ] Mode moniteur activé (`airmon-ng check kill` + `airmon-ng start <IFACE>`)
+- [ ] Scan global lancé (`airodump-ng <IFACE_MON> --band abg`)
 - [ ] Pour chaque AP identifié : BSSID, canal, chiffrement (ENC), auth (AUTH) notés
 - [ ] Clients listés et leurs probes lus
 - [ ] SSID cachés identifiés (colonne ESSID = `<length:N>`)
